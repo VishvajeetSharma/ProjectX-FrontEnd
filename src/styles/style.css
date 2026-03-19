@@ -1,0 +1,86 @@
+body {
+  overflow-x: hidden;
+  background-color: #222529;
+}
+
+.my-bg-dark{
+  background-color: #222529;
+}
+
+.my-second-bg-dark{
+  background-color: #1b1e21 !important;
+}
+
+/* Custom Counter Styles */
+
+.stats-card {
+  border-radius: 12px;
+  padding: 28px 30px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  height: 100%;
+}
+
+.stats-icon {
+  font-size: 40px;
+  padding: 18px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stats-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.stats-sub {
+  font-size: 15px;
+  opacity: 0.85;
+}
+
+.bg-gold {
+  background: linear-gradient(135deg, #5a4a1f, #7a6223);
+}
+
+.bg-darkblue {
+  background: #1f2a38;
+}
+
+.bg-purple {
+  background: #2d2447;
+}
+
+.bg-teal {
+  background: #1d3c40;
+}
+
+.icon-gold {
+  background-color: rgba(255, 193, 7, 0.15);
+  color: #ffc107;
+}
+
+.icon-blue {
+  background-color: rgba(13, 110, 253, 0.15);
+  color: #0d6efd;
+}
+
+.icon-purple {
+  background-color: rgba(111, 66, 193, 0.2);
+  color: #a370f7;
+}
+
+.icon-teal {
+  background-color: rgba(32, 201, 151, 0.2);
+  color: #20c997;
+}
+
+
+.author-img{
+  height: 40px;
+  width: 40px;
+}

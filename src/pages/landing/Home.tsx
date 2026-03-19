@@ -6,6 +6,8 @@ import MostPopularCourse from "./MostPopularCourse"
 import Navbar from "./Navbar"
 import TrendingCourses from "./TrendingCourses"
 
+import "../../styles/style.css"
+
 const Home = () => {
   return (
     <>
