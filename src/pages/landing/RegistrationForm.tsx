@@ -48,7 +48,7 @@ const RegistrationForm = () => {
   const onSubmit = (data: any) => {
     console.log(data);
 
-    alert("Form Submitted Successfully ✅");
+    alert("Form Submitted Successfully");
     reset();
   };
 
