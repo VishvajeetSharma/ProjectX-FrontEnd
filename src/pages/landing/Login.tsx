@@ -4,6 +4,9 @@ import Navbar from "./Navbar"
 import { Form, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { userLoginService } from "../../services";
+import { showALert, stroreData } from "../../utils";
+import { useNavigate } from "react-router-dom";
 
 // ✅ Validation Schema
 const schema = yup.object().shape({
@@ -28,6 +31,7 @@ const schema = yup.object().shape({
 
 
 const Login = () => {
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -37,16 +41,26 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-
-    alert("Login Successfully");
-    reset();
+  const onSubmit = async (data: any) => {
+    try {
+      const res = await userLoginService(data);
+      if (res.success) {
+        showALert("User Login", res?.message, "success")
+        console.log(res,"#############");
+        stroreData("token",res?.result?.token)
+        
+        navigate('/user-dashboard');
+        reset()
+      } else {
+        showALert("User Login", res?.message, "error")
+      }
+    } catch (err) {
+      showALert("User Login", "Internal Server Error", "error")
+    }
   };
   return (
     <>
       <Navbar />
-
       <div className="row align-items-center py-5 my-bg-dark">
         <div className="col-sm-10 mx-auto">
           <div className="row">

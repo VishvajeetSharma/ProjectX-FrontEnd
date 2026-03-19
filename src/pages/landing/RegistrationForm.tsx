@@ -2,8 +2,11 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { userRegisterService } from "../../services"; 
+import { showALert } from "../../utils";
+import { useNavigate } from "react-router-dom";
 
-// ✅ Validation Schema
+//  Validation Schema
 const schema = yup.object().shape({
   name: yup
     .string()
@@ -36,6 +39,7 @@ const schema = yup.object().shape({
 });
 
 const RegistrationForm = () => {
+  const navigate =useNavigate()
   const {
     register,
     handleSubmit,
@@ -45,11 +49,19 @@ const RegistrationForm = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-
-    alert("Form Submitted Successfully");
-    reset();
+  const onSubmit = async (data: any) => {
+    try {
+      const res = await userRegisterService(data);
+      if (res.success) {
+        showALert("User Regiser", res?.message, "success")
+        reset()
+        navigate('/login')
+      } else {
+        showALert("User Regiser", res?.message, "error")
+      }
+    } catch (error) {
+      showALert("User Regiser", "Internal Server error", "error")
+    }
   };
 
   return (
