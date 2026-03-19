@@ -1,9 +1,8 @@
-import React from "react";
 import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-dark text-light pt-5 pb-3">
+    <footer className="my-second-bg-dark text-light pt-5 pb-3">
       <div className="container">
         <div className="row">
 
