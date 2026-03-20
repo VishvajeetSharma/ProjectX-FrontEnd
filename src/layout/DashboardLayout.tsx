@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import Sidebar from "../pages/user/SideBar";
+import Sidebar from "./SideBar";
 
 interface DashboardLayoutProps {
   children: ReactNode;   // Proper typing for children
@@ -14,7 +14,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
     <div className="container-fluid p-0">
       <div className="row g-0">
         {/* Sidebar */}
-        <Sidebar isOpen={sidebarOpen} role="user" />
+        <Sidebar isOpen={sidebarOpen} />
 
         {/* Main content area */}
         <div className={`${sidebarOpen ? "col-sm-10" : "col-sm-11"}`}>

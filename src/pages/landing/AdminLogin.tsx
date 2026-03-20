@@ -4,7 +4,7 @@ import Navbar from "./Navbar"
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { userLoginService } from "../../services";
+import { adminLoginService } from "../../services";
 import { showALert, stroreData } from "../../utils";
 import { useNavigate } from "react-router-dom";
 
@@ -30,7 +30,7 @@ const schema = yup.object().shape({
 
 
 
-const Login = () => {
+const AdminLogin = () => {
   const navigate = useNavigate()
   const {
     register,
@@ -43,13 +43,13 @@ const Login = () => {
 
   const onSubmit = async (data: any) => {
     try {
-      const res = await userLoginService(data);
+      const res = await adminLoginService(data);
       if (res.success) {
         showALert("User Login", res?.message, "success")
-        console.log(res,"#############");
-        stroreData("token",res?.result?.token)
-        stroreData("userType", "user");
-        navigate('/user-dashboard');
+        console.log(res, "#############");
+        stroreData("token", res?.result?.token)
+        stroreData("userType", "admin");
+        navigate('/admin-dashboard');
         reset()
       } else {
         showALert("User Login", res?.message, "error")
@@ -68,7 +68,7 @@ const Login = () => {
             {/* LEFT SIDE */}
             <div className="col-lg-6 text-white">
               <h1 className="access-title">
-                Login Your<br /> Account
+                Admin Login
               </h1>
 
               <p className="mt-3 access-subtext">
@@ -112,25 +112,6 @@ const Login = () => {
                   Login
                 </button>
               </form>
-              {/* USERS + RATING */}
-              <div className="d-flex align-items-center mt-4 gap-4 flex-wrap">
-
-                {/* AVATARS */}
-                <div className="avatars d-flex align-items-center">
-                  <img src="https://i.pravatar.cc/40?img=1" />
-                  <img src="https://i.pravatar.cc/40?img=2" />
-                  <img src="https://i.pravatar.cc/40?img=3" />
-                  <img src="https://i.pravatar.cc/40?img=4" />
-                  <img src="https://i.pravatar.cc/40?img=5" />
-                  <span className="count">1K+</span>
-                </div>
-
-                {/* RATING */}
-                <div className="rating text-white">
-                  <strong>4.5/5.0</strong>
-                  <span className="stars ms-2">★★★★★</span>
-                </div>
-              </div>
             </div>
 
             {/* RIGHT SIDE IMAGE */}
@@ -150,4 +131,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default AdminLogin

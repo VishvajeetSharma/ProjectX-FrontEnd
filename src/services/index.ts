@@ -11,3 +11,8 @@ export const userLoginService=async(data:any)=>{
  return res?.data
 }
  
+
+export const adminLoginService=async(data:any)=>{
+ const res=await  axios.post(`${BASE_URL}/admin/login`,data);
+ return res?.data
+}

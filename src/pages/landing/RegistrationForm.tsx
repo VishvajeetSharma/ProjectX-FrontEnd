@@ -129,7 +129,7 @@ const RegistrationForm = () => {
 
         {/* Button */}
         <button className="btn btn-primary w-100 py-2 mt-4 fw-bold">
-          Book a class
+          Submit
         </button>
       </form>
     </div>
