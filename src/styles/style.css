@@ -3,11 +3,11 @@ body {
   background-color: #222529;
 }
 
-.my-bg-dark{
+.my-bg-dark {
   background-color: #222529;
 }
 
-.my-second-bg-dark{
+.my-second-bg-dark {
   background-color: #1b1e21 !important;
 }
 
@@ -79,13 +79,10 @@ body {
   color: #20c997;
 }
 
-
-.author-img{
+.author-img {
   height: 40px;
   width: 40px;
 }
-
-
 
 /* Login Page  */
 .access-section {
@@ -156,4 +153,8 @@ body {
 /* IMAGE */
 .access-img {
   max-width: 90%;
+}
+
+.transition-width {
+  transition: width 0.3s ease;
 }
