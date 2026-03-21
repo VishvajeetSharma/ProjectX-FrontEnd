@@ -14,10 +14,16 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-light my-second-bg-dark">
         <div className="container">
           <NavLink className="navbar-brand text-light fs-2 fw-bold" to="/">
-            Eduport
+            <img
+              src="images/logo.png"
+              alt="Logo"
+              className="rounded-circle me-2"
+              width="40"
+              height="40"
+            /> Eduport
           </NavLink>
           <button
             className="navbar-toggler text-light"

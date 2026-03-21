@@ -33,7 +33,7 @@ const TrendingCard: React.FC<TrendingCardProps> = ({
 }) => {
   return (
     <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
-      <div className="card my-second-bg-dark text-white border-0 shadow-sm rounded-4 h-100 overflow-hidden">
+      <div className="card my-second-bg-dark text-white border-0 mx-auto shadow-sm rounded-4 h-100 overflow-hidden">
 
         {/* Image */}
         <div className="position-relative">

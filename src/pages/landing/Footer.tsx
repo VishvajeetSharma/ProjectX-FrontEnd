@@ -9,7 +9,7 @@ const Footer = () => {
           {/* Logo + Description */}
           <div className="col-md-3 mb-4">
             <h4 className="fw-bold d-flex fs-1 align-items-center">
-               Eduport
+              Eduport
             </h4>
             <p className="mt-3">
               Eduport education theme, built specifically for the education centers
@@ -73,17 +73,21 @@ const Footer = () => {
               Email: <span className="text-white">example@gmail.com</span>
             </p>
 
-            <div className="d-flex gap-2 mt-2">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-                alt="Google Play"
-                style={{ height: "40px" }}
-              />
-              <img
-                src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-                alt="App Store"
-                style={{ height: "40px" }}
-              />
+            <div className="row d-flex gap-2 mt-2">
+              <div className="com-sm-6">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                  alt="Google Play"
+                  style={{ height: "40px" }}
+                />
+              </div>
+              <div className="com-sm-6">
+                <img
+                  src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                  alt="App Store"
+                  style={{ height: "40px" }}
+                />
+              </div>
             </div>
           </div>
         </div>
