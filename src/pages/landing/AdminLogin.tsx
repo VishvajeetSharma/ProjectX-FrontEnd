@@ -83,7 +83,7 @@ const AdminLogin = () => {
                   <input
                     type="email"
                     {...register("email")}
-                    className="form-control bg-secondary border-0 text-white"
+                    className="form-control bg-secondary border-0"
                     placeholder="Enter your email"
                   />
                   {errors.email && (
@@ -97,7 +97,7 @@ const AdminLogin = () => {
                   <input
                     type="password"
                     {...register("password")}
-                    className="form-control bg-secondary border-0 text-white"
+                    className="form-control bg-secondary border-0"
                     placeholder="Enter your password"
                   />
                   {errors.password && (

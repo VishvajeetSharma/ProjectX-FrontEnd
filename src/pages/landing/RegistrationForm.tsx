@@ -75,7 +75,7 @@ const RegistrationForm = () => {
           <input
             type="text"
             {...register("name")}
-            className="form-control border-0 text-white"
+            className="form-control border-0"
             placeholder="Enter your name"
           />
           {errors.name && (
@@ -89,7 +89,7 @@ const RegistrationForm = () => {
           <input
             type="email"
             {...register("email")}
-            className="form-control border-0 text-white"
+            className="form-control border-0"
             placeholder="Enter your email"
           />
           {errors.email && (
@@ -103,7 +103,7 @@ const RegistrationForm = () => {
           <input
             type="text"
             {...register("mobile")}
-            className="form-control border-0 text-white"
+            className="form-control border-0"
             placeholder="Enter your number"
           />
           {errors.mobile && (
@@ -117,7 +117,7 @@ const RegistrationForm = () => {
           <input
             type="password"
             {...register("password")}
-            className="form-control border-0 text-white"
+            className="form-control border-0"
             placeholder="Enter your password"
           />
           {errors.password && (
