@@ -1,6 +1,7 @@
 import { FiHome, FiUsers, FiMessageCircle, FiLogOut } from 'react-icons/fi';
-import { FaUserFriends } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
+import { FaBook, FaLayerGroup } from "react-icons/fa";
+import { MdDashboard } from "react-icons/md";
 
 // ------------------------------------------------------------
 // Sidebar Component
@@ -15,23 +16,25 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
   const menuItems =
     roleType === 'admin'
       ? [
-          { label: 'Dashboard', icon: FiHome, path: '' },
-          { label: 'Users', icon: FiUsers, path: 'admin-dashboard' },
-          { label: 'Chat', icon: FiMessageCircle, path: 'admin-dashboard' },
-          { label: 'Logout', icon: FiLogOut, path: '/' },
-        ]
+        { label: 'Dashboard', icon: FiHome, path: '' },
+        { label: 'Users', icon: FiUsers, path: 'admin-dashboard' },
+        { label: 'Chat', icon: FiMessageCircle, path: 'admin-dashboard' },
+        { label: 'Logout', icon: FiLogOut, path: '/' },
+      ]
       : [
-          { label: 'Dashboard', icon: FiHome, path: 'user-dashboard' },
-          { label: 'Friends', icon: FaUserFriends, path: 'user-dashboard' },
-          { label: 'Chat', icon: FiMessageCircle, path: 'user-dashboard' },
-          { label: 'Logout', icon: FiLogOut, path: '/' },
-        ];
+        { label: "Dashboard", icon: MdDashboard, path: "/admin-dashboard" },
+        { label: 'Manage Users', icon: FiUsers, path: '/users' },
+        { label: "Create Master Plan", icon: FaLayerGroup, path: "/create-master-plan" },
+        { label: "Master Plan", icon: FaLayerGroup, path: "/master-plan" },
+        { label: "Create Master Course", icon: FaBook, path: "/create-master-course" },
+        { label: "Master Course", icon: FaBook, path: "/master-course" },
+        { label: 'Logout', icon: FiLogOut, path: '/' },
+      ];
 
   return (
     <div
-      className={`bg-dark px-2 text-white h-100 d-flex flex-column transition-width ${
-        isOpen ? 'sidebar-open' : 'sidebar-closed'
-      }`}
+      className={`bg-dark px-2 text-white h-100 d-flex flex-column transition-width ${isOpen ? 'sidebar-open' : 'sidebar-closed'
+        }`}
       style={{ overflowY: 'auto', overflowX: 'hidden' }}
     >
       {/* Logo / Brand */}
@@ -54,8 +57,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
               to={item.path}
               onClick={onCloseMobile}
               className={({ isActive }) =>
-                `nav-link d-flex align-items-center gap-2 text-white ${
-                  isActive ? 'active bg-primary rounded' : ''
+                `nav-link d-flex align-items-center gap-2 text-white ${isActive ? 'active bg-primary rounded' : ''
                 }`
               }
             >

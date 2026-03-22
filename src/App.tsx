@@ -6,6 +6,11 @@ import Login from './pages/landing/Login';
 import UserDashboard from './pages/user/UserDashboard';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminLogin from './pages/landing/AdminLogin';
+import CreateMasterCourse from './pages/admin/CreateMasterCourse';
+import MasterCourse from './pages/admin/MasterCourse';
+import CreateMasterPlan from './pages/admin/CreateMasterPlan';
+import MasterPlan from './pages/admin/MasterPlan';
+import Users from './pages/admin/Users';
 const App = () => {
   return (
     <>
@@ -23,6 +28,11 @@ const App = () => {
 
           {/* Admin Routes */}
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/users" element={<Users />} />
+          <Route path='/create-master-plan' element={<CreateMasterPlan />} />
+          <Route path='/master-plan' element={<MasterPlan />} />
+          <Route path='/create-master-course' element={<CreateMasterCourse />} />
+          <Route path='/master-course' element={<MasterCourse />} />
         </Routes>
       </BrowserRouter>
     </>
