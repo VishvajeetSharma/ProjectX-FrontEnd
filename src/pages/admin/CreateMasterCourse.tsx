@@ -1,9 +1,12 @@
 import DashboardLayout from "../../layout/DashboardLayout"
+import CreateMasterCourseForm from "./CreateMasterCourseForm"
 
 
 const CreateMasterCourse = () => {
   return (
-    <DashboardLayout>CreateMasterCourse</DashboardLayout>
+    <DashboardLayout>
+      <CreateMasterCourseForm />
+    </DashboardLayout>
   )
 }
 
