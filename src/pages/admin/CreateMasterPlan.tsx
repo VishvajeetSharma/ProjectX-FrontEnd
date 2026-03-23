@@ -1,9 +1,13 @@
 import DashboardLayout from "../../layout/DashboardLayout"
+import MasterPlanForm from "./MasterPlanForm"
 
 
 const CreateMasterPlan = () => {
   return (
-    <DashboardLayout>CreateMasterPlan</DashboardLayout>
+    <DashboardLayout>
+
+      <MasterPlanForm />
+    </DashboardLayout>
   )
 }
 
