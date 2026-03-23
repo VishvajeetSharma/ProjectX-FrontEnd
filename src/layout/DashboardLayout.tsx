@@ -40,7 +40,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         // ------------------- Mobile View -------------------
         <>
           {/* Top Bar */}
-          <div className="bg-dark text-white p-2 d-flex justify-content-between align-items-center">
+          <div className="my-second-bg-dark text-white p-2 d-flex justify-content-between align-items-center">
             <button
               onClick={toggleSidebar}
               className="btn btn-outline-light border-0 fs-4"
@@ -79,7 +79,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           </div>
           <div className="desktop-content">
             {/* Top Bar */}
-            <div className="bg-dark text-white py-2 px-3 d-flex justify-content-between align-items-center">
+            <div className="my-second-bg-dark text-white py-2 px-3 d-flex justify-content-between align-items-center">
               <button
                 onClick={toggleSidebar}
                 className="btn btn-outline-light border-0 fs-4"
@@ -96,7 +96,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
               />
             </div>
             {/* Scrollable Content */}
-            <div className="desktop-content-main p-4">
+            <div className="desktop-content-main">
               {children}
             </div>
           </div>

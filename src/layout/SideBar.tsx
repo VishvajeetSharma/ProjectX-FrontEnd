@@ -33,7 +33,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
 
   return (
     <div
-      className={`bg-dark px-2 text-white h-100 d-flex flex-column transition-width ${isOpen ? 'sidebar-open' : 'sidebar-closed'
+      className={`my-second-bg-dark px-2 text-white h-100 d-flex flex-column transition-width ${isOpen ? 'sidebar-open' : 'sidebar-closed'
         }`}
       style={{ overflowY: 'auto', overflowX: 'hidden' }}
     >
