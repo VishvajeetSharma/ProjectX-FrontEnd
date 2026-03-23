@@ -28,7 +28,7 @@ const MasterCourseCard: React.FC<CourseCardProps> = ({
 }) => {
   return (
     <div className="col-lg-3 col-md-6 col-sm-12 mb-4">
-      <div className="card h-100 shadow-sm my-second-bg-dark text-light border-0 rounded-4 overflow-hidden">
+      <div className="card h-100 shadow-sm my-second-bg-dark text-light border-0 rounded-2 overflow-hidden">
 
         {/* Image */}
         {image && (
