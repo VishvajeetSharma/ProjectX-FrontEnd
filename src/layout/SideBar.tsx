@@ -14,7 +14,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
   const roleType = JSON.parse(localStorage.getItem('userType') as string);
   const menuItems =
-    roleType === 'admin'
+    roleType === 'user'
       ? [
         { label: 'Dashboard', icon: FiHome, path: '' },
         { label: 'Users', icon: FiUsers, path: 'admin-dashboard' },
