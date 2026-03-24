@@ -5,7 +5,6 @@ import MasterPlanForm from "./MasterPlanForm"
 const CreateMasterPlan = () => {
   return (
     <DashboardLayout>
-
       <MasterPlanForm />
     </DashboardLayout>
   )

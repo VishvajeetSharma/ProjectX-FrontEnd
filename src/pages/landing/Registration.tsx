@@ -24,7 +24,6 @@ const Registration = () => {
             </div>
           </div>
         </div>
-
       </div>
 
       <Footer />
