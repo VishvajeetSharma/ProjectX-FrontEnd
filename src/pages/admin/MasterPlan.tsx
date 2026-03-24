@@ -2,50 +2,23 @@ import DashboardLayout from "../../layout/DashboardLayout";
 import MasterPlanCard from "./MasterPlanCard";
 
 
-const Subject = () => {
+const MasterPlan = () => {
 
-  const subjects = [
-    {
-      id: 1,
-      name: "Mathematics",
-      desc: "Covers algebra, calculus, and geometry.",
-      credit: 4,
-      status: 1,
-      created_at: "2025-03-01T10:00:00Z",
-      updated_at: "2025-03-05T12:00:00Z",
-      image: "https://themes.stackbros.in/eduport_ng/assets/images/courses/4by3/01.jpg",
-    },
-    {
-      id: 2,
-      name: "Physics",
-      desc: "Study of motion, energy, and force.",
-      credit: 3,
-      status: 1,
-      created_at: "2025-03-02T10:00:00Z",
-      updated_at: "2025-03-06T12:00:00Z",
-      image: "https://themes.stackbros.in/eduport_ng/assets/images/courses/4by3/01.jpg",
-    },
-    {
-      id: 3,
-      name: "Chemistry",
-      desc: "Chemical reactions and compounds.",
-      credit: 2,
-      status: 0,
-      created_at: "2025-03-03T10:00:00Z",
-      updated_at: "2025-03-07T12:00:00Z",
-      image: "https://themes.stackbros.in/eduport_ng/assets/images/courses/4by3/01.jpg",
-    },
-    {
-      id: 4,
-      name: "Computer Science",
-      desc: "Programming and algorithms basics.",
-      credit: 5,
-      status: 1,
-      created_at: "2025-03-04T10:00:00Z",
-      updated_at: "2025-03-08T12:00:00Z",
-      image: "https://themes.stackbros.in/eduport_ng/assets/images/courses/4by3/01.jpg",
-    }
-  ];
+  const masterPlan = [
+        {
+            "id": 1,
+            "name": "Test",
+            "desc": "Testttttt",
+            "credit": 5,
+            "price": 500,
+            "offer": 15,
+            "duration": 5,
+            "is_rec": 0,
+            "status": 1,
+            "created_at": "2026-03-24T02:58:04.855Z",
+            "updated_at": "2026-03-24T02:58:04.855Z"
+        }
+    ]
 
   return (
     <DashboardLayout>
@@ -63,7 +36,7 @@ const Subject = () => {
 
             {/* Cards */}
             <div className="row">
-              {subjects.map((sub) => (
+              {masterPlan.map((sub) => (
                 <MasterPlanCard
                   key={sub.id}
                   {...sub}
@@ -80,4 +53,4 @@ const Subject = () => {
   );
 };
 
-export default Subject;
+export default MasterPlan;
