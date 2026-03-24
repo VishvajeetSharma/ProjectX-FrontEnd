@@ -1,11 +1,10 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { createMasterPlan } from "../../services";
+import { showALert } from "../../utils";
 
 // Schema
-
-
-
 const schema = yup.object().shape({
   name: yup
     .string()
@@ -71,8 +70,18 @@ const MasterPlanForm = () => {
     },
   });
 
-  const onSubmit = (data: any) => {
-    console.log("Master Plan Data:", data);
+  const onSubmit = async (data: any) => {
+    try {
+      const res = await createMasterPlan(data);
+      if (res.success) {
+        showALert("Master Plan", res?.message, "success");
+        1
+      } else {
+        showALert("Master Plan", res?.message, "error");
+      }
+    } catch (error) {
+      showALert("Master Plan", "Internal server error", "error");
+    }
   };
 
   return (
@@ -229,7 +238,7 @@ const MasterPlanForm = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Button */}
             <button className="btn my-btn w-100 py-2 mt-4 fw-bold">
               Create

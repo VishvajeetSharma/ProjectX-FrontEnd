@@ -16,3 +16,8 @@ export const adminLoginService=async(data:any)=>{
  const res=await  axios.post(`${BASE_URL}/admin/login`,data);
  return res?.data
 }
+
+export const createMasterPlan=async(data:any)=>{
+ const res=await  axios.post(`${BASE_URL}/admin/create-master-plan`,data);
+ return res?.data
+}
