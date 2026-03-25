@@ -95,16 +95,31 @@ const Footer = () => {
         {/* Bottom Bar */}
         <hr className="border-secondary" />
 
-        <div className="d-flex flex-column flex-md-row justify-content-between align-items-center ">
-          <p className="mb-2 mb-md-0">
-            Copyrights ©2026 Eduport. Build by
-          </p>
+        <div className="row align-items-center text-center text-md-start">
 
-          <div className="d-flex gap-3">
-            <span>Language</span>
-            <span>Terms of use</span>
-            <span>Privacy policy</span>
+          {/* Left */}
+          <div className="col-12 col-md-4 mb-2 mb-md-0">
+            <p className="mb-0">
+              © {new Date().getFullYear()} Eduport. All rights reserved.
+            </p>
           </div>
+
+          {/* Center */}
+          <div className="col-12 col-md-4 text-center mb-2 mb-md-0">
+            <p className="mb-0">
+              Developed By: <strong>Tech Titans</strong>
+            </p>
+          </div>
+
+          {/* Right */}
+          <div className="col-12 col-md-4 text-md-end">
+            <div className="d-flex justify-content-center justify-content-md-end gap-3">
+              <span>Language</span>
+              <span>Terms</span>
+              <span>Privacy</span>
+            </div>
+          </div>
+
         </div>
       </div>
     </footer>
