@@ -116,11 +116,11 @@ const Login = () => {
 
                 {/* AVATARS */}
                 <div className="avatars d-flex align-items-center">
-                  <img src="https://i.pravatar.cc/40?img=1" />
-                  <img src="https://i.pravatar.cc/40?img=2" />
-                  <img src="https://i.pravatar.cc/40?img=3" />
-                  <img src="https://i.pravatar.cc/40?img=4" />
-                  <img src="https://i.pravatar.cc/40?img=5" />
+                  <img src="https://i.pravatar.cc/40?img=1" className="rounded-circle me-1" />
+                  <img src="https://i.pravatar.cc/40?img=2" className="rounded-circle me-1" />
+                  <img src="https://i.pravatar.cc/40?img=3" className="rounded-circle me-1" />
+                  <img src="https://i.pravatar.cc/40?img=4" className="rounded-circle me-1" />
+                  <img src="https://i.pravatar.cc/40?img=5" className="rounded-circle me-1" />
                   <span className="count">1K+</span>
                 </div>
 

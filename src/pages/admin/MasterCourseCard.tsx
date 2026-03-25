@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   FaEdit,
   FaTrashAlt,
@@ -9,6 +9,7 @@ import {
   FaAlignLeft,
   FaSyncAlt,
 } from "react-icons/fa";
+import { getFile } from "../../services";
 
 interface MasterCourseCardProps {
   id: number;
@@ -46,15 +47,57 @@ const MasterCourseCard: React.FC<MasterCourseCardProps> = ({
   onToggleStatus,
 }) => {
   const isActive = status === 1;
+  const [imageUrl, setImageUrl] = useState<string>("");
+
+  const openContentInNewTab = async (contentPath: string) => {
+    if (!contentPath) return;
+    try {
+      const blob = await getFile(contentPath);
+      const url = URL.createObjectURL(blob);
+      const newWin = window.open(url, "_blank", "noopener,noreferrer");
+      if (newWin) {
+        newWin.focus();
+      }
+      setTimeout(() => URL.revokeObjectURL(url), 10000);
+    } catch (err) {
+      console.error("Error opening content file:", err);
+    }
+  };
+
+  useEffect(() => {
+    let objectUrl: string | null = null;
+    const loadThumbnail = async () => {
+      if (!thumbnail) {
+        setImageUrl("");
+        return;
+      }
+      try {
+        const blob = await getFile(thumbnail);
+        objectUrl = URL.createObjectURL(blob);
+        setImageUrl(objectUrl);
+      } catch (error) {
+        console.error("Error loading image:", error);
+        setImageUrl("");
+      }
+    };
+
+    loadThumbnail();
+
+    return () => {
+      if (objectUrl) {
+        URL.revokeObjectURL(objectUrl);
+      }
+    };
+  }, [thumbnail]);
 
   return (
     <div className="col-lg-3 col-md-4 col-sm-6 mb-4">
       <div className="card h-100 course-card border-0 rounded-3 overflow-hidden">
         {/* Thumbnail with overlay */}
         <div className="position-relative">
-          {thumbnail ? (
+          {imageUrl ? (
             <img
-              src={thumbnail}
+              src={imageUrl} 
               className="card-img-top img-fluid"
               alt={title}
               style={{ objectFit: "cover", height: "140px", transition: "transform 0.3s ease" }}
@@ -107,9 +150,15 @@ const MasterCourseCard: React.FC<MasterCourseCardProps> = ({
                {isActive ? "Active" : "Inactive"}
              </span>
              {content && (
-               <span className="text-white opacity-50 x-small d-flex align-items-center" title={content}>
+               <button
+                 type="button"
+                 onClick={() => openContentInNewTab(content)}
+                 className="btn btn-link text-white opacity-75 x-small d-flex align-items-center p-0"
+                 title="Open content in new tab"
+                 style={{ textDecoration: 'none' }}
+               >
                  <FaAlignLeft className="me-1" /> Content
-               </span>
+               </button>
              )}
           </div>
 

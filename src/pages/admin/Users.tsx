@@ -99,14 +99,10 @@ const users = [
 const Users = () => {
   return (
     <DashboardLayout>
-      <div className="py-3 text-white overflow-x-hidden my-bg-dark">
-        <div className="row px-4">
-          <div className="col-12">
-
-            {/* Title */}
-            <div className="text-start mb-4">
-              <h1 className="fw-bold">Users</h1>
-            </div>
+      <div className="container-fluid py-3 px-4 overflow-hidden my-bg-dark">
+        <div className="row">
+          <div className="col-12 mx-auto">
+            <h2 className="fw-bold text-white">Users</h2>
             <div className="row g-4">
               {users.map((user) => (
                 <UserCard

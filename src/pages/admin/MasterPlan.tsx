@@ -7,52 +7,45 @@ import { showALert } from "../../utils";
 // In your component:
 
 
- 
+
 const MasterPlan = () => {
   const [masterPlan, setMasterPlan] = useState([])
   const fetchData = async () => {
-   const res= await getMasterPlan()
-   setMasterPlan(res?.result || [] ) 
+    const res = await getMasterPlan()
+    setMasterPlan(res?.result || [])
   }
   useEffect(() => {
-  fetchData()
+    fetchData()
   }, [])
   const handleEditPlan = (id: any) => {
-  console.log('Edit plan', id);
-};
+    console.log('Edit plan', id);
+  };
 
-const handleDeletePlan = async(id: any) => {
- const res=await deleteMasterPlan(id);
- if(res?.success){
-  showALert("Delete Plan",res.message,"success")
-  fetchData()
- }else{
-  showALert("Delete Plan",res.message,"error")
- }
-};
+  const handleDeletePlan = async (id: any) => {
+    const res = await deleteMasterPlan(id);
+    if (res?.success) {
+      showALert("Delete Plan", res.message, "success")
+      fetchData()
+    } else {
+      showALert("Delete Plan", res.message, "error")
+    }
+  };
 
-const handleTogglePlanStatus = (id: any, currentStatus: any) => {
-  console.log('Toggle status for plan', id, currentStatus);
-};
+  const handleTogglePlanStatus = (id: any, currentStatus: any) => {
+    console.log('Toggle status for plan', id, currentStatus);
+  };
 
-  
+
   return (
     <DashboardLayout>
-      <div className="py-5 text-white overflow-x-hidden my-bg-dark">
-        <div className="row px-4">
-          <div className="col-12">
-
-            {/* Title */}
-            <div className="text-start mb-4">
-              <h1 className="fw-bold">Master Plan</h1>
-              <p className="text-secondary">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur, explicabo.
-              </p>
-            </div>
+      <div className="container-fluid py-3 px-4 overflow-hidden my-bg-dark">
+        <div className="row">
+          <div className="col-12 mx-auto">
+            <h2 className="fw-bold text-white">Master Plan</h2>
 
             {/* Cards */}
             <div className="row g-4">
-              {masterPlan.map((sub:any) => (
+              {masterPlan.map((sub: any) => (
                 <MasterPlanCard
                   key={sub.id}
                   {...sub}

@@ -79,11 +79,11 @@ const CreateCourseForm = () => {
   };
 
   return (
-    <div className="container-fluid py-4 px-4 overflow-hidden">
+    <div className="container-fluid py-3 px-4 overflow-hidden">
       <div className="row">
         <div className="col-12 mx-auto">
+          <h2 className="fw-bold text-white">Create Master Course</h2>
           <div className="form-section-card">
-            <h4 className="fw-bold mb-4 text-white">Create Master Course</h4>
 
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="row">

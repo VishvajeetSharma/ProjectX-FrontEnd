@@ -1,7 +1,8 @@
+import { useEffect, useState } from "react";
 import DashboardLayout from "../../layout/DashboardLayout";
 import MasterCourseCard from "./MasterCourseCard";
+import { getMasterCourse } from "../../services";
 
-// In your component:
 const handleEditCourse = (id: any) => {
   console.log('Edit course', id);
 };
@@ -14,46 +15,56 @@ const handleToggleCourseStatus = (id: any, currentStatus: any) => {
   console.log('Toggle status for course', id, currentStatus);
 };
 
-const masterCourses = [
-    {
-      id: 1,
-      title: "Sketch from A to Z: for app designer",
-      desc: "Proposal indulged no do sociable he throwing settling.",
-      thumbnail: "https://themes.stackbros.in/eduport_ng/assets/images/courses/4by3/08.jpg",
-      level: "Intermediate",
-      rating: "4.8",
-      duration: "8h 30m",
-      type: "Design",
-      content: "Learn Sketch from basics to advanced prototyping.",
-      status: 1,
-      created_at: "2025-03-01T10:00:00Z",
-      updated_at: "2025-03-05T12:00:00Z",
-    },
-];
-
 const MasterCourse = () => {
+  const [masterCourses, setMasterCourses] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetchCourses();
+  }, []);
+
+  const fetchCourses = async () => {
+    try {
+      setLoading(true);
+      const data = await getMasterCourse();
+      setMasterCourses(data?.result);
+      setError(null);
+    } catch (err) {
+      console.error("Failed to fetch courses:", err);
+      setError("Failed to load courses");
+      setMasterCourses([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <DashboardLayout>
-      <div className="py-3 text-white overflow-x-hidden my-bg-dark">
-        <div className="row px-4">
-          <div className="col-12">
-            {/* Title */}
-            <div className="text-start mb-4">
-              <h1 className="fw-bold">Master Courses</h1>
-            </div>
+
+      <div className="container-fluid py-3 px-4 overflow-hidden my-bg-dark">
+        <div className="row">
+          <div className="col-12 mx-auto">
+            <h2 className="fw-bold text-white">Master Course</h2>
+
+            {loading && <p className="text-white">Loading courses...</p>}
+            {error && <p className="text-danger">{error}</p>}
 
             {/* Cards */}
             <div className="row g-4">
-              {masterCourses.map((course) => (
-                <MasterCourseCard
-                  key={course.id}
-                  {...course}
-                  onEdit={(id) => handleEditCourse(id)}
-                  onDelete={(id) => handleDeleteCourse(id)}
-                  onToggleStatus={(id, status) => handleToggleCourseStatus(id, status)}
-                />
-              ))}
+              {Array.isArray(masterCourses) && masterCourses.length > 0 ? (
+                masterCourses.map((course) => (
+                  <MasterCourseCard
+                    key={course.id}
+                    {...course}
+                    onEdit={(id) => handleEditCourse(id)}
+                    onDelete={(id) => handleDeleteCourse(id)}
+                    onToggleStatus={(id, status) => handleToggleCourseStatus(id, status)}
+                  />
+                ))
+              ) : (
+                !loading && <p className="text-white">No courses available</p>
+              )}
             </div>
           </div>
         </div>

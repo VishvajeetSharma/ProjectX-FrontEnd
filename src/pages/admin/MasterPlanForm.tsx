@@ -75,7 +75,6 @@ const MasterPlanForm = () => {
       const res = await createMasterPlan(data);
       if (res.success) {
         showALert("Master Plan", res?.message, "success");
-        1
       } else {
         showALert("Master Plan", res?.message, "error");
       }
@@ -85,11 +84,11 @@ const MasterPlanForm = () => {
   };
 
   return (
-    <div className="container-fluid py-4 px-4 overflow-hidden">
+    <div className="container-fluid py-3 px-4 overflow-hidden">
       <div className="row">
         <div className="col-12 mx-auto">
+          <h2 className="fw-bold text-white">Create Master Plan</h2>
           <div className="form-section-card">
-            <h4 className="fw-bold mb-4 text-white">Create Master Plan</h4>
 
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="row">

@@ -25,7 +25,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
 }) => {
   return (
     <div className="col-lg-3 col-md-6 mb-4">
-      <div className="card h-100 course-card border-0 rounded-4 overflow-hidden position-relative">
+      <div className="card h-100 course-card border-0 rounded-3 overflow-hidden position-relative">
         
         {/* Thumbnail with Heart Icon */}
         <div className="position-relative">
