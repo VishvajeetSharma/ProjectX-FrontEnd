@@ -37,11 +37,11 @@ const App = () => {
 
           {/* Admin Routes */}
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
-          <Route path="/users" element={<Users />} />
-          <Route path='/create-master-plan' element={<CreateMasterPlan />} />
-          <Route path='/master-plan' element={<MasterPlan />} />
-          <Route path='/create-master-course' element={<CreateMasterCourse />} />
-          <Route path='/master-course' element={<MasterCourse />} />
+          <Route path="/admin/users" element={<Users />} />
+          <Route path='/admin/create-master-plan' element={<CreateMasterPlan />} />
+          <Route path='/admin/master-plan' element={<MasterPlan />} />
+          <Route path='/admin/create-master-course' element={<CreateMasterCourse />} />
+          <Route path='/admin/master-course' element={<MasterCourse />} />
         </Routes>
       </BrowserRouter>
     </>

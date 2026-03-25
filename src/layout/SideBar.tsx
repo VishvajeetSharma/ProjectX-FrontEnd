@@ -20,11 +20,11 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
       ]
       : [
         { label: "Dashboard", icon: MdDashboard, path: "/admin-dashboard" },
-        { label: 'Manage Users', icon: FiUsers, path: '/users' },
-        { label: "Create Master Plan", icon: FaLayerGroup, path: "/create-master-plan" },
-        { label: "Master Plan", icon: FaLayerGroup, path: "/master-plan" },
-        { label: "Create Master Course", icon: FaBook, path: "/create-master-course" },
-        { label: "Master Course", icon: FaBook, path: "/master-course" },
+        { label: 'Manage Users', icon: FiUsers, path: '/admin/users' },
+        { label: "Create Master Plan", icon: FaLayerGroup, path: "/admin/create-master-plan" },
+        { label: "Master Plan", icon: FaLayerGroup, path: "/admin/master-plan" },
+        { label: "Create Master Course", icon: FaBook, path: "/admin/create-master-course" },
+        { label: "Master Course", icon: FaBook, path: "/admin/master-course" },
         { label: 'Logout', icon: FiLogOut, path: '/' },
       ];
 
