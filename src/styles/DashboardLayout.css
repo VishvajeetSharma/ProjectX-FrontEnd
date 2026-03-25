@@ -22,7 +22,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #222529;
+  background: var(--bg-main);
   z-index: 1040;
 }
 .mobile-sidebar {
@@ -31,7 +31,7 @@
   left: 0;
   height: 100%;
   z-index: 1050;
-  background: #212529;
+  background: var(--bg-secondary);
   transition: transform 0.3s ease;
   width: 250px;
 }
@@ -44,17 +44,35 @@
 /* Desktop layout: full viewport height */
 .desktop-layout {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
 }
 .desktop-sidebar {
   flex-shrink: 0;
+  height: 100%;
 }
 .desktop-content {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  overflow: hidden;
 }
 .desktop-content-main {
   flex-grow: 1;
+  overflow-y: auto;
+  background-color: var(--bg-main);
+}
+
+/* Mobile Sidebar Scroll Fix */
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 1050;
+  background: #212529;
+  transition: transform 0.3s ease;
+  width: 250px;
   overflow-y: auto;
 }

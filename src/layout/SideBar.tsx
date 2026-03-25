@@ -57,7 +57,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
               to={item.path}
               onClick={onCloseMobile}
               className={({ isActive }) =>
-                `nav-link d-flex align-items-center gap-2 text-white ${isActive ? 'active bg-primary rounded' : ''
+                `nav-link d-flex align-items-center gap-2 text-white ${isActive ? 'active rounded' : ''
                 }`
               }
             >

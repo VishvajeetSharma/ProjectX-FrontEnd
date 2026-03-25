@@ -14,6 +14,7 @@ const MostPopularCourse = () => {
 
 const courses = [
   {
+    category: "Web Design",
     image: "https://themes.stackbros.in/eduport_ng/assets/images/courses/4by3/08.jpg",
     level: "All level",
     title: "Sketch from A to Z: for app designer",
@@ -23,6 +24,7 @@ const courses = [
     lectures: 15,
   },
   {
+    category: "Development",
     image: "https://themes.stackbros.in/eduport_ng/assets/images/courses/4by3/02.jpg",
     level: "Beginner",
     title: "Graphic Design Masterclass",
@@ -32,6 +34,7 @@ const courses = [
     lectures: 65,
   },
   {
+    category: "Graphic Design",
     image: "https://themes.stackbros.in/eduport_ng/assets/images/courses/4by3/03.jpg",
     level: "Beginner",
     title: "Create a Design System in Figma",
@@ -41,6 +44,7 @@ const courses = [
     lectures: 32,
   },
   {
+    category: "Marketing",
     image: "https://themes.stackbros.in/eduport_ng/assets/images/courses/4by3/07.jpg",
     level: "Beginner",
     title: "Deep Learning with React Native",
@@ -50,6 +54,7 @@ const courses = [
     lectures: 99,
   },
   {
+    category: "Finance",
     image: "https://themes.stackbros.in/eduport_ng/assets/images/courses/4by3/04.jpg",
     level: "Beginner",
     title: "Build Responsive Websites with HTML",
@@ -59,6 +64,7 @@ const courses = [
     lectures: 68,
   },
   {
+    category: "Web Design",
     image: "https://themes.stackbros.in/eduport_ng/assets/images/courses/4by3/05.jpg",
     level: "All level",
     title: "Build Websites with CSS",
@@ -68,6 +74,7 @@ const courses = [
     lectures: 72,
   },
   {
+    category: "Development",
     image: "https://themes.stackbros.in/eduport_ng/assets/images/courses/4by3/06.jpg",
     level: "All level",
     title: "Learn Invision",
@@ -77,6 +84,7 @@ const courses = [
     lectures: 82,
   },
   {
+    category: "Graphic Design",
     image: "https://themes.stackbros.in/eduport_ng/assets/images/courses/4by3/01.jpg",
     level: "All level",
     title: "JavaScript: Full Understanding",
@@ -86,6 +94,8 @@ const courses = [
     lectures: 89,
   }
 ];
+
+  const filteredCourses = courses.filter(course => course.category === activeTab);
 
   return (
     <div className="container py-5 text-white my-bg-dark">
@@ -102,22 +112,23 @@ const courses = [
           </div>
 
           {/* Tabs */}
-          <div className="d-flex justify-content-center mb-4 flex-wrap gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                className={`btn ${activeTab === cat ? "btn-primary" : "btn-outline-secondary"
-                  }`}
-                onClick={() => setActiveTab(cat)}
-              >
-                {cat}
-              </button>
-            ))}
+          <div className="text-center mb-5">
+            <div className="course-tabs-container">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  className={`course-tab-btn ${activeTab === cat ? "active" : ""}`}
+                  onClick={() => setActiveTab(cat)}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Cards */}
-          <div className="row">
-            {courses.map((course, index) => (
+          <div className="row g-4">
+            {filteredCourses.map((course, index) => (
               <CourseCard key={index} {...course} />
             ))}
           </div>

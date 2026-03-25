@@ -39,11 +39,11 @@ const handleTogglePlanStatus = (id: any, currentStatus: any) => {
   return (
     <DashboardLayout>
       <div className="py-5 text-white overflow-x-hidden my-bg-dark">
-        <div className="row">
-          <div className="col-sm-10 mx-auto">
+        <div className="row px-4">
+          <div className="col-12">
 
             {/* Title */}
-            <div className="text-center mb-4">
+            <div className="text-start mb-4">
               <h1 className="fw-bold">Master Plan</h1>
               <p className="text-secondary">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur, explicabo.
@@ -51,7 +51,7 @@ const handleTogglePlanStatus = (id: any, currentStatus: any) => {
             </div>
 
             {/* Cards */}
-            <div className="row">
+            <div className="row g-4">
               {masterPlan.map((sub:any) => (
                 <MasterPlanCard
                   key={sub.id}

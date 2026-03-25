@@ -79,7 +79,8 @@ const CreateCourseForm = () => {
   };
 
   return (
-    <div className="row my-bg-dark p-5">
+    <div className="container-fluid overflow-hidden p-0">
+      <div className="row my-bg-dark py-5 px-3">
       <div className="col-sm-10 mx-auto">
         <div className="card my-second-bg-dark text-white p-4 border-0 rounded-4 shadow-lg">
           <h2 className="fw-bold mb-4 text-center">Create Course</h2>
@@ -236,6 +237,7 @@ const CreateCourseForm = () => {
         </div>
       </div>
     </div>
+  </div>
   );
 };
 

@@ -27,6 +27,20 @@ export const getMasterPlan=async()=>{
  return res?.data
 }
 export const deleteMasterPlan=async(id:any)=>{
- const res=await  axios.delete(`${BASE_URL}/admin/delete-master-plan/${id}`);
+ const res=await  axios.delete(`${BASE_URL}/admin/delete-master-plan${id}`);
  return res?.data
 }
+
+export const createMasterCourse = async (data: FormData) => {
+  const res = await axios.post(
+    `${BASE_URL}/admin/create-master-course`,
+    data,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
+
+  return res?.data;
+};

@@ -1,4 +1,4 @@
-import { FaCoins, FaEdit, FaTrashAlt } from "react-icons/fa";
+import { FaCoins, FaEdit, FaTrashAlt, FaCalendarAlt, FaSyncAlt } from "react-icons/fa";
 
 type MasterPlanProps = {
   id: number;
@@ -27,93 +27,112 @@ const MasterPlanCard: React.FC<MasterPlanProps> = ({
   duration,
   is_rec,
   status,
+  created_at,
+  updated_at,
   onEdit,
   onDelete,
   onToggleStatus,
 }) => {
   const discountedPrice = price - (price * offer) / 100;
-  const pricePerJob = (discountedPrice / credit).toFixed(2);
+  const pricePerCredit = (discountedPrice / credit).toFixed(2);
 
   return (
-    <div className="col-lg-4 col-md-6 col-sm-10 col-10 mx-auto mb-4">
-      <div className="card h-100 shadow my-second-bg-dark text-light text-center border-0 rounded-2 card-effect overflow-hidden position-relative">
+    <div className="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div className="card h-100 shadow-lg my-second-bg-dark text-white border-0 rounded-4 overflow-hidden position-relative"
+           style={{ 
+             background: 'rgba(33, 37, 41, 0.95)', 
+             border: '1px solid rgba(255, 255, 255, 0.1)'
+           }}>
+        {/* Recommended Badge */}
+        {is_rec === 1 && (
+          <div
+            className="position-absolute px-4 py-1 fw-bold bg-danger text-white"
+            style={{
+              top: "15px",
+              right: "-30px",
+              transform: "rotate(45deg)",
+              fontSize: "9px",
+              zIndex: 10,
+              width: "120px",
+              textAlign: "center",
+              boxShadow: "0 2px 4px rgba(0,0,0,0.3)"
+            }}
+          >
+            RECOMMENDED
+          </div>
+        )}
+
         {/* Card Body */}
-        <div className="card-body d-flex flex-column">
-          {/* Recommended Badge - inside card-body, lifted with negative margin */}
-          {is_rec === 1 && (
-                      
-            <div
-              className="position-absolute px-2 py-1 fw-bold bg-danger text-white rounded-0"
-              style={{
-                top: "60px",
-                right: "8px",
-                transform: "rotate(45deg) translate(25%, -25%)",
-                transformOrigin: "top right",
-                fontSize: "12px",
-                zIndex: 10,
-                width: "150px", // adjust width to taste
-                textAlign: "center",
-              }}
-            >
-              RECOMMENDED
-            </div>
-          )}
-
+        <div className="card-body d-flex flex-column p-3">
           {/* Plan Name */}
-          <h5 className="card-title text-truncate" title={name}>
+          <h6 className="card-title fw-bold mb-2 text-primary text-truncate" title={name}>
             {name}
-          </h5>
-
-          {/* Description */}
-          <p className="card-text text-light mb-2 small">{desc}</p>
+          </h6>
 
           {/* Credits */}
-          <p className="card-text text-light mb-1">
-            <FaCoins className="me-1" /> {credit} Credits
-          </p>
+          <div className="d-flex align-items-center mb-2 small text-white">
+            <FaCoins className="me-2 text-warning" />
+            <span className="fw-bold">{credit} Credits</span>
+          </div>
 
-          {/* Pricing */}
-          <div className="my-1">
-            <h4 className="mb-0">₹ {discountedPrice}</h4>
+          <hr className="my-2 border-secondary opacity-25" />
+
+          {/* Pricing Section */}
+          <div className="d-flex align-items-baseline gap-2 mb-1">
+            <h4 className="mb-0 fw-bold text-white">₹{discountedPrice}</h4>
             {offer > 0 && (
-              <small className="text-light-50 text-decoration-line-through">
-                ₹ {price}
-              </small>
+              <span className="text-white opacity-50 text-decoration-line-through x-small">
+                ₹{price}
+              </span>
             )}
           </div>
 
-          {/* Price per Job Badge */}
-          <div className="my-2">
-            <span className="badge bg-info text-dark">
-              ₹ {pricePerJob} / job
-            </span>
+          {/* Offer & Status */}
+          <div className="d-flex justify-content-between align-items-center mb-3">
+             {offer > 0 ? (
+               <span className="badge bg-success bg-opacity-25 text-success border border-success border-opacity-25 x-small px-2 py-1">
+                 {offer}% OFF
+               </span>
+             ) : <div />}
+             <span 
+               className={`badge rounded-pill border-0 px-2 py-1 x-small`}
+               style={{ cursor: 'pointer', background: status === 1 ? 'var(--accent)' : 'var(--text-secondary)' }}
+               onClick={() => onToggleStatus?.(id, status)}
+               title="Click to toggle status"
+             >
+               {status === 1 ? 'Active' : 'Inactive'}
+             </span>
           </div>
 
-          {/* Offer Percentage */}
-          {offer > 0 && (
-            <div className="text-warning small my-1">↓ {offer}% Off</div>
+          <div className="text-white opacity-50 x-small mb-3" style={{ fontSize: '0.7rem' }}>
+             ₹ {pricePerCredit} / Credit • Valid {duration} days
+          </div>
+
+          {/* Description */}
+          {desc && (
+            <p className="text-white opacity-75 small mb-3 text-truncate-2" style={{ fontSize: '0.8rem', minHeight: '2.4rem' }}>
+              {desc}
+            </p>
           )}
 
-          {/* Validity */}
-          <div className="text-light small mb-3">Valid for {duration} days</div>
+          <div className="mt-auto">
+            <div className="d-flex flex-wrap justify-content-between x-small text-white opacity-50 mb-2" style={{ fontSize: '0.65rem' }}>
+              <span><FaCalendarAlt className="me-1" /> {new Date(created_at).toLocaleDateString()}</span>
+              <span><FaSyncAlt className="me-1" /> {new Date(updated_at).toLocaleDateString()}</span>
+            </div>
+          </div>
 
-          {/* Edit & Delete Buttons */}
-          <div className="d-flex gap-2 mt-auto">
+          {/* Actions */}
+          <div className="d-flex gap-2 mt-auto pt-2 border-top border-secondary border-opacity-10">
             <button
-              className="btn btn-sm btn-primary w-100"
+              className="btn btn-sm btn-outline-light border-2 fw-bold w-100 py-1"
+              style={{ borderColor: 'var(--accent)', color: 'var(--accent)' }}
               onClick={() => onEdit?.(id)}
             >
               <FaEdit className="me-1" /> Edit
             </button>
             <button
-              className={`btn btn-sm w-100 ${status === 1 ? 'btn-warning' : 'btn-success'}`}
-              onClick={() => onToggleStatus?.(id, status)}
-              title={status === 1 ? 'Active' : 'Inactive'}
-            >
-              {status === 1 ? 'Active' : 'Inactive'}
-            </button>
-            <button
-              className="btn btn-sm btn-danger w-100"
+              className="btn btn-sm btn-outline-danger border-2 fw-bold w-100 py-1"
               onClick={() => onDelete?.(id)}
             >
               <FaTrashAlt className="me-1" /> Delete

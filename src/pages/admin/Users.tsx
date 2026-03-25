@@ -1,5 +1,5 @@
 import DashboardLayout from '../../layout/DashboardLayout'
-import UserCard from './UserCrad'
+import UserCard from './UserCard'
 
 // In your component:
 const handleEditUser = (id: any) => {
@@ -22,6 +22,7 @@ const users = [
     email: "john.doe@example.com",
     mobile: "+1 234-567-8901",
     address: "123 Main St, New York, NY 10001",
+    password: "hashed_password_123",
     credit: 15,
     status: 1, // Active
     profile: "https://randomuser.me/api/portraits/men/1.jpg",
@@ -34,6 +35,7 @@ const users = [
     email: "jane.smith@example.com",
     mobile: "+1 987-654-3210",
     address: "456 Oak Ave, Los Angeles, CA 90001",
+    password: "hashed_password_456",
     credit: 8,
     status: 0, // Inactive
     profile: "https://randomuser.me/api/portraits/women/2.jpg",
@@ -46,6 +48,7 @@ const users = [
     email: "michael.j@example.com",
     mobile: "+44 20 7946 0958",
     address: "789 Elm St, London, UK",
+    password: "hashed_password_789",
     credit: 25,
     status: 1,
     profile: null, // No profile image
@@ -58,6 +61,7 @@ const users = [
     email: "emily.davis@example.com",
     mobile: "+61 3 9876 5432",
     address: "321 Pine Rd, Melbourne, Australia",
+    password: "hashed_password_abc",
     credit: 5,
     status: 0,
     profile: "https://randomuser.me/api/portraits/women/3.jpg",
@@ -70,6 +74,7 @@ const users = [
     email: "david.brown@example.com",
     mobile: "+81 90-1234-5678",
     address: "654 Cedar Ln, Tokyo, Japan",
+    password: "hashed_password_def",
     credit: 12,
     status: 1,
     profile: null,
@@ -82,6 +87,7 @@ const users = [
     email: "sarah.wilson@example.com",
     mobile: "+33 1 23 45 67 89",
     address: "987 Rue de la Paix, Paris, France",
+    password: "hashed_password_ghi",
     credit: 3,
     status: 0,
     profile: "https://randomuser.me/api/portraits/women/4.jpg",
@@ -94,17 +100,17 @@ const Users = () => {
   return (
     <DashboardLayout>
       <div className="py-5 text-white overflow-x-hidden my-bg-dark">
-        <div className="row">
-          <div className="col-sm-10 mx-auto">
+        <div className="row px-4">
+          <div className="col-12">
 
             {/* Title */}
-            <div className="text-center mb-4">
-              <h1 className="fw-bold">Master Plan</h1>
+            <div className="text-start mb-4">
+              <h1 className="fw-bold">Users</h1>
               <p className="text-secondary">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur, explicabo.
               </p>
             </div>
-            <div className="row">
+            <div className="row g-4">
               {users.map((user) => (
                 <UserCard
                   key={user.id}
@@ -116,6 +122,7 @@ const Users = () => {
                   credit={user.credit}
                   status={user.status}
                   profile={user.profile}
+                  password={user.password}
                   created_at={user.created_at}
                   updated_at={user.updated_at}
                   onEdit={handleEditUser}

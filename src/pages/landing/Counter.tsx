@@ -22,8 +22,8 @@ const statsData: Stat[] = [
     value: 10,
     suffix: "K",
     label: "Online Courses",
-    cardClass: "bg-gold",
-    iconClass: "icon-gold",
+    cardClass: "bg-stat-yellow",
+    iconClass: "icon-yellow",
   },
   {
     id: 2,
@@ -31,7 +31,7 @@ const statsData: Stat[] = [
     value: 200,
     suffix: "+",
     label: "Expert Tutors",
-    cardClass: "bg-darkblue",
+    cardClass: "bg-stat-blue",
     iconClass: "icon-blue",
   },
   {
@@ -40,7 +40,7 @@ const statsData: Stat[] = [
     value: 60,
     suffix: "K+",
     label: "Online Students",
-    cardClass: "bg-purple",
+    cardClass: "bg-stat-purple",
     iconClass: "icon-purple",
   },
   {
@@ -49,7 +49,7 @@ const statsData: Stat[] = [
     value: 60,
     suffix: "K+",
     label: "Certified Courses",
-    cardClass: "bg-teal",
+    cardClass: "bg-stat-teal",
     iconClass: "icon-teal",
   },
 ];

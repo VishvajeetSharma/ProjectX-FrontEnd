@@ -41,7 +41,10 @@ const Navbar = () => {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 mx-5">
               {landingMenuItems.map((link, index) => (
                 <li className="nav-item" key={index}>
-                  <NavLink className="nav-link text-light" to={link.path}>
+                  <NavLink 
+                    className={({ isActive }) => `nav-link text-light ${isActive ? "active" : ""}`} 
+                    to={link.path}
+                  >
                     {link.text}
                   </NavLink>
                 </li>

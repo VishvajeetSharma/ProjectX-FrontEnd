@@ -3,14 +3,11 @@ import {
   FaEdit,
   FaTrashAlt,
   FaCalendarAlt,
-  FaClock,
   FaStar,
   FaLevelUpAlt,
   FaHourglassHalf,
-  FaTag,
   FaAlignLeft,
-  FaBan,
-  FaCheckCircle,
+  FaSyncAlt,
 } from "react-icons/fa";
 
 interface MasterCourseCardProps {
@@ -51,110 +48,104 @@ const MasterCourseCard: React.FC<MasterCourseCardProps> = ({
   const isActive = status === 1;
 
   return (
-    <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
-      <div className="card h-100 shadow my-second-bg-dark text-light border-0 rounded-2 card-effect overflow-hidden">
-        {/* Thumbnail */}
-        {thumbnail && (
-          <img
-            src={thumbnail}
-            className="card-img-top img-fluid"
-            alt={title}
-            style={{ objectFit: "cover", height: "180px" }}
-          />
-        )}
+    <div className="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div className="card h-100 shadow-lg my-second-bg-dark text-white border-0 rounded-4 overflow-hidden"
+           style={{ 
+             background: 'rgba(33, 37, 41, 0.95)', 
+             border: '1px solid rgba(255, 255, 255, 0.1)'
+           }}>
+        {/* Thumbnail with overlay */}
+        <div className="position-relative">
+          {thumbnail ? (
+            <img
+              src={thumbnail}
+              className="card-img-top img-fluid"
+              alt={title}
+              style={{ objectFit: "cover", height: "140px", transition: "transform 0.3s ease" }}
+            />
+          ) : (
+            <div className="bg-secondary d-flex align-items-center justify-content-center" style={{ height: "140px" }}>
+              <FaAlignLeft size={30} className="opacity-25" />
+            </div>
+          )}
+          <div className="position-absolute top-0 end-0 m-2">
+             <span className="badge bg-dark bg-opacity-75 backdrop-blur x-small px-2 py-1 rounded-pill">
+               {type}
+             </span>
+          </div>
+        </div>
 
         {/* Card Body */}
-        <div className="card-body d-flex flex-column">
-          {/* Title */}
-          <h5 className="card-title text-truncate" title={title}>
-            {title || "N/A"}
-          </h5>
+        <div className="card-body d-flex flex-column p-3">
+          <div className="d-flex justify-content-between align-items-start mb-2">
+            <h6 className="card-title fw-bold text-white mb-0 text-truncate flex-grow-1" title={title}>
+              {title || "N/A"}
+            </h6>
+            {rating && (
+              <span className="ms-2 badge bg-warning text-dark d-flex align-items-center gap-1 x-small px-1">
+                <FaStar size={10} /> {rating}
+              </span>
+            )}
+          </div>
+
+          <hr className="my-2 border-secondary opacity-25" />
+
+          {/* Details Row */}
+          <div className="d-flex justify-content-between mb-2">
+              <div className="d-flex align-items-center text-white opacity-75 x-small">
+                <FaLevelUpAlt className="me-1 text-primary" /> {level}
+              </div>
+              <div className="d-flex align-items-center text-white opacity-75 x-small">
+                <FaHourglassHalf className="me-1 text-info" /> {duration}
+              </div>
+          </div>
+
+          {/* Status Badge */}
+          <div className="d-flex justify-content-between align-items-center mb-3">
+             <span 
+               className={`badge rounded-pill border-0 px-2 py-1 x-small`}
+               style={{ cursor: 'pointer', background: isActive ? 'var(--accent)' : 'var(--text-secondary)' }}
+               onClick={() => onToggleStatus?.(id, status)}
+               title="Click to toggle status"
+             >
+               {isActive ? "Active" : "Inactive"}
+             </span>
+             {content && (
+               <span className="text-white opacity-50 x-small d-flex align-items-center" title={content}>
+                 <FaAlignLeft className="me-1" /> Content
+               </span>
+             )}
+          </div>
 
           {/* Description */}
           {desc && (
-            <p className="card-text text-light mb-2 text-truncate" title={desc}>
+            <p className="text-white opacity-75 small mb-3 text-truncate-2" style={{ fontSize: '0.8rem', minHeight: '2.4rem' }}>
               {desc}
             </p>
           )}
 
-          {/* Additional details – row 1 */}
-          <div className="d-flex justify-content-between mb-1 me-2 small">
-            {level && (
-              <span>
-                <FaLevelUpAlt className="me-1" /> {level}
-              </span>
-            )}
-            {rating && (
-              <span className="text-warning">
-                <FaStar className="me-1" /> {rating}
-              </span>
-            )}
-          </div>
-
-          {/* Additional details – row 2 */}
-          <div className="d-flex justify-content-between mb-2 me-2 small">
-            {duration && (
-              <span>
-                <FaHourglassHalf className="me-1" /> {duration}
-              </span>
-            )}
-            {type && (
-              <span>
-                <FaTag className="me-1" /> {type}
-              </span>
-            )}
-          </div>
-
-          {/* Content preview */}
-          {content && (
-            <p className="card-text text-light mb-2 small text-truncate" title={content}>
-              <FaAlignLeft className="me-1" /> {content}
-            </p>
-          )}
-
           {/* Dates */}
-          <div className="d-flex flex-wrap justify-content-between small mb-3 text-light gap-2">
-            {created_at && (
-              <span>
-                <FaCalendarAlt className="me-1" />{" "}
-                {new Date(created_at).toLocaleDateString()}
-              </span>
-            )}
-            {updated_at && (
-              <span>
-                <FaClock className="me-1" />{" "}
-                {new Date(updated_at).toLocaleDateString()}
-              </span>
-            )}
+          <div className="mt-auto pt-2">
+            <div className="d-flex flex-wrap justify-content-between x-small text-white opacity-25" style={{ fontSize: '0.65rem' }}>
+               <span className="d-flex align-items-center"><FaCalendarAlt className="me-1" /> {new Date(created_at).toLocaleDateString()}</span>
+               <span className="d-flex align-items-center"><FaSyncAlt className="me-1" /> {new Date(updated_at).toLocaleDateString()}</span>
+            </div>
           </div>
 
           {/* Actions */}
-          <div className="d-flex flex-column flex-sm-row justify-content-between gap-2 mt-auto">
+          <div className="d-flex gap-2 mt-auto pt-2 border-top border-secondary border-opacity-10">
             <button
-              className="btn btn-sm btn-primary w-100"
+              className="btn btn-sm btn-outline-light border-2 fw-bold w-100 py-1"
+              style={{ borderColor: 'var(--accent)', color: 'var(--accent)' }}
               onClick={() => onEdit?.(id)}
             >
               <FaEdit className="me-1" /> Edit
             </button>
             <button
-              className="btn btn-sm btn-danger w-100"
+              className="btn btn-sm btn-outline-danger border-2 fw-bold w-100 py-1"
               onClick={() => onDelete?.(id)}
             >
               <FaTrashAlt className="me-1" /> Delete
-            </button>
-            <button
-              className={`btn btn-sm w-100 ${isActive ? "btn-warning" : "btn-outline-light"}`}
-              onClick={() => onToggleStatus?.(id, status)}
-            >
-              {isActive ? (
-                <>
-                  <FaBan className="me-1" /> Inactive
-                </>
-              ) : (
-                <>
-                  <FaCheckCircle className="me-1" /> Active
-                </>
-              )}
             </button>
           </div>
         </div>

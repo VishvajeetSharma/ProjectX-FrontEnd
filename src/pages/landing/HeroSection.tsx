@@ -1,5 +1,4 @@
-import { TypeAnimation } from "react-type-animation";
-import { FaEnvelope } from "react-icons/fa";
+import { FaEnvelope, FaCheckCircle, FaPlay } from "react-icons/fa";
 const HeroSection = () => {
   return (
     <>
@@ -10,20 +9,7 @@ const HeroSection = () => {
             {/* <!-- LEFT CONTENT --> */}
             <div className="col-lg-6 text-center text-lg-start">
               <h1 className="hero-title">
-                <TypeAnimation
-                  sequence={[
-                    "Limitless learning at your fingertips",
-                    2000,
-                    "Limitless learning at your comfort",
-                    2000,
-                    "Limitless learning at your home",
-                    2000,
-                  ]}
-                  speed={10}
-                  repeat={Infinity}
-                  wrapper="span"
-                  cursor={true}
-                />
+                Limitless learning at your <span className="highlight-brush">fingertips</span>
               </h1>
 
               <p className="hero-subtitle">
@@ -32,16 +18,18 @@ const HeroSection = () => {
               </p>
 
               <ul className="hero-list">
-                <li>✔ Learn with experts</li>
-                <li>✔ Get certificate</li>
-                <li>✔ Get membership</li>
+                <li><FaCheckCircle className="me-2 text-success" /> Learn with experts</li>
+                <li><FaCheckCircle className="me-2 text-success" /> Get certificate</li>
+                <li><FaCheckCircle className="me-2 text-success" /> Get membership</li>
               </ul>
 
               <div className="hero-actions">
-                <a href="#" className="btn btn-danger">Get Started</a>
+                <a href="#" className="btn btn-get-started">Get Started</a>
 
                 <div className="watch-video">
-                  <span className="play-btn">▶</span>
+                  <span className="play-btn">
+                    <FaPlay size={14} className="ms-1" />
+                  </span>
                   <span>Watch video</span>
                 </div>
               </div>
@@ -49,25 +37,37 @@ const HeroSection = () => {
 
             {/* <!-- RIGHT IMAGE --> */}
             <div className="col-lg-6 text-center position-relative">
-              <div className="hero-image-wrapper">
-                <img src="https://themes.stackbros.in/eduport_ng/assets/images/element/07.png" className="img-fluid hero-img" />
+              <div className="hero-image-container">
+                <div className="hero-bg-shape"></div>
+                <img src="https://themes.stackbros.in/eduport_ng/assets/images/element/07.png" className="img-fluid hero-img" alt="Hero" />
 
-                {/* <!-- Floating Card --> */}
-                <div className="floating-card d-flex justify-content-between">
-                  <div className="bg-warning px-3 py-1 fs-2 rounded rounded-circle me-2">
-                    <FaEnvelope />
+                {/* <!-- Floating Elements --> */}
+                <div className="floating-congrats">
+                  <div className="bg-warning p-2 d-flex align-items-center justify-content-center rounded-circle" style={{ width: '40px', height: '40px' }}>
+                    <FaEnvelope className="text-white" />
                   </div>
-                  <div>
-                    <strong>Congratulations</strong>
-                  <p>Your admission completed</p>
+                  <div className="text-start">
+                    <h6 className="mb-0 fw-bold text-white small">Congratulations</h6>
+                    <p className="mb-0 x-small text-white opacity-50">Your admission completed</p>
                   </div>
                 </div>
 
-                {/* <!-- Badge --> */}
-                <div className="students-badge">
-                  <b>Our daily new students </b>
-                  <span>1K+</span>
+                <div className="floating-students">
+                  <p className="mb-1 x-small fw-bold">Our daily new students</p>
+                  <div className="d-flex align-items-center">
+                    <div className="avatars-group d-flex me-2">
+                       <img src="https://randomuser.me/api/portraits/men/1.jpg" width="25" height="25" className="rounded-circle border border-2 border-success" alt="student" style={{marginLeft: '-8px'}} />
+                       <img src="https://randomuser.me/api/portraits/women/1.jpg" width="25" height="25" className="rounded-circle border border-2 border-success" alt="student" style={{marginLeft: '-8px'}} />
+                       <img src="https://randomuser.me/api/portraits/men/2.jpg" width="25" height="25" className="rounded-circle border border-2 border-success" alt="student" style={{marginLeft: '-8px'}} />
+                    </div>
+                    <span className="badge bg-primary rounded-pill x-small">1K+</span>
+                  </div>
                 </div>
+
+                {/* Floating Icons Loop - Static for now as per image */}
+                <div className="floating-icon" style={{top: '10%', right: '10%'}}><img src="https://upload.wikimedia.org/wikipedia/commons/a/cf/Angular_full_color_logo.svg" width="25" alt="angular" /></div>
+                <div className="floating-icon" style={{top: '30%', left: '0%'}}><img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" width="25" alt="react" /></div>
+                <div className="floating-icon" style={{bottom: '20%', right: '0%'}}><img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" width="15" alt="figma" /></div>
               </div>
             </div>
 
