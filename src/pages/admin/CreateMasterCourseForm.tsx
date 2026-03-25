@@ -39,6 +39,7 @@ const CreateCourseForm = () => {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -70,6 +71,7 @@ const CreateCourseForm = () => {
 
       if (res.success) {
         showALert("Course", res.message, "success");
+        reset();
       } else {
         showALert("Course", res.message, "error");
       }
@@ -214,7 +216,7 @@ const CreateCourseForm = () => {
 
                 {/* Form Buttons */}
                 <div className="col-lg-4 mb-4 d-flex justify-content-end gap-2">
-                  <button type="button" className="btn btn-cancel">Cancel</button>
+                  <button type="button" className="btn btn-cancel" onClick={() => reset()}>Cancel</button>
                   <button type="submit" className="btn btn-submit">Submit</button>
                 </div>
               </div>

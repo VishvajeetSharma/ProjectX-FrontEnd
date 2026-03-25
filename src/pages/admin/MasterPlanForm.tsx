@@ -62,6 +62,7 @@ const MasterPlanForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -75,6 +76,7 @@ const MasterPlanForm = () => {
       const res = await createMasterPlan(data);
       if (res.success) {
         showALert("Master Plan", res?.message, "success");
+        reset();
       } else {
         showALert("Master Plan", res?.message, "error");
       }
@@ -213,7 +215,7 @@ const MasterPlanForm = () => {
 
                 {/* Form Buttons */}
                 <div className="col-lg-4 mb-4 d-flex justify-content-end gap-2">
-                  <button type="button" className="btn btn-cancel">Cancel</button>
+                  <button type="button" className="btn btn-cancel" onClick={() => reset()}>Cancel</button>
                   <button type="submit" className="btn btn-submit">Submit</button>
                 </div>
               </div>

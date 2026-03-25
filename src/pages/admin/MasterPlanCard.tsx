@@ -44,7 +44,7 @@ const MasterPlanCard: React.FC<MasterPlanProps> = ({
           <div
             className="position-absolute px-4 py-1 fw-bold bg-danger text-white"
             style={{
-              top: "15px",
+              top: "20px",
               right: "-30px",
               transform: "rotate(45deg)",
               fontSize: "9px",
