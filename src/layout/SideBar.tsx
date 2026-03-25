@@ -3,9 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { FaBook, FaLayerGroup } from "react-icons/fa";
 import { MdDashboard } from "react-icons/md";
 
-// ------------------------------------------------------------
-// Sidebar Component
-// ------------------------------------------------------------
 interface SidebarProps {
   isOpen: boolean;
   onCloseMobile?: () => void;

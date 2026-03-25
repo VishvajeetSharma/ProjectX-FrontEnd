@@ -83,8 +83,7 @@ const CreateCourseForm = () => {
       <div className="row">
         <div className="col-12 mx-auto">
           <div className="form-section-card">
-            <h4 className="fw-bold mb-4 text-white">Default form example</h4>
-            <p className="text-secondary small mb-4">Provide details for the new master course</p>
+            <h4 className="fw-bold mb-4 text-white">Create Master Course</h4>
 
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="row">

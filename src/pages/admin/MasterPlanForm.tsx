@@ -89,8 +89,7 @@ const MasterPlanForm = () => {
       <div className="row">
         <div className="col-12 mx-auto">
           <div className="form-section-card">
-            <h4 className="fw-bold mb-4 text-white">Master Plan Configuration</h4>
-            <p className="text-secondary small mb-4">Define the credits, pricing, and validity of the new plan</p>
+            <h4 className="fw-bold mb-4 text-white">Create Master Plan</h4>
 
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="row">
