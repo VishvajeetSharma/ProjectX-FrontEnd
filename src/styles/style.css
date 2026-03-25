@@ -325,9 +325,6 @@ body {
   scrollbar-color: rgba(255, 255, 255, 0.1) var(--bg-main);
 }
 
-body {
-  /* This body rule was incomplete in the provided snippet, leaving it as is */
-}
 
 .course-tab-btn.active {
   background: linear-gradient(135deg, var(--accent) 0%, #9333ea 100%);
