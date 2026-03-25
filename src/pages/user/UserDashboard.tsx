@@ -4,7 +4,7 @@ const UserDashboard = () => {
   return (
     <>
       <DashboardLayout>
-        UserDashboard
+        <h1 className="text-light">User Dashboard</h1>
       </DashboardLayout>
     </>
   )

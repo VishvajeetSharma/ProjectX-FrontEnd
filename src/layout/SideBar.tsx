@@ -13,10 +13,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
   const menuItems =
     roleType === 'user'
       ? [
-        { label: 'Dashboard', icon: FiHome, path: '' },
-        { label: 'Users', icon: FiUsers, path: 'admin-dashboard' },
-        { label: 'Chat', icon: FiMessageCircle, path: 'admin-dashboard' },
-        { label: 'Logout', icon: FiLogOut, path: '/' },
+        { label: 'Dashboard', icon: FiHome, path: '/user-dashboard' },
       ]
       : [
         { label: "Dashboard", icon: MdDashboard, path: "/admin-dashboard" },
