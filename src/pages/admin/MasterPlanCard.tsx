@@ -40,7 +40,7 @@ const MasterPlanCard: React.FC<MasterPlanProps> = ({
         {/* Card Body */}
         <div className="card-body d-flex flex-column">
           {/* Recommended Badge - inside card-body, lifted with negative margin */}
-          {is_rec === 0 && (
+          {is_rec === 1 && (
                       
             <div
               className="position-absolute px-2 py-1 fw-bold bg-danger text-white rounded-0"
