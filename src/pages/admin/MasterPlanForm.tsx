@@ -85,170 +85,145 @@ const MasterPlanForm = () => {
   };
 
   return (
-    <div className="container-fluid overflow-hidden p-0">
-      <div className="row my-bg-dark py-5 px-3">
-      <div className="col-sm-10 mx-auto">
-        <div className="card my-second-bg-dark text-white p-4 border-0 rounded-4 shadow-lg">
-          <h2 className="fw-bold mb-4 text-center">Create Master Plan</h2>
+    <div className="container-fluid py-4 px-4 overflow-hidden">
+      <div className="row">
+        <div className="col-12 mx-auto">
+          <div className="form-section-card">
+            <h4 className="fw-bold mb-4 text-white">Master Plan Configuration</h4>
+            <p className="text-secondary small mb-4">Define the credits, pricing, and validity of the new plan</p>
 
-          <form onSubmit={handleSubmit(onSubmit)}>
-
-            <div className="row">
-              <div className="col-sm-6">
-                {/* Name */}
-                <div className="mb-3">
-                  <label className="form-label">Master Plan Name *</label>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="row">
+                <div className="col-lg-4 mb-4">
+                  {/* Name */}
+                  <label className="form-label-premium">Master Plan Name *</label>
                   <input
                     type="text"
                     {...register("name")}
-                    className="form-control border-0"
-                    placeholder="Enter your name"
+                    className="form-control-premium w-100"
+                    placeholder="Enter plan name"
                   />
                   {errors.name && (
-                    <small className="text-danger">{errors.name.message}</small>
+                    <small className="text-danger mt-1 d-block">{errors.name.message}</small>
                   )}
                 </div>
-              </div>
-              <div className="col-sm-6">
-                {/* Description */}
-                <div className="mb-3">
-                  <label className="form-label">Description *</label>
-                  <input
-                    type="text"
-                    {...register("desc")}
-                    className="form-control border-0"
-                    placeholder="Enter description"
-                  />
-                  {errors.desc && (
-                    <small className="text-danger">{errors.desc.message}</small>
-                  )}
-                </div>
-              </div>
-            </div>
 
-            <div className="row">
-              <div className="col-sm-6">
-                {/* Credit */}
-                <div className="mb-3">
-                  <label className="form-label">Credit *</label>
+                <div className="col-lg-4 mb-4">
+                  {/* Credit */}
+                  <label className="form-label-premium">Credit Allocation *</label>
                   <input
                     type="text"
                     {...register("credit")}
-                    className="form-control border-0"
-                    placeholder="Enter credit"
+                    className="form-control-premium w-100"
+                    placeholder="Number of credits"
                   />
                   {errors.credit && (
-                    <small className="text-danger">
-                      {errors.credit.message}
-                    </small>
+                    <small className="text-danger mt-1 d-block">{errors.credit.message}</small>
                   )}
                 </div>
-              </div>
-              <div className="col-sm-6">
-                {/* Price */}
-                <div className="mb-3">
-                  <label className="form-label">Price *</label>
+
+                <div className="col-lg-4 mb-4">
+                  {/* Price */}
+                  <label className="form-label-premium">Plan Price (INR) *</label>
                   <input
                     type="text"
                     {...register("price")}
-                    className="form-control border-0"
+                    className="form-control-premium w-100"
                     placeholder="Enter price"
                   />
                   {errors.price && (
-                    <small className="text-danger">
-                      {errors.price.message}
-                    </small>
+                    <small className="text-danger mt-1 d-block">{errors.price.message}</small>
                   )}
                 </div>
               </div>
-            </div>
 
-            <div className="row">
-              <div className="col-sm-6">
-                {/* Offer */}
-                <div className="mb-3">
-                  <label className="form-label">Offer *</label>
+              <div className="row">
+                <div className="col-lg-4 mb-4">
+                  {/* Offer */}
+                  <label className="form-label-premium">Discount Offer (%) *</label>
                   <input
                     type="text"
                     {...register("offer")}
-                    className="form-control border-0"
-                    placeholder="Enter offer"
+                    className="form-control-premium w-100"
+                    placeholder="Discount percentage"
                   />
                   {errors.offer && (
-                    <small className="text-danger">
-                      {errors.offer.message}
-                    </small>
+                    <small className="text-danger mt-1 d-block">{errors.offer.message}</small>
                   )}
                 </div>
-              </div>
-              <div className="col-sm-6">
-                {/* Duration */}
-                <div className="mb-3">
-                  <label className="form-label">Duration *</label>
+
+                <div className="col-lg-4 mb-4">
+                  {/* Duration */}
+                  <label className="form-label-premium">Validity Duration (Days) *</label>
                   <input
                     type="text"
                     {...register("duration")}
-                    className="form-control border-0"
-                    placeholder="Enter duration"
+                    className="form-control-premium w-100"
+                    placeholder="Days of validity"
                   />
                   {errors.duration && (
-                    <small className="text-danger">
-                      {errors.duration.message}
-                    </small>
+                    <small className="text-danger mt-1 d-block">{errors.duration.message}</small>
                   )}
                 </div>
-              </div>
-            </div>
 
-            <div className="row">
-              <div className="col-sm-6">
-                {/* Is Recommended */}
-                <div className="mb-3">
-                  <label className="form-label">Recommended *</label>
+                <div className="col-lg-4 mb-4">
+                  {/* Is Recommended */}
+                  <label className="form-label-premium">Is Recommended? *</label>
                   <select
                     {...register("is_rec")}
-                    className="form-control border-0"
+                    className="form-control-premium w-100"
                   >
                     <option value={0}>False</option>
                     <option value={1}>True</option>
                   </select>
                   {errors.is_rec && (
-                    <small className="text-danger">
-                      {errors.is_rec.message}
-                    </small>
+                    <small className="text-danger mt-1 d-block">{errors.is_rec.message}</small>
                   )}
                 </div>
               </div>
-              <div className="col-sm-6">
 
-                {/* Status */}
-                <div className="mb-3">
-                  <label className="form-label">Status *</label>
+              <div className="row">
+                <div className="col-lg-4 mb-4">
+                  {/* Status */}
+                  <label className="form-label-premium">Active Status *</label>
                   <select
                     {...register("status")}
-                    className="form-control border-0"
+                    className="form-control-premium w-100"
                   >
                     <option value={1}>Active</option>
                     <option value={0}>Inactive</option>
                   </select>
                   {errors.status && (
-                    <small className="text-danger">
-                      {errors.status.message}
-                    </small>
+                    <small className="text-danger mt-1 d-block">{errors.status.message}</small>
                   )}
                 </div>
               </div>
-            </div>
 
-            {/* Button */}
-            <button className="btn my-btn w-100 py-2 mt-4 fw-bold">
-              Create
-            </button>
-          </form>
+              <div className="row align-items-end">
+                {/* Description (Textarea) */}
+                <div className="col-lg-8 mb-4">
+                  <label className="form-label-premium">Plan Description *</label>
+                  <textarea
+                    {...register("desc")}
+                    className="form-control-premium w-100"
+                    placeholder="Enter plan description..."
+                  ></textarea>
+                  {errors.desc && (
+                    <small className="text-danger mt-1 d-block">{errors.desc.message}</small>
+                  )}
+                </div>
+
+                {/* Form Buttons */}
+                <div className="col-lg-4 mb-4 d-flex justify-content-end gap-2">
+                  <button type="button" className="btn btn-cancel">Cancel</button>
+                  <button type="submit" className="btn btn-submit">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   );
 };
 

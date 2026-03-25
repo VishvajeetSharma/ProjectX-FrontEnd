@@ -38,11 +38,7 @@ const MasterPlanCard: React.FC<MasterPlanProps> = ({
 
   return (
     <div className="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div className="card h-100 shadow-lg my-second-bg-dark text-white border-0 rounded-4 overflow-hidden position-relative"
-           style={{ 
-             background: 'rgba(33, 37, 41, 0.95)', 
-             border: '1px solid rgba(255, 255, 255, 0.1)'
-           }}>
+      <div className="card h-100 course-card border-0 rounded-4 overflow-hidden">
         {/* Recommended Badge */}
         {is_rec === 1 && (
           <div

@@ -3,7 +3,12 @@ const HeroSection = () => {
   return (
     <>
       <section className="hero-section my-bg-dark">
-        <div className="container">
+        {/* Decorative Background Elements */}
+        <div className="hero-blob hero-blob-1"></div>
+        <div className="hero-blob hero-blob-2"></div>
+        <div className="hero-dot-pattern"></div>
+
+        <div className="container position-relative" style={{ zIndex: 1 }}>
           <div className="row align-items-center g-5">
 
             {/* <!-- LEFT CONTENT --> */}

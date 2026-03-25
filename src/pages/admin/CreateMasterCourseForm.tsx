@@ -51,7 +51,7 @@ const CreateCourseForm = () => {
   const onSubmit = async (data: any) => {
     try {
       console.log(data);
-      
+
       const formData = new FormData();
 
       formData.append("title", data.title);
@@ -79,115 +79,86 @@ const CreateCourseForm = () => {
   };
 
   return (
-    <div className="container-fluid overflow-hidden p-0">
-      <div className="row my-bg-dark py-5 px-3">
-      <div className="col-sm-10 mx-auto">
-        <div className="card my-second-bg-dark text-white p-4 border-0 rounded-4 shadow-lg">
-          <h2 className="fw-bold mb-4 text-center">Create Course</h2>
+    <div className="container-fluid py-4 px-4 overflow-hidden">
+      <div className="row">
+        <div className="col-12 mx-auto">
+          <div className="form-section-card">
+            <h4 className="fw-bold mb-4 text-white">Default form example</h4>
+            <p className="text-secondary small mb-4">Provide details for the new master course</p>
 
-          <form onSubmit={handleSubmit(onSubmit)}>
-
-            <div className="row">
-              {/* Title */}
-              <div className="col-sm-6">
-                <div className="mb-3">
-                  <label className="form-label">Title *</label>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="row">
+                {/* Title */}
+                <div className="col-lg-4 mb-4">
+                  <label className="form-label-premium">Course Title *</label>
                   <input
                     type="text"
                     {...register("title")}
-                    className="form-control border-0"
+                    className="form-control-premium w-100"
                     placeholder="Enter title"
                   />
-                  <small className="text-danger">{errors.title?.message}</small>
+                  <small className="text-danger mt-1 d-block">{errors.title?.message}</small>
                 </div>
-              </div>
 
-              {/* Description */}
-              <div className="col-sm-6">
-                <div className="mb-3">
-                  <label className="form-label">Description *</label>
-                  <input
-                    type="text"
-                    {...register("desc")}
-                    className="form-control border-0"
-                    placeholder="Enter description"
-                  />
-                  <small className="text-danger">{errors.desc?.message}</small>
-                </div>
-              </div>
-            </div>
-
-            <div className="row">
-              {/* Level */}
-              <div className="col-sm-6">
-                <div className="mb-3">
-                  <label className="form-label">Level *</label>
+                {/* Level */}
+                <div className="col-lg-4 mb-4">
+                  <label className="form-label-premium">Expertise Level *</label>
                   <select
                     {...register("level")}
-                    className="form-control border-0"
+                    className="form-control-premium w-100"
                   >
                     <option value="">Select Level</option>
                     <option value="beginner">Beginner</option>
                     <option value="intermediate">Intermediate</option>
                     <option value="advanced">Advanced</option>
                   </select>
-                  <small className="text-danger">{errors.level?.message}</small>
+                  <small className="text-danger mt-1 d-block">{errors.level?.message}</small>
                 </div>
-              </div>
 
-              {/* Rating */}
-              <div className="col-sm-6">
-                <div className="mb-3">
-                  <label className="form-label">Rating *</label>
+                {/* Rating */}
+                <div className="col-lg-4 mb-4">
+                  <label className="form-label-premium">Rating *</label>
                   <input
                     type="number"
                     {...register("rating")}
-                    className="form-control border-0"
+                    className="form-control-premium w-100"
                     placeholder="0 - 5"
                   />
-                  <small className="text-danger">{errors.rating?.message}</small>
+                  <small className="text-danger mt-1 d-block">{errors.rating?.message}</small>
                 </div>
               </div>
-            </div>
 
-            <div className="row">
-              {/* Duration */}
-              <div className="col-sm-6">
-                <div className="mb-3">
-                  <label className="form-label">Duration *</label>
+              <div className="row">
+                {/* Duration */}
+                <div className="col-lg-4 mb-4">
+                  <label className="form-label-premium">Duration (Hours) *</label>
                   <input
                     type="number"
                     {...register("duration")}
-                    className="form-control border-0"
+                    className="form-control-premium w-100"
                     placeholder="Enter duration"
                   />
-                  <small className="text-danger">{errors.duration?.message}</small>
+                  <small className="text-danger mt-1 d-block">{errors.duration?.message}</small>
                 </div>
-              </div>
 
-              {/* Type */}
-              <div className="col-sm-6">
-                <div className="mb-3">
-                  <label className="form-label">Type *</label>
+                {/* Type */}
+                <div className="col-lg-4 mb-4">
+                  <label className="form-label-premium">Course Type *</label>
                   <input
                     type="text"
                     {...register("type")}
-                    className="form-control border-0"
+                    className="form-control-premium w-100"
                     placeholder="Enter type"
                   />
-                  <small className="text-danger">{errors.type?.message}</small>
+                  <small className="text-danger mt-1 d-block">{errors.type?.message}</small>
                 </div>
-              </div>
-            </div>
 
-            <div className="row">
-              {/* Status */}
-              <div className="col-sm-6">
-                <div className="mb-3">
-                  <label className="form-label">Status *</label>
+                {/* Status */}
+                <div className="col-lg-4 mb-4">
+                  <label className="form-label-premium">Active Status *</label>
                   <select
                     {...register("status")}
-                    className="form-control border-0"
+                    className="form-control-premium w-100"
                   >
                     <option value={1}>Active</option>
                     <option value={0}>Inactive</option>
@@ -195,49 +166,64 @@ const CreateCourseForm = () => {
                 </div>
               </div>
 
-              {/* Thumbnail */}
-              <div className="col-sm-6">
-                <div className="mb-3">
-                  <label className="form-label">Thumbnail *</label>
+              <div className="row">
+                {/* Thumbnail */}
+                <div className="col-lg-4 mb-4">
+                  <label className="form-label-premium">Thumbnail Image *</label>
                   <input
                     type="file"
-                    className="form-control border-0"
+                    className="form-control-premium w-100"
                     onChange={(e) => {
                       if (e.target.files && e.target.files.length > 0) {
                         setValue("thumbnail", e.target.files);
                       }
                     }}
                   />
-                  <small className="text-danger">{errors.thumbnail?.message}</small>
+                  <small className="text-danger mt-1 d-block">{errors.thumbnail?.message}</small>
+                </div>
+
+                {/* Content File */}
+                <div className="col-lg-8 mb-4">
+                  <label className="form-label-premium">Course Content File *</label>
+                  <input
+                    type="file"
+                    className="form-control-premium w-100"
+                    onChange={(e) => {
+                      if (e.target.files && e.target.files.length > 0) {
+                        setValue("content", e.target.files);
+                      }
+                    }}
+                  />
+                  <small className="text-danger mt-1 d-block">{errors.content?.message}</small>
                 </div>
               </div>
-            </div>
 
-            {/* Content File */}
-            <div className="mb-3">
-              <label className="form-label">Content File *</label>
-              <input
-                type="file"
-                className="form-control border-0"
+              {/* Description (Textarea) */}
+              <div className="row align-items-end">
+                {/* Description (Textarea) */}
+                <div className="col-lg-8 mb-4">
+                  <label className="form-label-premium">Plan Description *</label>
+                  <textarea
+                    {...register("desc")}
+                    className="form-control-premium w-100"
+                    placeholder="Enter plan description..."
+                  ></textarea>
+                  {errors.desc && (
+                    <small className="text-danger mt-1 d-block">{errors.desc.message}</small>
+                  )}
+                </div>
 
-                onChange={(e) => {
-                  if (e.target.files && e.target.files.length > 0) {
-                    setValue("content", e.target.files);
-                  }
-                }}
-              />
-              <small className="text-danger">{errors.content?.message}</small>
-            </div>
-
-            {/* Button */}
-            <button className="btn my-btn w-100 py-2 mt-4 fw-bold">
-              Create Course
-            </button>
-          </form>
+                {/* Form Buttons */}
+                <div className="col-lg-4 mb-4 d-flex justify-content-end gap-2">
+                  <button type="button" className="btn btn-cancel">Cancel</button>
+                  <button type="submit" className="btn btn-submit">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   );
 };
 
