@@ -131,7 +131,7 @@ const MasterPlanForm = () => {
     <div className="container-fluid py-3 px-4 overflow-hidden">
       <div className="row">
         <div className="col-12 mx-auto">
-          <h2 className="fw-bold text-white">{id ? "Edit" : "Create"} Master Plan</h2>
+          <h2 className="fw-bold">{id ? "Edit" : "Create"} Master Plan</h2>
           <div className="form-section-card">
 
             <form onSubmit={handleSubmit(onSubmit)}>

@@ -1,21 +1,39 @@
 import { useEffect, useState } from "react";
 import DashboardLayout from "../../layout/DashboardLayout";
 import MasterCourseCard from "./MasterCourseCard";
-import { getMasterCourse, deleteMasterCourse } from "../../services";
+import { getMasterCourse, deleteMasterCourse, updateMasterCourse } from "../../services";
 import { confirmDeletion, showALert } from "../../utils";
-
-const handleEditCourse = (id: any) => {
-  console.log('Edit course', id);
-};
-
-const handleToggleCourseStatus = (id: any, currentStatus: any) => {
-  console.log('Toggle status for course', id, currentStatus);
-};
+import { useNavigate } from "react-router-dom";
 
 const MasterCourse = () => {
+  const navigate = useNavigate();
   const [masterCourses, setMasterCourses] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const handleEditCourse = (id: any) => {
+    navigate(`/admin/create-master-course?id=${id}`);
+  };
+
+  const handleToggleCourseStatus = async (id: any, currentStatus: any) => {
+    const newStatus = currentStatus === 1 ? 0 : 1;
+    try {
+      // Create a FormData object for the update since the backend expects it
+      const formData = new FormData();
+      formData.append("status", newStatus.toString());
+      
+      const res = await updateMasterCourse(id, formData);
+      if (res.success) {
+        setMasterCourses((prev) => 
+          prev.map((c) => (c.id === id ? { ...c, status: newStatus } : c))
+        );
+        showALert("Status Updated", `Course is now ${newStatus === 1 ? 'Active' : 'Inactive'}`, "success");
+      }
+    } catch (err) {
+      console.error("Failed to toggle status:", err);
+      showALert("Error", "Failed to update status", "error");
+    }
+  };
 
   useEffect(() => {
     fetchCourses();
@@ -56,7 +74,9 @@ const MasterCourse = () => {
       <div className="container-fluid py-3 px-4 overflow-hidden my-bg-dark">
         <div className="row">
           <div className="col-12 mx-auto">
-            <h2 className="fw-bold text-white">Master Course</h2>
+            <div className="d-flex justify-content-between align-items-center mb-4">
+              <h2 className="fw-bold m-0">Master Course</h2>
+            </div>
 
             {loading && <p className="text-white">Loading courses...</p>}
             {error && <p className="text-danger">{error}</p>}
