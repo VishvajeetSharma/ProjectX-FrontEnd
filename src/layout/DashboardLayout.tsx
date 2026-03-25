@@ -35,7 +35,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
 
   return (
     <>
-      
+
       {isMobile ? (
         // ------------------- Mobile View -------------------
         <>

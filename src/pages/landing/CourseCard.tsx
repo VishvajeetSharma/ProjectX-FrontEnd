@@ -26,7 +26,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
   return (
     <div className="col-lg-3 col-md-6 mb-4">
       <div className="card h-100 course-card border-0 rounded-3 overflow-hidden position-relative">
-        
+
         {/* Thumbnail with Heart Icon */}
         <div className="position-relative">
           <img src={image} className="card-img-top" alt={title} />
@@ -38,7 +38,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
         {/* Card Body */}
         <div className="card-body d-flex flex-column p-4">
           <div className="mb-2">
-             <span className="badge bg-purple bg-opacity-25 text-purple rounded-pill px-3 py-1 x-small" style={{ color: '#8b5cf6' }}>{level}</span>
+            <span className="badge bg-purple bg-opacity-25 text-purple rounded-pill px-3 py-1 x-small" style={{ color: '#8b5cf6' }}>{level}</span>
           </div>
 
           <h6 className="card-title fw-bold text-white mb-2 text-truncate-2" style={{ height: '2.8rem' }}>{title}</h6>
@@ -59,12 +59,12 @@ const CourseCard: React.FC<CourseCardProps> = ({
           {/* Footer Info */}
           <div className="d-flex justify-content-between mt-auto">
             <div className="course-meta-item">
-               <FaClock className="text-danger" size={14} />
-               <span>{duration}</span>
+              <FaClock className="text-danger" size={14} />
+              <span>{duration}</span>
             </div>
             <div className="course-meta-item">
-               <FaBookOpen className="text-warning" size={14} />
-               <span>{lectures} lectures</span>
+              <FaBookOpen className="text-warning" size={14} />
+              <span>{lectures} lectures</span>
             </div>
           </div>
         </div>
