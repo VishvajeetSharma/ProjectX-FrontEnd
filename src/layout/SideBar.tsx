@@ -44,7 +44,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
       {/* Logo / Brand */}
       <div className="p-3 d-flex align-items-center">
         <img
-          src="images/logo.png"
+          src="/images/logo.png"
           alt="Logo"
           className="rounded-circle me-2"
           width="40"
