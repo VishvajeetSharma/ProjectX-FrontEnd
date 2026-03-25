@@ -1,8 +1,10 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { createMasterPlan } from "../../services";
+import { createMasterPlan, getMasterPlanById, updateMasterPlan } from "../../services";
 import { showALert } from "../../utils";
+import { useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 // Schema
 const schema = yup.object().shape({
@@ -59,24 +61,62 @@ const schema = yup.object().shape({
 });
 
 const MasterPlanForm = () => {
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get("id");
+  const [loading, setLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
-  } = useForm({
+  } = useForm<any>({
     resolver: yupResolver(schema),
     defaultValues: {
       status: 1,
     },
   });
 
+  useEffect(() => {
+    if (id) {
+      const fetchPlan = async () => {
+        setLoading(true);
+        try {
+          const res = await getMasterPlanById(id);
+          if (res.success) {
+            const plan = res.result;
+            setValue("name", plan.name);
+            setValue("desc", plan.desc);
+            setValue("credit", plan.credit);
+            setValue("price", plan.price);
+            setValue("offer", plan.offer);
+            setValue("duration", plan.duration);
+            setValue("is_rec", plan.is_rec);
+            setValue("status", plan.status);
+          }
+        } catch (error) {
+          showALert("Master Plan", "Failed to fetch plan details", "error");
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchPlan();
+    }
+  }, [id, setValue]);
+
   const onSubmit = async (data: any) => {
     try {
-      const res = await createMasterPlan(data);
+      let res;
+      if (id) {
+        res = await updateMasterPlan(id, data);
+      } else {
+        res = await createMasterPlan(data);
+      }
+      
       if (res.success) {
         showALert("Master Plan", res?.message, "success");
-        reset();
+        if (!id) reset();
       } else {
         showALert("Master Plan", res?.message, "error");
       }
@@ -85,11 +125,13 @@ const MasterPlanForm = () => {
     }
   };
 
+  if (loading) return <div className="text-white p-4">Loading...</div>;
+
   return (
     <div className="container-fluid py-3 px-4 overflow-hidden">
       <div className="row">
         <div className="col-12 mx-auto">
-          <h2 className="fw-bold text-white">Create Master Plan</h2>
+          <h2 className="fw-bold text-white">{id ? "Edit" : "Create"} Master Plan</h2>
           <div className="form-section-card">
 
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -104,7 +146,7 @@ const MasterPlanForm = () => {
                     placeholder="Enter plan name"
                   />
                   {errors.name && (
-                    <small className="text-danger mt-1 d-block">{errors.name.message}</small>
+                    <small className="text-danger mt-1 d-block">{(errors.name as any).message}</small>
                   )}
                 </div>
 
@@ -118,7 +160,7 @@ const MasterPlanForm = () => {
                     placeholder="Number of credits"
                   />
                   {errors.credit && (
-                    <small className="text-danger mt-1 d-block">{errors.credit.message}</small>
+                    <small className="text-danger mt-1 d-block">{(errors.credit as any).message}</small>
                   )}
                 </div>
 
@@ -132,7 +174,7 @@ const MasterPlanForm = () => {
                     placeholder="Enter price"
                   />
                   {errors.price && (
-                    <small className="text-danger mt-1 d-block">{errors.price.message}</small>
+                    <small className="text-danger mt-1 d-block">{(errors.price as any).message}</small>
                   )}
                 </div>
               </div>
@@ -148,7 +190,7 @@ const MasterPlanForm = () => {
                     placeholder="Discount percentage"
                   />
                   {errors.offer && (
-                    <small className="text-danger mt-1 d-block">{errors.offer.message}</small>
+                    <small className="text-danger mt-1 d-block">{(errors.offer as any).message}</small>
                   )}
                 </div>
 
@@ -162,7 +204,7 @@ const MasterPlanForm = () => {
                     placeholder="Days of validity"
                   />
                   {errors.duration && (
-                    <small className="text-danger mt-1 d-block">{errors.duration.message}</small>
+                    <small className="text-danger mt-1 d-block">{(errors.duration as any).message}</small>
                   )}
                 </div>
 
@@ -177,7 +219,7 @@ const MasterPlanForm = () => {
                     <option value={1}>True</option>
                   </select>
                   {errors.is_rec && (
-                    <small className="text-danger mt-1 d-block">{errors.is_rec.message}</small>
+                    <small className="text-danger mt-1 d-block">{(errors.is_rec as any).message}</small>
                   )}
                 </div>
               </div>
@@ -194,7 +236,7 @@ const MasterPlanForm = () => {
                     <option value={0}>Inactive</option>
                   </select>
                   {errors.status && (
-                    <small className="text-danger mt-1 d-block">{errors.status.message}</small>
+                    <small className="text-danger mt-1 d-block">{(errors.status as any).message}</small>
                   )}
                 </div>
               </div>
@@ -209,14 +251,14 @@ const MasterPlanForm = () => {
                     placeholder="Enter plan description..."
                   ></textarea>
                   {errors.desc && (
-                    <small className="text-danger mt-1 d-block">{errors.desc.message}</small>
+                    <small className="text-danger mt-1 d-block">{(errors.desc as any).message}</small>
                   )}
                 </div>
 
                 {/* Form Buttons */}
                 <div className="col-lg-4 mb-4 d-flex justify-content-end gap-2">
                   <button type="button" className="btn btn-cancel" onClick={() => reset()}>Cancel</button>
-                  <button type="submit" className="btn btn-submit">Submit</button>
+                  <button type="submit" className="btn btn-submit">{id ? "Update" : "Submit"}</button>
                 </div>
               </div>
             </form>

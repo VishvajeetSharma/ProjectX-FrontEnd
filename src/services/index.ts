@@ -63,6 +63,16 @@ export const deleteMasterPlan = async (id: any) => {
   return res?.data;
 };
 
+export const getMasterPlanById = async (id: any) => {
+  const res = await api.get(`/admin/get-master-plan/${id}`);
+  return res?.data;
+};
+
+export const updateMasterPlan = async (id: any, data: any) => {
+  const res = await api.put(`/admin/update-master-plan/${id}`, data);
+  return res?.data;
+};
+
 export const createMasterCourse = async (data: FormData) => {
   const res = await api.post("/admin/create-master-course", data, {
     headers: {
@@ -82,9 +92,40 @@ export const deleteMasterCourse = async (id: any) => {
   return res?.data;
 };
 
+export const getMasterCourseById = async (id: any) => {
+  const res = await api.get(`/admin/get-master-course/${id}`);
+  return res?.data;
+};
+
+export const updateMasterCourse = async (id: any, data: FormData) => {
+  const res = await api.put(`/admin/update-master-course/${id}`, data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+  return res?.data;
+};
+
 export const getFile = async (fileName: string) => {
   const res = await api.get(`/file/${fileName}`, {
     responseType: "blob",
   });
   return res?.data;
 };
+
+
+export const getAllUsers = async () => {
+  const res = await api.get("/admin/get-all-users");
+  return res?.data;
+};
+
+export const deleteUser = async (id: any) => {
+  const res = await api.delete(`/admin/delete-user/${id}`);
+  return res?.data;
+};
+
+export const getDashboardStats = async () => {
+  const res = await api.get("/admin/get-dashboard-stats");
+  return res?.data;
+};
+

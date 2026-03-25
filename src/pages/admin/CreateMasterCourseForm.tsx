@@ -2,7 +2,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { showALert } from "../../utils";
-import { createMasterCourse } from "../../services";
+import { createMasterCourse, getMasterCourseById, updateMasterCourse } from "../../services";
+import { useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 
 const schema = yup.object().shape({
@@ -29,30 +31,73 @@ const schema = yup.object().shape({
 
   status: yup.number().oneOf([0, 1]).default(1),
 
-  thumbnail: yup.mixed().required("Thumbnail is required"),
+  thumbnail: yup.mixed().test("required", "Thumbnail is required", function(value) {
+    const { id } = this.options.context as any;
+    if (id) return true; // Optional on edit
+    return value && (value as any).length > 0;
+  }),
 
-  content: yup.mixed().required("Content file is required"),
+  content: yup.mixed().test("required", "Content file is required", function(value) {
+    const { id } = this.options.context as any;
+    if (id) return true; // Optional on edit
+    return value && (value as any).length > 0;
+  }),
 });
 
 const CreateCourseForm = () => {
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get("id");
+  const [loading, setLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
     setValue,
     reset,
     formState: { errors },
-  } = useForm({
+  } = useForm<any>({
     resolver: yupResolver(schema),
+    context: { id },
     defaultValues: {
       status: 1,
     },
   });
 
+  // ... (useEffects and onSubmit)
+  // (Note: I'll only replace the parts that need change if I can find them, 
+  // but since I'm replacing a large block, I'll be careful)
+
+  // Wait, I should use multi_replace for accuracy.
+
+  useEffect(() => {
+    if (id) {
+      const fetchCourse = async () => {
+        setLoading(true);
+        try {
+          const res = await getMasterCourseById(id);
+          if (res.success) {
+            const course = res.result;
+            setValue("title", course.title);
+            setValue("desc", course.desc);
+            setValue("level", course.level);
+            setValue("rating", course.rating);
+            setValue("duration", course.duration);
+            setValue("type", course.type);
+            setValue("status", course.status);
+          }
+        } catch (error) {
+          showALert("Course", "Failed to fetch course details", "error");
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchCourse();
+    }
+  }, [id, setValue]);
+
 
   const onSubmit = async (data: any) => {
     try {
-      console.log(data);
-
       const formData = new FormData();
 
       formData.append("title", data.title);
@@ -63,15 +108,23 @@ const CreateCourseForm = () => {
       formData.append("type", data.type);
       formData.append("status", data.status);
 
-      formData.append("thumbnail", data.thumbnail[0]);
-      formData.append("content", data.content[0]);
+      if (data.thumbnail && data.thumbnail[0]) {
+        formData.append("thumbnail", data.thumbnail[0]);
+      }
+      if (data.content && data.content[0]) {
+        formData.append("content", data.content[0]);
+      }
 
-
-      const res = await createMasterCourse(formData);
+      let res;
+      if (id) {
+        res = await updateMasterCourse(id, formData);
+      } else {
+        res = await createMasterCourse(formData);
+      }
 
       if (res.success) {
         showALert("Course", res.message, "success");
-        reset();
+        if (!id) reset();
       } else {
         showALert("Course", res.message, "error");
       }
@@ -80,11 +133,13 @@ const CreateCourseForm = () => {
     }
   };
 
+  if (loading) return <div className="text-white p-4">Loading...</div>;
+
   return (
     <div className="container-fluid py-3 px-4 overflow-hidden">
       <div className="row">
         <div className="col-12 mx-auto">
-          <h2 className="fw-bold text-white">Create Master Course</h2>
+          <h2 className="fw-bold text-white">{id ? "Edit" : "Create"} Master Course</h2>
           <div className="form-section-card">
 
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -98,7 +153,7 @@ const CreateCourseForm = () => {
                     className="form-control-premium w-100"
                     placeholder="Enter title"
                   />
-                  <small className="text-danger mt-1 d-block">{errors.title?.message}</small>
+                  <small className="text-danger mt-1 d-block">{(errors.title as any)?.message}</small>
                 </div>
 
                 {/* Level */}
@@ -113,7 +168,7 @@ const CreateCourseForm = () => {
                     <option value="intermediate">Intermediate</option>
                     <option value="advanced">Advanced</option>
                   </select>
-                  <small className="text-danger mt-1 d-block">{errors.level?.message}</small>
+                  <small className="text-danger mt-1 d-block">{(errors.level as any)?.message}</small>
                 </div>
 
                 {/* Rating */}
@@ -125,7 +180,7 @@ const CreateCourseForm = () => {
                     className="form-control-premium w-100"
                     placeholder="0 - 5"
                   />
-                  <small className="text-danger mt-1 d-block">{errors.rating?.message}</small>
+                  <small className="text-danger mt-1 d-block">{(errors.rating as any)?.message}</small>
                 </div>
               </div>
 
@@ -139,7 +194,7 @@ const CreateCourseForm = () => {
                     className="form-control-premium w-100"
                     placeholder="Enter duration"
                   />
-                  <small className="text-danger mt-1 d-block">{errors.duration?.message}</small>
+                  <small className="text-danger mt-1 d-block">{(errors.duration as any)?.message}</small>
                 </div>
 
                 {/* Type */}
@@ -151,7 +206,7 @@ const CreateCourseForm = () => {
                     className="form-control-premium w-100"
                     placeholder="Enter type"
                   />
-                  <small className="text-danger mt-1 d-block">{errors.type?.message}</small>
+                  <small className="text-danger mt-1 d-block">{(errors.type as any)?.message}</small>
                 </div>
 
                 {/* Status */}
@@ -180,7 +235,7 @@ const CreateCourseForm = () => {
                       }
                     }}
                   />
-                  <small className="text-danger mt-1 d-block">{errors.thumbnail?.message}</small>
+                  <small className="text-danger mt-1 d-block">{(errors.thumbnail as any)?.message}</small>
                 </div>
 
                 {/* Content File */}
@@ -195,7 +250,7 @@ const CreateCourseForm = () => {
                       }
                     }}
                   />
-                  <small className="text-danger mt-1 d-block">{errors.content?.message}</small>
+                  <small className="text-danger mt-1 d-block">{(errors.content as any)?.message}</small>
                 </div>
               </div>
 
@@ -210,14 +265,14 @@ const CreateCourseForm = () => {
                     placeholder="Enter plan description..."
                   ></textarea>
                   {errors.desc && (
-                    <small className="text-danger mt-1 d-block">{errors.desc.message}</small>
+                    <small className="text-danger mt-1 d-block">{(errors.desc as any).message}</small>
                   )}
                 </div>
 
                 {/* Form Buttons */}
                 <div className="col-lg-4 mb-4 d-flex justify-content-end gap-2">
                   <button type="button" className="btn btn-cancel" onClick={() => reset()}>Cancel</button>
-                  <button type="submit" className="btn btn-submit">Submit</button>
+                  <button type="submit" className="btn btn-submit">{id ? "Update" : "Submit"}</button>
                 </div>
               </div>
             </form>
