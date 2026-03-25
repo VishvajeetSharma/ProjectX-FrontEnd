@@ -26,7 +26,7 @@ export const getMasterPlan = async () => {
   return res?.data;
 };
 export const deleteMasterPlan = async (id: any) => {
-  const res = await axios.delete(`${BASE_URL}/admin/delete-master-plan${id}`);
+  const res = await axios.delete(`${BASE_URL}/admin/delete-master-plan/${id}`);
   return res?.data;
 };
 
@@ -42,6 +42,11 @@ export const createMasterCourse = async (data: FormData) => {
 
 export const getMasterCourse = async () => {
   const res = await axios.get(`${BASE_URL}/admin/get-master-course`);
+  return res?.data;
+};
+
+export const deleteMasterCourse = async (id: any) => {
+  const res = await axios.delete(`${BASE_URL}/admin/delete-master-course/${id}`);
   return res?.data;
 };
 

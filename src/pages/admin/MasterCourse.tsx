@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
 import DashboardLayout from "../../layout/DashboardLayout";
 import MasterCourseCard from "./MasterCourseCard";
-import { getMasterCourse } from "../../services";
+import { getMasterCourse, deleteMasterCourse } from "../../services";
+import { confirmDeletion, showALert } from "../../utils";
 
 const handleEditCourse = (id: any) => {
   console.log('Edit course', id);
-};
-
-const handleDeleteCourse = (id: any) => {
-  console.log('Delete course', id);
 };
 
 const handleToggleCourseStatus = (id: any, currentStatus: any) => {
@@ -28,7 +25,7 @@ const MasterCourse = () => {
     try {
       setLoading(true);
       const data = await getMasterCourse();
-      setMasterCourses(data?.result);
+      setMasterCourses(data?.result || []);
       setError(null);
     } catch (err) {
       console.error("Failed to fetch courses:", err);
@@ -36,6 +33,20 @@ const MasterCourse = () => {
       setMasterCourses([]);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleDeleteCourse = async (id: any) => {
+    const confirmed = await confirmDeletion('master course');
+    if (!confirmed) return;
+
+    try {
+      await deleteMasterCourse(id);
+      setMasterCourses((prev) => prev.filter((course) => course.id !== id));
+      showALert('Deleted', 'Master course removed successfully', 'success');
+    } catch (err) {
+      console.error('Failed to delete master course:', err);
+      showALert('Error', 'Unable to delete course, please try again', 'error');
     }
   };
 

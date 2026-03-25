@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import DashboardLayout from "../../layout/DashboardLayout";
 import MasterPlanCard from "./MasterPlanCard";
 import { deleteMasterPlan, getMasterPlan } from "../../services";
-import { showALert } from "../../utils";
+import { showALert, confirmDeletion } from "../../utils";
 
 // In your component:
 
@@ -22,12 +22,15 @@ const MasterPlan = () => {
   };
 
   const handleDeletePlan = async (id: any) => {
+    const confirmed = await confirmDeletion('master plan');
+    if (!confirmed) return;
+
     const res = await deleteMasterPlan(id);
     if (res?.success) {
-      showALert("Delete Plan", res.message, "success")
-      fetchData()
+      showALert("Delete Plan", res.message, "success");
+      fetchData();
     } else {
-      showALert("Delete Plan", res.message, "error")
+      showALert("Delete Plan", res.message, "error");
     }
   };
 
