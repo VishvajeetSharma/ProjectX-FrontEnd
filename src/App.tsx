@@ -16,13 +16,10 @@ import MasterCourse from './pages/admin/MasterCourse';
 import CreateMasterPlan from './pages/admin/CreateMasterPlan';
 import MasterPlan from './pages/admin/MasterPlan';
 import Users from './pages/admin/Users';
-import Navbar from './pages/landing/Navbar';
-import Footer from './pages/landing/Footer';
 const App = () => {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/registration" element={<Registration />} />
@@ -46,7 +43,6 @@ const App = () => {
           <Route path='/create-master-course' element={<CreateMasterCourse />} />
           <Route path='/master-course' element={<MasterCourse />} />
         </Routes>
-        <Footer />
       </BrowserRouter>
     </>
   )
@@ -55,10 +51,3 @@ const App = () => {
 export default App
 
 
-
-// 1. Redux
-// 2. Public Protected Routes
-// 3. Master & Plan
-// 4. Master Plan Create Form
-// 5. Master Course UI
-// 6. 

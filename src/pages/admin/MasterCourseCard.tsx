@@ -49,7 +49,7 @@ const MasterCourseCard: React.FC<MasterCourseCardProps> = ({
 
   return (
     <div className="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div className="card h-100 course-card border-0 rounded-4 overflow-hidden">
+      <div className="card h-100 course-card border-0 rounded-3 overflow-hidden">
         {/* Thumbnail with overlay */}
         <div className="position-relative">
           {thumbnail ? (

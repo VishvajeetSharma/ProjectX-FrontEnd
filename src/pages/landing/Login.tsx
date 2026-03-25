@@ -4,6 +4,8 @@ import * as yup from "yup";
 import { userLoginService } from "../../services";
 import { showALert, stroreData } from "../../utils";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 //  Validation Schema
 const schema = yup.object().shape({
@@ -57,6 +59,7 @@ const Login = () => {
   };
   return (
     <>
+      <Navbar />
       <div className="row align-items-center py-5 my-bg-dark">
         <div className="col-sm-10 mx-auto">
           <div className="row">
@@ -140,7 +143,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-
+      <Footer />
     </>
   )
 }

@@ -5,6 +5,8 @@ import * as yup from "yup";
 import { adminLoginService } from "../../services";
 import { showALert, stroreData } from "../../utils";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 
 //  Validation Schema
@@ -59,7 +61,7 @@ const AdminLogin = () => {
   };
   return (
     <>
-
+      <Navbar />
       <div className="row align-items-center py-5 my-bg-dark">
         <div className="col-sm-10 mx-auto">
           <div className="row">
@@ -124,7 +126,7 @@ const AdminLogin = () => {
           </div>
         </div>
       </div>
-
+      <Footer />
     </>
   )
 }

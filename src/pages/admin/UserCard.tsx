@@ -46,7 +46,7 @@ const UserCard: React.FC<UserCardProps> = ({
 
   return (
     <div className="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div className="card h-100 course-card border-0 rounded-4 overflow-hidden">
+      <div className="card h-100 course-card border-0 rounded-3 overflow-hidden">
         {/* Profile Image with subtle overlay */}
         <div className="position-relative">
           {profile ? (

@@ -1,10 +1,17 @@
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+
 const Faq = () => {
   return (
-    <div className="container py-5">
-      <h1>FAQs</h1>
-      <p>Frequently asked questions and answers to help you get started.</p>
-      <div style={{ height: "97px" }}></div>
-    </div>
+    <>
+      <Navbar />
+      <div className="container py-5">
+        <h1>FAQs</h1>
+        <p>Frequently asked questions and answers to help you get started.</p>
+        <div style={{ height: "97px" }}></div>
+      </div>
+      <Footer />
+    </>
   )
 }
 

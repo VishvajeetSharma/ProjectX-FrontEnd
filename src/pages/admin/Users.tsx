@@ -99,16 +99,13 @@ const users = [
 const Users = () => {
   return (
     <DashboardLayout>
-      <div className="py-5 text-white overflow-x-hidden my-bg-dark">
+      <div className="py-3 text-white overflow-x-hidden my-bg-dark">
         <div className="row px-4">
           <div className="col-12">
 
             {/* Title */}
             <div className="text-start mb-4">
               <h1 className="fw-bold">Users</h1>
-              <p className="text-secondary">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur, explicabo.
-              </p>
             </div>
             <div className="row g-4">
               {users.map((user) => (
@@ -122,7 +119,6 @@ const Users = () => {
                   credit={user.credit}
                   status={user.status}
                   profile={user.profile}
-                  password={user.password}
                   created_at={user.created_at}
                   updated_at={user.updated_at}
                   onEdit={handleEditUser}
