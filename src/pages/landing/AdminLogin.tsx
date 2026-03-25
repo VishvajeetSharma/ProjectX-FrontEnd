@@ -1,5 +1,3 @@
-import Footer from "./Footer"
-import Navbar from "./Navbar"
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -61,7 +59,7 @@ const AdminLogin = () => {
   };
   return (
     <>
-      <Navbar />
+
       <div className="row align-items-center py-5 my-bg-dark">
         <div className="col-sm-10 mx-auto">
           <div className="row">
@@ -127,7 +125,6 @@ const AdminLogin = () => {
         </div>
       </div>
 
-      <Footer />
     </>
   )
 }

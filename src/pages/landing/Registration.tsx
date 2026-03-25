@@ -1,5 +1,4 @@
-import Footer from "./Footer";
-import Navbar from "./Navbar";
+
 import RegistrationForm from "./RegistrationForm";
 import RegistrationInfo from "./RegistrationInfo";
 
@@ -8,8 +7,6 @@ import RegistrationInfo from "./RegistrationInfo";
 const Registration = () => {
   return (
     <>
-      <Navbar />
-
       <div className="row align-items-center py-5 my-bg-dark">
         <div className="col-sm-10 mx-auto">
           <div className="row">
@@ -25,8 +22,6 @@ const Registration = () => {
           </div>
         </div>
       </div>
-
-      <Footer />
     </>
 
   );

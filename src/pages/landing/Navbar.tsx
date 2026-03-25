@@ -4,9 +4,11 @@ const Navbar = () => {
 
   const landingMenuItems = [
     { path: "/", text: "Home" },
-    { path: "/about", text: "About" },
+    { path: "/about", text: "About Us" },
     { path: "/courses", text: "Courses" },
-    { path: "/contact", text: "Contact" },
+    { path: "/news-and-blogs", text: "News and Blogs" },
+    { path: "/faq", text: "FAQ" },
+    { path: "/contact", text: "Contact Us" },
     { path: "/registration", text: "Register" },
     { path: "/login", text: "Login" },
     { path: "/admin-login", text: "Admin Login" }
