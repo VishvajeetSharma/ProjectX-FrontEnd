@@ -1,6 +1,17 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import type { RootState } from "../../redux/store";
+import { clearAuth } from "../../redux/slices/authSlice";
 
 const Navbar = () => {
+  const { isAuthenticated, userType } = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(clearAuth());
+    navigate("/login");
+  };
 
   const landingMenuItems = [
     { path: "/", text: "Home" },
@@ -9,10 +20,17 @@ const Navbar = () => {
     { path: "/news-and-blogs", text: "News and Blogs" },
     { path: "/faq", text: "FAQ" },
     { path: "/contact", text: "Contact Us" },
-    { path: "/registration", text: "Register" },
-    { path: "/login", text: "Login" },
-    { path: "/admin-login", text: "Admin Login" }
   ];
+
+  const authMenuItems = isAuthenticated 
+    ? [
+        { path: userType === 'admin' ? "/admin-dashboard" : "/user-dashboard", text: "Dashboard" }
+      ]
+    : [
+        { path: "/registration", text: "Register" },
+        { path: "/login", text: "Login" },
+        { path: "/admin-login", text: "Admin" }
+      ];
 
   return (
     <>
@@ -51,6 +69,27 @@ const Navbar = () => {
                   </NavLink>
                 </li>
               ))}
+              {authMenuItems.map((link, index) => (
+                <li className="nav-item" key={`auth-${index}`}>
+                  <NavLink 
+                    className={({ isActive }) => `nav-link text-light ${isActive ? "active" : ""}`} 
+                    to={link.path}
+                  >
+                    {link.text}
+                  </NavLink>
+                </li>
+              ))}
+              {isAuthenticated && (
+                <li className="nav-item">
+                  <button 
+                    className="nav-link text-light btn btn-link" 
+                    onClick={handleLogout}
+                    style={{ border: 'none', background: 'none', cursor: 'pointer' }}
+                  >
+                    Logout
+                  </button>
+                </li>
+              )}
             </ul>
           </div>
         </div>
@@ -59,4 +98,4 @@ const Navbar = () => {
   );
 }
 
-export default Navbar;
+export default Navbar;

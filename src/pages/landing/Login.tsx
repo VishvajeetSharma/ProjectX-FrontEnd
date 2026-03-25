@@ -2,8 +2,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { userLoginService } from "../../services";
-import { showALert, stroreData } from "../../utils";
+import { showALert } from "../../utils";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setAuth } from "../../redux/slices/authSlice";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -31,6 +33,7 @@ const schema = yup.object().shape({
 
 const Login = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const {
     register,
     handleSubmit,
@@ -45,9 +48,7 @@ const Login = () => {
       const res = await userLoginService(data);
       if (res.success) {
         showALert("User Login", res?.message, "success")
-        console.log(res,"#############");
-        stroreData("token",res?.result?.token)
-        stroreData("userType", "user");
+        dispatch(setAuth({ token: res?.result?.token, userType: "user" }));
         navigate('/user-dashboard');
         reset()
       } else {

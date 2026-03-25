@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { adminLoginService } from "../../services";
-import { showALert, stroreData } from "../../utils";
+import { showALert } from "../../utils";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setAuth } from "../../redux/slices/authSlice";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -33,6 +35,7 @@ const schema = yup.object().shape({
 
 const AdminLogin = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const {
     register,
     handleSubmit,
@@ -46,17 +49,15 @@ const AdminLogin = () => {
     try {
       const res = await adminLoginService(data);
       if (res.success) {
-        showALert("User Login", res?.message, "success")
-        console.log(res, "#############");
-        stroreData("token", res?.result?.token)
-        stroreData("userType", "admin");
+        showALert("Admin Login", res?.message, "success")
+        dispatch(setAuth({ token: res?.result?.token, userType: "admin" }));
         navigate('/admin-dashboard');
         reset()
       } else {
-        showALert("User Login", res?.message, "error")
+        showALert("Admin Login", res?.message, "error")
       }
     } catch (err) {
-      showALert("User Login", "Internal Server Error", "error")
+      showALert("Admin Login", "Internal Server Error", "error")
     }
   };
   return (

@@ -1,5 +1,8 @@
-import { FiHome, FiUsers, FiMessageCircle, FiLogOut } from 'react-icons/fi';
-import { NavLink } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { clearAuth } from '../redux/slices/authSlice';
+import { useNavigate, NavLink } from 'react-router-dom';
+import type { RootState } from '../redux/store';
+import { FiHome, FiUsers, FiLogOut } from 'react-icons/fi';
 import { FaBook, FaLayerGroup } from "react-icons/fa";
 import { MdDashboard } from "react-icons/md";
 
@@ -9,7 +12,15 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
-  const roleType = JSON.parse(localStorage.getItem('userType') as string);
+  const { userType: roleType } = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(clearAuth());
+    navigate('/');
+  };
+
   const menuItems =
     roleType === 'user'
       ? [
@@ -22,7 +33,6 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
         { label: "Master Plan", icon: FaLayerGroup, path: "/admin/master-plan" },
         { label: "Create Master Course", icon: FaBook, path: "/admin/create-master-course" },
         { label: "Master Course", icon: FaBook, path: "/admin/master-course" },
-        { label: 'Logout', icon: FiLogOut, path: '/' },
       ];
 
   return (
@@ -44,7 +54,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
       </div>
 
       {/* Navigation Menu */}
-      <ul className="nav flex-column mt-3">
+      <ul className="nav flex-column mt-3 flex-grow-1">
         {menuItems.map((item) => (
           <li className="nav-item" key={item.label}>
             <NavLink
@@ -60,6 +70,16 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
             </NavLink>
           </li>
         ))}
+        {/* Logout Button moved here */}
+        <li className="nav-item">
+          <button
+            onClick={handleLogout}
+            className="nav-link d-flex align-items-center gap-2 text-white w-100 border-0 bg-transparent py-2 px-3"
+          >
+            <FiLogOut />
+            {isOpen && <span>Logout</span>}
+          </button>
+        </li>
       </ul>
     </div>
   );
