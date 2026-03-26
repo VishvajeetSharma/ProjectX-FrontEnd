@@ -133,7 +133,7 @@ const CreateCourseForm = () => {
     }
   };
 
-  if (loading) return <div className="text-white p-4">Loading...</div>;
+  if (loading) return <div className="theme-text-primary p-4">Loading...</div>;
 
   return (
     <div className="container-fluid py-3 px-4 overflow-hidden">
@@ -146,7 +146,7 @@ const CreateCourseForm = () => {
               <div className="row">
                 {/* Title */}
                 <div className="col-lg-4 mb-4">
-                  <label className="form-label-premium text-light">Course Title *</label>
+                  <label className="form-label-premium">Course Title *</label>
                   <input
                     type="text"
                     {...register("title")}
@@ -158,7 +158,7 @@ const CreateCourseForm = () => {
 
                 {/* Level */}
                 <div className="col-lg-4 mb-4">
-                  <label className="form-label-premium text-light">Expertise Level *</label>
+                  <label className="form-label-premium">Expertise Level *</label>
                   <select
                     {...register("level")}
                     className="form-control-premium w-100"
@@ -173,7 +173,7 @@ const CreateCourseForm = () => {
 
                 {/* Rating */}
                 <div className="col-lg-4 mb-4">
-                  <label className="form-label-premium text-light">Rating *</label>
+                  <label className="form-label-premium">Rating *</label>
                   <input
                     type="number"
                     {...register("rating")}
@@ -187,7 +187,7 @@ const CreateCourseForm = () => {
               <div className="row">
                 {/* Duration */}
                 <div className="col-lg-4 mb-4">
-                  <label className="form-label-premium text-light">Duration (Hours) *</label>
+                  <label className="form-label-premium">Duration (Hours) *</label>
                   <input
                     type="number"
                     {...register("duration")}
@@ -199,7 +199,7 @@ const CreateCourseForm = () => {
 
                 {/* Type */}
                 <div className="col-lg-4 mb-4">
-                  <label className="form-label-premium text-light">Course Type *</label>
+                  <label className="form-label-premium">Course Type *</label>
                   <input
                     type="text"
                     {...register("type")}
@@ -211,7 +211,7 @@ const CreateCourseForm = () => {
 
                 {/* Status */}
                 <div className="col-lg-4 mb-4">
-                  <label className="form-label-premium text-light">Active Status *</label>
+                  <label className="form-label-premium">Active Status *</label>
                   <select
                     {...register("status")}
                     className="form-control-premium w-100"
@@ -225,7 +225,7 @@ const CreateCourseForm = () => {
               <div className="row">
                 {/* Thumbnail */}
                 <div className="col-lg-4 mb-4">
-                  <label className="form-label-premium text-light">Thumbnail Image *</label>
+                  <label className="form-label-premium">Thumbnail Image *</label>
                   <input
                     type="file"
                     className="form-control-premium w-100"
@@ -240,7 +240,7 @@ const CreateCourseForm = () => {
 
                 {/* Content File */}
                 <div className="col-lg-8 mb-4">
-                  <label className="form-label-premium text-light">Course Content File *</label>
+                  <label className="form-label-premium">Course Content File *</label>
                   <input
                     type="file"
                     className="form-control-premium w-100"
@@ -258,7 +258,7 @@ const CreateCourseForm = () => {
               <div className="row align-items-end">
                 {/* Description (Textarea) */}
                 <div className="col-lg-8 mb-4">
-                  <label className="form-label-premium text-light">Plan Description *</label>
+                  <label className="form-label-premium">Plan Description *</label>
                   <textarea
                     {...register("desc")}
                     className="form-control-premium w-100"

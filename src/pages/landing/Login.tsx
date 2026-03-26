@@ -66,7 +66,7 @@ const Login = () => {
           <div className="row">
 
             {/* LEFT SIDE */}
-            <div className="col-lg-6 ">
+            <div className="col-lg-6">
               <h1 className="access-title">
                 Login Your<br /> Account
               </h1>
@@ -79,11 +79,11 @@ const Login = () => {
               <form onSubmit={handleSubmit(onSubmit)}>
                 {/* Email */}
                 <div className="mb-3">
-                  <label className="form-label-premium text-dark">Email *</label>
+                  <label className="form-label-premium">Email *</label>
                   <input
                     type="email"
                     {...register("email")}
-                    className="form-control border-0"
+                    className="form-control-premium w-100"
                     placeholder="Enter your email"
                   />
                   {errors.email && (
@@ -93,11 +93,11 @@ const Login = () => {
 
                 {/* Password */}
                 <div className="mb-3">
-                  <label className="form-label-premium text-dark">Password *</label>
+                  <label className="form-label-premium">Password *</label>
                   <input
                     type="password"
                     {...register("password")}
-                    className="form-control border-0"
+                    className="form-control-premium w-100"
                     placeholder="Enter your password"
                   />
                   {errors.password && (
@@ -108,7 +108,7 @@ const Login = () => {
                 </div>
 
                 {/* Button */}
-                <button className="btn btn-primary w-100 py-2 mt-4 fw-bold">
+                <button className="my-btn w-100 py-2 mt-3 fw-bold">
                   Login
                 </button>
               </form>
@@ -126,7 +126,7 @@ const Login = () => {
                 </div>
 
                 {/* RATING */}
-                <div className="rating text-white">
+                <div className="rating">
                   <strong>4.5/5.0</strong>
                   <span className="stars ms-2">★★★★★</span>
                 </div>

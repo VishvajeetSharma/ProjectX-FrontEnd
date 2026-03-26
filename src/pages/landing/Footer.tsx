@@ -2,7 +2,7 @@ import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/f
 
 const Footer = () => {
   return (
-    <footer className="my-second-bg-dark text-light pt-5 pb-3">
+    <footer className="my-second-bg-dark pt-5 pb-3" style={{ color: 'var(--chrome-text-muted)' }}>
       <div className="container">
         <div className="row">
 
@@ -11,7 +11,7 @@ const Footer = () => {
             <h4 className="fw-bold d-flex fs-1 align-items-center">
               Eduport
             </h4>
-            <p className="mt-3">
+            <p className="mt-3" style={{ color: 'var(--chrome-text-muted)' }}>
               Eduport education theme, built specifically for the education centers
               which is dedicated to teaching and involve learners.
             </p>
@@ -20,8 +20,8 @@ const Footer = () => {
               {[FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn].map((Icon, i) => (
                 <div
                   key={i}
-                  className="bg-light text-dark py-1 px-2 rounded"
-                  style={{ cursor: "pointer" }}
+                  className="py-1 px-2 rounded"
+                  style={{ cursor: "pointer", background: 'var(--chrome-elevated)', color: 'var(--chrome-text)' }}
                 >
                   <Icon size={14} />
                 </div>
@@ -31,7 +31,7 @@ const Footer = () => {
 
           {/* Company */}
           <div className="col-6 col-md-2 mb-4">
-            <h6 className="fw-bold fs-4 text-white">Company</h6>
+            <h6 className="fw-bold fs-4" style={{ color: 'var(--chrome-text)' }}>Company</h6>
             <ul className="list-unstyled small mt-3">
               <li className="mb-2">About Us</li>
               <li className="mb-2">Contact us</li>
@@ -43,7 +43,7 @@ const Footer = () => {
 
           {/* Community */}
           <div className="col-6 col-md-2 mb-4">
-            <h6 className="fw-bold  fs-4 text-white">Community</h6>
+            <h6 className="fw-bold fs-4" style={{ color: 'var(--chrome-text)' }}>Community</h6>
             <ul className="list-unstyled small mt-3">
               <li className="mb-2">Instructors</li>
               <li className="mb-2">Workshop</li>
@@ -54,7 +54,7 @@ const Footer = () => {
 
           {/* Teaching */}
           <div className="col-6 col-md-2 mb-4">
-            <h6 className="fw-bold  fs-4 text-white">Teaching</h6>
+            <h6 className="fw-bold fs-4" style={{ color: 'var(--chrome-text)' }}>Teaching</h6>
             <ul className="list-unstyled small mt-3">
               <li className="mb-2">Become a teacher</li>
               <li className="mb-2">How to guide</li>
@@ -64,13 +64,13 @@ const Footer = () => {
 
           {/* Contact */}
           <div className="col-6 col-md-2 mb-4">
-            <h6 className="fw-bold fs-4 mb-3 text-white">Contact</h6>
+            <h6 className="fw-bold fs-4 mb-3" style={{ color: 'var(--chrome-text)' }}>Contact</h6>
             <p className="small my-1">
-              Toll free: <span className="text-white">+1234 568 963</span>
+              Toll free: <span style={{ color: 'var(--chrome-text)' }}>+1234 568 963</span>
             </p>
             <p className="small my-1">(9:AM to 8:PM IST)</p>
             <p className="small">
-              Email: <span className="text-white">example@gmail.com</span>
+              Email: <span style={{ color: 'var(--chrome-text)' }}>example@gmail.com</span>
             </p>
 
             <div className="row d-flex gap-2 mt-2">

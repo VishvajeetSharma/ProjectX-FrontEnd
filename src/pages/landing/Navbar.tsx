@@ -34,9 +34,9 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light my-second-bg-dark">
+      <nav className="navbar navbar-expand-lg my-second-bg-dark">
         <div className="container">
-          <NavLink className="navbar-brand text-light fs-2 fw-bold" to="/">
+          <NavLink className="navbar-brand" to="/">
             <img
               src="images/logo.png"
               alt="Logo"
@@ -46,7 +46,7 @@ const Navbar = () => {
             /> Eduport
           </NavLink>
           <button
-            className="navbar-toggler text-light"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -62,7 +62,7 @@ const Navbar = () => {
               {landingMenuItems.map((link, index) => (
                 <li className="nav-item" key={index}>
                   <NavLink 
-                    className={({ isActive }) => `nav-link text-light ${isActive ? "active" : ""}`} 
+                    className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`} 
                     to={link.path}
                   >
                     {link.text}
@@ -72,7 +72,7 @@ const Navbar = () => {
               {authMenuItems.map((link, index) => (
                 <li className="nav-item" key={`auth-${index}`}>
                   <NavLink 
-                    className={({ isActive }) => `nav-link text-light ${isActive ? "active" : ""}`} 
+                    className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`} 
                     to={link.path}
                   >
                     {link.text}
@@ -82,7 +82,7 @@ const Navbar = () => {
               {isAuthenticated && (
                 <li className="nav-item">
                   <button 
-                    className="nav-link text-light btn btn-link" 
+                    className="nav-link btn btn-link" 
                     onClick={handleLogout}
                     style={{ border: 'none', background: 'none', cursor: 'pointer' }}
                   >

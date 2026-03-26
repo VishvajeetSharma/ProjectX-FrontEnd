@@ -41,7 +41,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
             <span className="badge bg-purple bg-opacity-25 text-purple rounded-pill px-3 py-1 x-small" style={{ color: '#8b5cf6' }}>{level}</span>
           </div>
 
-          <h6 className="card-title fw-bold text-white mb-2 text-truncate-2" style={{ height: '2.8rem' }}>{title}</h6>
+          <h6 className="card-title fw-bold mb-2 text-truncate-2" style={{ height: '2.8rem', color: 'var(--text-heading)' }}>{title}</h6>
           <p className="card-text text-secondary small mb-3 text-truncate-2" style={{ height: '2.4rem' }}>{desc}</p>
 
           {/* Rating */}

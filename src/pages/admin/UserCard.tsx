@@ -72,22 +72,22 @@ const UserCard: React.FC<UserCardProps> = ({
         <div className="card-body d-flex flex-column p-3">
           {/* Email */}
           {email && (
-            <p className="card-text text-white opacity-75 mb-1 small text-truncate d-flex align-items-center" title={email}>
-              <FaEnvelope className="me-2 text-primary" style={{ minWidth: '14px' }} /> {email}
+            <p className="card-text mb-1 small text-truncate d-flex align-items-center" title={email} style={{ color: 'var(--text-secondary)' }}>
+              <FaEnvelope className="me-2" style={{ minWidth: '14px', color: 'var(--accent)' }} /> {email}
             </p>
           )}
 
           {/* Mobile */}
           {mobile && (
-            <p className="card-text text-white opacity-75 mb-1 small d-flex align-items-center">
-              <FaPhone className="me-2 text-info" style={{ minWidth: '14px' }} /> {mobile}
+            <p className="card-text mb-1 small d-flex align-items-center" style={{ color: 'var(--text-secondary)' }}>
+              <FaPhone className="me-2" style={{ minWidth: '14px', color: 'var(--info)' }} /> {mobile}
             </p>
           )}
 
           {/* Address */}
           {address && (
-            <p className="card-text text-white opacity-75 mb-2 small d-flex align-items-center text-truncate">
-              <FaMapMarkerAlt className="me-2 text-danger" style={{ minWidth: '14px' }} /> {address}
+            <p className="card-text mb-2 small d-flex align-items-center text-truncate" style={{ color: 'var(--text-secondary)' }}>
+              <FaMapMarkerAlt className="me-2" style={{ minWidth: '14px', color: 'var(--danger)' }} /> {address}
             </p>
           )}
 
@@ -110,7 +110,7 @@ const UserCard: React.FC<UserCardProps> = ({
 
 
           <div className="mt-auto">
-            <div className="d-flex flex-wrap justify-content-between x-small text-white opacity-50 mt-2" style={{ fontSize: '0.65rem' }}>
+            <div className="d-flex flex-wrap justify-content-between x-small mt-2" style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>
               {created_at && (
                 <span>
                   <FaCalendarAlt className="me-1" /> {new Date(created_at).toLocaleDateString()}

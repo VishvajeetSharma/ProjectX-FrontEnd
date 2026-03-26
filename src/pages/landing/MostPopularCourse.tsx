@@ -98,14 +98,14 @@ const courses = [
   const filteredCourses = courses.filter(course => course.category === activeTab);
 
   return (
-    <div className="container py-5 text-white my-bg-dark">
+    <div className="container py-5 my-bg-dark">
       <div className="row">
         <div className="col-sm-10 mx-auto">
 
 
           {/* Title */}
           <div className="text-center mb-4">
-            <h1 className="fw-bold text-dark">Most Popular Courses</h1>
+            <h1 className="fw-bold">Most Popular Courses</h1>
             <p className="text-secondary">
               Choose from hundreds of courses from specialist organizations
             </p>

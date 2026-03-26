@@ -1,9 +1,8 @@
 import React from "react";
 import CountUp from "react-countup";
 import { FaLaptop, FaUser, FaGraduationCap, FaCheckCircle } from "react-icons/fa";
-import "bootstrap/dist/css/bootstrap.min.css";
 
-// ✅ Type for each stat
+// Stats data
 type Stat = {
   id: number;
   icon: React.ReactNode;
@@ -14,7 +13,6 @@ type Stat = {
   iconClass: string;
 };
 
-// ✅ Stats data typed
 const statsData: Stat[] = [
   {
     id: 1,
@@ -54,7 +52,6 @@ const statsData: Stat[] = [
   },
 ];
 
-// ✅ Props type for StatCard
 type StatCardProps = Omit<Stat, "id">;
 
 const StatCard: React.FC<StatCardProps> = ({
@@ -83,15 +80,20 @@ const StatCard: React.FC<StatCardProps> = ({
 
 const Counter: React.FC = () => {
   return (
-    <div className="py-5 my-bg-dark">
-      <div className="container">
-        <div className="row g-4">
-          {statsData.map((item) => (
-            <StatCard key={item.id} {...item} />
-          ))}
+    <>
+      {/* Gradient bridge from dark hero → light content */}
+      <div className="hero-to-content-bridge"></div>
+
+      <div className="py-4 my-bg-dark">
+        <div className="container">
+          <div className="row g-4">
+            {statsData.map((item) => (
+              <StatCard key={item.id} {...item} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

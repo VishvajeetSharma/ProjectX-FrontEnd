@@ -117,7 +117,7 @@ const MasterCourseCard: React.FC<MasterCourseCardProps> = ({
         {/* Card Body */}
         <div className="card-body d-flex flex-column p-3">
           <div className="d-flex justify-content-between align-items-start mb-2">
-            <h6 className="card-title fw-bold text-white mb-0 text-truncate flex-grow-1" title={title}>
+            <h6 className="card-title fw-bold mb-0 text-truncate flex-grow-1" title={title} style={{ color: 'var(--text-heading)' }}>
               {title || "N/A"}
             </h6>
             {rating && (
@@ -131,11 +131,11 @@ const MasterCourseCard: React.FC<MasterCourseCardProps> = ({
 
           {/* Details Row */}
           <div className="d-flex justify-content-between mb-2">
-              <div className="d-flex align-items-center text-white opacity-75 x-small">
-                <FaLevelUpAlt className="me-1 text-primary" /> {level}
+              <div className="d-flex align-items-center x-small" style={{ color: 'var(--text-secondary)' }}>
+                <FaLevelUpAlt className="me-1" style={{ color: 'var(--accent)' }} /> {level}
               </div>
-              <div className="d-flex align-items-center text-white opacity-75 x-small">
-                <FaHourglassHalf className="me-1 text-info" /> {duration}
+              <div className="d-flex align-items-center x-small" style={{ color: 'var(--text-secondary)' }}>
+                <FaHourglassHalf className="me-1" style={{ color: 'var(--info)' }} /> {duration}
               </div>
           </div>
 
@@ -153,9 +153,9 @@ const MasterCourseCard: React.FC<MasterCourseCardProps> = ({
                <button
                  type="button"
                  onClick={() => openContentInNewTab(content)}
-                 className="btn btn-link text-white opacity-75 x-small d-flex align-items-center p-0"
+                 className="btn btn-link x-small d-flex align-items-center p-0"
                  title="Open content in new tab"
-                 style={{ textDecoration: 'none' }}
+                 style={{ textDecoration: 'none', color: 'var(--accent)' }}
                >
                  <FaAlignLeft className="me-1" /> Content
                </button>
@@ -164,14 +164,14 @@ const MasterCourseCard: React.FC<MasterCourseCardProps> = ({
 
           {/* Description */}
           {desc && (
-            <p className="text-white opacity-75 small mb-3 text-truncate-2" style={{ fontSize: '0.8rem', minHeight: '2.4rem' }}>
+            <p className="small mb-3 text-truncate-2" style={{ fontSize: '0.8rem', minHeight: '2.4rem', color: 'var(--text-secondary)' }}>
               {desc}
             </p>
           )}
 
           {/* Dates */}
           <div className="mt-auto pt-2">
-            <div className="d-flex flex-wrap justify-content-between x-small text-white opacity-25" style={{ fontSize: '0.65rem' }}>
+            <div className="d-flex flex-wrap justify-content-between x-small" style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>
                <span className="d-flex align-items-center"><FaCalendarAlt className="me-1" /> {new Date(created_at).toLocaleDateString()}</span>
                <span className="d-flex align-items-center"><FaSyncAlt className="me-1" /> {new Date(updated_at).toLocaleDateString()}</span>
             </div>

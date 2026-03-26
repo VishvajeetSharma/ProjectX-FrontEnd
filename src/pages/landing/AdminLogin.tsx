@@ -68,7 +68,7 @@ const AdminLogin = () => {
           <div className="row">
 
             {/* LEFT SIDE */}
-            <div className="col-lg-6 text-white">
+            <div className="col-lg-6">
               <h1 className="access-title">
                 Admin Login
               </h1>
@@ -81,11 +81,11 @@ const AdminLogin = () => {
               <form onSubmit={handleSubmit(onSubmit)}>
                 {/* Email */}
                 <div className="mb-3">
-                  <label className="form-label-premium text-dark">Email *</label>
+                  <label className="form-label-premium">Email *</label>
                   <input
                     type="email"
                     {...register("email")}
-                    className="form-control border-0"
+                    className="form-control-premium w-100"
                     placeholder="Enter your email"
                   />
                   {errors.email && (
@@ -95,11 +95,11 @@ const AdminLogin = () => {
 
                 {/* Password */}
                 <div className="mb-3">
-                  <label className="form-label-premium text-dark">Password *</label>
+                  <label className="form-label-premium">Password *</label>
                   <input
                     type="password"
                     {...register("password")}
-                    className="form-control border-0"
+                    className="form-control-premium w-100"
                     placeholder="Enter your password"
                   />
                   {errors.password && (
@@ -110,7 +110,7 @@ const AdminLogin = () => {
                 </div>
 
                 {/* Button */}
-                <button className="btn btn-primary w-100 py-2 mt-4 fw-bold">
+                <button className="my-btn w-100 py-2 mt-3 fw-bold">
                   Login
                 </button>
               </form>

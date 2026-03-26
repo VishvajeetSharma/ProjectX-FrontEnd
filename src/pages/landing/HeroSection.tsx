@@ -2,7 +2,7 @@ import { FaEnvelope, FaCheckCircle, FaPlay } from "react-icons/fa";
 const HeroSection = () => {
   return (
     <>
-      <section className="hero-section my-bg-dark">
+      <section className="hero-section">
         {/* Decorative Background Elements */}
         <div className="hero-blob hero-blob-1"></div>
         <div className="hero-blob hero-blob-2"></div>
@@ -52,8 +52,8 @@ const HeroSection = () => {
                     <FaEnvelope className="text-white" />
                   </div>
                   <div className="text-start">
-                    <h6 className="mb-0 fw-bold text-white small">Congratulations</h6>
-                    <p className="mb-0 x-small text-white opacity-50">Your admission completed</p>
+                    <h6 className="mb-0 fw-bold small" style={{ color: '#fff' }}>Congratulations</h6>
+                    <p className="mb-0 x-small" style={{ color: 'rgba(255,255,255,0.5)' }}>Your admission completed</p>
                   </div>
                 </div>
 

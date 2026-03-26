@@ -52,13 +52,13 @@ const TrendingCourses = () => {
   ];
 
   return (
-    <div className="container-fluid py-5 text-white my-bg-dark">
+    <div className="container-fluid py-5 my-bg-dark">
       <div className="row">
         <div className="col-lg-11 col-xl-10 mx-auto px-4">
 
           {/* Title */}
           <div className="text-center mb-5">
-            <h1 className="fw-bold mb-3 text-dark">Our Trending Courses</h1>
+            <h1 className="fw-bold mb-3">Our Trending Courses</h1>
             <p className="text-secondary mx-auto" style={{ maxWidth: '600px' }}>
               Check out the most 🔥 courses in the market today and start your learning journey with our top-rated content.
             </p>

@@ -65,17 +65,17 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div className="card bg-dark text-white p-4 border-0 rounded-4 shadow-lg">
+    <div className="form-section-card">
       <h2 className="fw-bold mb-4">Register Yourself</h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* Name */}
         <div className="mb-3">
-          <label className="form-label-premium text-light">Name *</label>
+          <label className="form-label-premium">Name *</label>
           <input
             type="text"
             {...register("name")}
-            className="form-control border-0"
+            className="form-control-premium w-100"
             placeholder="Enter your name"
           />
           {errors.name && (
@@ -85,11 +85,11 @@ const RegistrationForm = () => {
 
         {/* Email */}
         <div className="mb-3">
-          <label className="form-label-premium text-light">Email *</label>
+          <label className="form-label-premium">Email *</label>
           <input
             type="email"
             {...register("email")}
-            className="form-control border-0"
+            className="form-control-premium w-100"
             placeholder="Enter your email"
           />
           {errors.email && (
@@ -99,11 +99,11 @@ const RegistrationForm = () => {
 
         {/* Mobile */}
         <div className="mb-3">
-          <label className="form-label-premium text-light">Mobile number *</label>
+          <label className="form-label-premium">Mobile number *</label>
           <input
             type="text"
             {...register("mobile")}
-            className="form-control border-0"
+            className="form-control-premium w-100"
             placeholder="Enter your number"
           />
           {errors.mobile && (
@@ -113,11 +113,11 @@ const RegistrationForm = () => {
 
         {/* Password */}
         <div className="mb-3">
-          <label className="form-label-premium text-light">Password *</label>
+          <label className="form-label-premium">Password *</label>
           <input
             type="password"
             {...register("password")}
-            className="form-control border-0"
+            className="form-control-premium w-100"
             placeholder="Enter your password"
           />
           {errors.password && (
@@ -128,7 +128,7 @@ const RegistrationForm = () => {
         </div>
 
         {/* Button */}
-        <button className="btn my-btn w-100 py-2 mt-4 fw-bold">
+        <button className="my-btn w-100 py-2 mt-3 fw-bold">
           Submit
         </button>
       </form>

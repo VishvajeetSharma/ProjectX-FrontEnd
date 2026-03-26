@@ -61,12 +61,12 @@ const MasterPlanCard: React.FC<MasterPlanProps> = ({
         {/* Card Body */}
         <div className="card-body d-flex flex-column p-3">
           {/* Plan Name */}
-          <h6 className="card-title fw-bold mb-2 text-primary text-truncate" title={name}>
+          <h6 className="card-title fw-bold mb-2 text-truncate" title={name} style={{ color: 'var(--accent)' }}>
             {name}
           </h6>
 
           {/* Credits */}
-          <div className="d-flex align-items-center mb-2 small text-white">
+          <div className="d-flex align-items-center mb-2 small" style={{ color: 'var(--text-primary)' }}>
             <FaCoins className="me-2 text-warning" />
             <span className="fw-bold">{credit} Credits</span>
           </div>
@@ -75,9 +75,9 @@ const MasterPlanCard: React.FC<MasterPlanProps> = ({
 
           {/* Pricing Section */}
           <div className="d-flex align-items-baseline gap-2 mb-1">
-            <h4 className="mb-0 fw-bold text-white">₹{discountedPrice}</h4>
+            <h4 className="mb-0 fw-bold" style={{ color: 'var(--text-heading)' }}>₹{discountedPrice}</h4>
             {offer > 0 && (
-              <span className="text-white opacity-50 text-decoration-line-through x-small">
+              <span className="text-decoration-line-through x-small" style={{ color: 'var(--text-muted)' }}>
                 ₹{price}
               </span>
             )}
@@ -100,19 +100,19 @@ const MasterPlanCard: React.FC<MasterPlanProps> = ({
              </span>
           </div>
 
-          <div className="text-white opacity-50 x-small mb-3" style={{ fontSize: '0.7rem' }}>
+          <div className="x-small mb-3" style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
              ₹ {pricePerCredit} / Credit • Valid {duration} days
           </div>
 
           {/* Description */}
           {desc && (
-            <p className="text-white opacity-75 small mb-3 text-truncate-2" style={{ fontSize: '0.8rem', minHeight: '2.4rem' }}>
+            <p className="small mb-3 text-truncate-2" style={{ fontSize: '0.8rem', minHeight: '2.4rem', color: 'var(--text-secondary)' }}>
               {desc}
             </p>
           )}
 
           <div className="mt-auto">
-            <div className="d-flex flex-wrap justify-content-between x-small text-white opacity-50 mb-2" style={{ fontSize: '0.65rem' }}>
+            <div className="d-flex flex-wrap justify-content-between x-small mb-2" style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>
               <span><FaCalendarAlt className="me-1" /> {new Date(created_at).toLocaleDateString()}</span>
               <span><FaSyncAlt className="me-1" /> {new Date(updated_at).toLocaleDateString()}</span>
             </div>
