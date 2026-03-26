@@ -25,6 +25,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
     roleType === 'user'
       ? [
         { label: 'Dashboard', icon: FiHome, path: '/user-dashboard' },
+        { label: 'Purchase credit', icon: FiHome, path: '/user-purchase-credit' },
+        { label: 'Plans', icon: FiHome, path: '/user-plans' },
+        { label: 'Purchase course', icon: FiHome, path: '/user-purchase-course' },
+        { label: 'Course', icon: FiHome, path: '/user-course' },
       ]
       : [
         { label: "Dashboard", icon: MdDashboard, path: "/admin-dashboard" },

@@ -58,6 +58,13 @@ export const getMasterPlan = async () => {
   return res?.data;
 };
 
+export const getUserMasterPlan = async () => {
+  const res = await api.get("/user/user-master-plan");
+  return res?.data;
+};
+
+
+
 export const deleteMasterPlan = async (id: any) => {
   const res = await api.delete(`/admin/delete-master-plan/${id}`);
   return res?.data;

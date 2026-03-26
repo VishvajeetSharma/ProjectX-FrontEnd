@@ -19,6 +19,10 @@ import Users from './pages/admin/Users';
 import AuthGuard from './hoc/AuthGuard';
 import UpdatePasswordForm from './components/UpdatePassword';
 import ResetPasswordForm from './components/ResetPassword';
+import PurchaseCredit from './pages/user/PurchaseCredit';
+import UserPlans from './pages/user/UserPlans';
+import PurchaseCourse from './pages/user/PurchaseCourse';
+import UserCourse from './pages/user/UserCourse';
 const App = () => {
   return (
     <>
@@ -36,6 +40,10 @@ const App = () => {
 
           {/* user Routes */}
           <Route path="/user-dashboard" element={<AuthGuard allowedRoles={['user']}><UserDashboard /></AuthGuard>} />
+          <Route path="/user-purchase-credit" element={<AuthGuard allowedRoles={['user']}><PurchaseCredit /></AuthGuard>} />
+          <Route path="/user-plans" element={<AuthGuard allowedRoles={['user']}><UserPlans /></AuthGuard>} />
+          <Route path="/user-purchase-course" element={<AuthGuard allowedRoles={['user']}><PurchaseCourse /></AuthGuard>} />
+          <Route path="/user-course" element={<AuthGuard allowedRoles={['user']}><UserCourse /></AuthGuard>} />
 
 
           {/* Admin Routes */}
