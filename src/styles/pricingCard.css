@@ -29,12 +29,14 @@
 .pricing-card {
   background: var(--bg-card);
   border-radius: var(--radius-lg);
-  padding: 22px 22px 26px 22px;
+  padding: 55px 32px 55px 32px;
   width: 100%;
   border: 1px solid var(--border-card);
   box-shadow: var(--shadow-sm);
   position: relative;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   transition: var(--transition);
 }
@@ -71,34 +73,29 @@
   pointer-events: none;
   overflow: hidden;
 }
-.card-accent-0 .card-pattern { background: radial-gradient(circle at 80% 20%, rgba(255,179,165,0.6) 0%, transparent 70%); }
-.card-accent-1 .card-pattern { background: radial-gradient(circle at 80% 20%, rgba(179,192,255,0.6) 0%, transparent 70%); }
-.card-accent-2 .card-pattern { background: radial-gradient(circle at 80% 20%, rgba(165,229,213,0.6) 0%, transparent 70%); }
 
 /* ===== Card Top ===== */
 .card-top { margin-bottom: 12px; }
 
 .card-plan-name {
   font-size: 1.3rem;
-  font-weight: 700;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
   color: var(--text-heading);
-  margin: 0 0 8px 0;
+  margin: 0;
   line-height: 1.3;
 }
-.card-starts-at {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin-bottom: 2px;
-}
+
 .card-price-row {
   display: flex;
   align-items: baseline;
+  justify-content: center;
   gap: 8px;
-  margin-bottom: 8px;
 }
 .card-price {
-  font-size: 2.1rem;
-  font-weight: 800;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--text-heading);
   line-height: 1;
 }
@@ -119,7 +116,7 @@
   border: 1px solid var(--border-card);
   border-radius: var(--radius-sm);
   padding: 9px 13px;
-  margin-bottom: 14px;
+  margin: 10px 0px 10px 0px ;
 }
 .card-total-label { font-size: 0.75rem; color: var(--text-secondary); }
 .card-total-price  { font-size: 1.05rem; font-weight: 700; color: var(--accent); }
@@ -146,20 +143,7 @@
   transform: translateY(-1px);
 }
 
-/* ===== Divider ===== */
-.card-divider {
-  border: none;
-  border-top: 1px solid var(--border-color);
-  margin: 14px 0 12px 0;
-}
-
 /* ===== Features ===== */
-.card-features-label {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  margin-bottom: 10px;
-}
 .card-features-list {
   list-style: none;
   padding: 0; margin: 0;

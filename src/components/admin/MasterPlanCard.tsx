@@ -94,26 +94,17 @@ const MasterPlanCard: React.FC<Props> = (props) => {
 
       {/* TOP */}
       <div className="card-top">
-        <p className="card-plan-name">{name}</p>
-        <p className="card-description">{trimDesc(desc)}</p>
-
-        <p className="card-starts-at">Original Price</p>
-
         <div className="card-price-row">
-          <span className="card-price">
+          <p className="card-price">
             ₹{price.toLocaleString("en-IN")}
-          </span>
+          </p>
         </div>
-
+        <p className="card-plan-name">{name}</p>
+      
         <div className="card-total-row">
-          <span>Total after {offer}% off</span>
-          <span>₹{totalPrice.toLocaleString("en-IN")}</span>
+          <span>Total after {offer}% off ₹{totalPrice.toLocaleString("en-IN")}</span>
         </div>
       </div>
-
-      <hr className="card-divider" />
-
-      <p className="card-features-label">Plan Details</p>
 
       <ul className="card-features-list">
         <li>
@@ -131,24 +122,7 @@ const MasterPlanCard: React.FC<Props> = (props) => {
         <li>
           <FiCheck className="feature-check" />
           <span>
-            <strong>{offer}%</strong> discount
-          </span>
-        </li>
-
-        <li>
-          <FiCheck className="feature-check" />
-          <span>
             Valid for <strong>{duration}</strong> days
-          </span>
-        </li>
-
-        <li>
-          <FiCheck className="feature-check" />
-          <span>
-            Status:{" "}
-            <strong style={{ color: status ? "green" : "red" }}>
-              {status ? "Active" : "Inactive"}
-            </strong>
           </span>
         </li>
       </ul>

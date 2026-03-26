@@ -58,31 +58,23 @@ const PricingCard: React.FC<Props> = ({ plan, index }) => {
       {isRec && <span className="featured-badge">Recommended</span>}
 
       <div className="card-top">
-        <p className="card-plan-name">{plan.name}</p>
-        <p className="card-description">{trimDesc(plan.desc)}</p>
 
-        <p className="card-starts-at">Original Price</p>
-        <div className="card-price-row">
-          <span className="card-price">
-            ₹{plan.price.toLocaleString("en-IN")}
-          </span>
+        <div className="card-top">
+          <div className="card-price-row">
+            <p className="card-price">
+              ₹{plan.price.toLocaleString("en-IN")}
+            </p>
+          </div>
+          <p className="card-plan-name">{plan.name}</p>
+
+          <div className="card-total-row">
+            <span>Total after {plan.offer}% off ₹{totalPrice.toLocaleString("en-IN")}</span>
+          </div>
         </div>
-
-        <div className="card-total-row">
-          <span>Total after {plan.offer}% off</span>
-          <span>
-            ₹{totalPrice.toLocaleString("en-IN")}
-          </span>
-        </div>
-
         <button className="card-cta-btn filled w-100">
           Purchase Plan
         </button>
       </div>
-
-      <hr className="card-divider" />
-
-      <p className="card-features-label">Plan Details</p>
 
       <ul className="card-features-list">
         <li>
@@ -95,13 +87,6 @@ const PricingCard: React.FC<Props> = ({ plan, index }) => {
         <li>
           <CheckIcon />
           <span>₹{pricePerCredit} per credit</span>
-        </li>
-
-        <li>
-          <CheckIcon />
-          <span>
-            <strong>{plan.offer}%</strong> discount
-          </span>
         </li>
 
         <li>
