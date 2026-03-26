@@ -54,7 +54,7 @@ const MasterPlan = () => {
       <div className="container-fluid py-3 px-4 overflow-hidden my-bg-dark">
         <div className="row">
           <div className="col-12 mx-auto">
-            <div className="d-flex justify-content-between align-items-center mb-4">
+            <div className="d-flex text-dark justify-content-between align-items-center mb-4">
               <h2 className="fw-bold m-0">Master Plan</h2>
             </div>
 

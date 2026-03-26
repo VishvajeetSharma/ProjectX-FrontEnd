@@ -105,7 +105,7 @@ const courses = [
 
           {/* Title */}
           <div className="text-center mb-4">
-            <h1 className="fw-bold">Most Popular Courses</h1>
+            <h1 className="fw-bold text-dark">Most Popular Courses</h1>
             <p className="text-secondary">
               Choose from hundreds of courses from specialist organizations
             </p>

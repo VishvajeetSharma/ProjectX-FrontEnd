@@ -58,7 +58,7 @@ const TrendingCourses = () => {
 
           {/* Title */}
           <div className="text-center mb-5">
-            <h1 className="fw-bold mb-3">Our Trending Courses</h1>
+            <h1 className="fw-bold mb-3 text-dark">Our Trending Courses</h1>
             <p className="text-secondary mx-auto" style={{ maxWidth: '600px' }}>
               Check out the most 🔥 courses in the market today and start your learning journey with our top-rated content.
             </p>
@@ -76,4 +76,4 @@ const TrendingCourses = () => {
   );
 };
 
-export default TrendingCourses;
+export default TrendingCourses;

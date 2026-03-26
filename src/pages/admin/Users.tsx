@@ -55,9 +55,9 @@ const Users = () => {
       <div className="container-fluid py-3 px-4 overflow-hidden my-bg-dark">
         <div className="row">
           <div className="col-12 mx-auto">
-            <h2 className="fw-bold text-white">Users</h2>
+            <h2 className="fw-bold text-dark">Users</h2>
             
-            {loading && <p className="text-white">Loading users...</p>}
+            {loading && <p className="text-dark">Loading users...</p>}
             {error && <p className="text-danger">Error: {error}</p>}
             
             <div className="row g-4">
