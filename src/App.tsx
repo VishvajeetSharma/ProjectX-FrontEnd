@@ -23,6 +23,7 @@ import PurchaseCredit from './pages/user/PurchaseCredit';
 import UserPlans from './pages/user/UserPlans';
 import PurchaseCourse from './pages/user/PurchaseCourse';
 import UserCourse from './pages/user/UserCourse';
+import PricingSection from './components/PricingCrad';
 const App = () => {
   return (
     <>
@@ -57,6 +58,8 @@ const App = () => {
 
           <Route path='/update-password' element={<UpdatePasswordForm />} />
           <Route path='/reset-password' element={<ResetPasswordForm />} />
+          <Route path='/card' element={<PricingSection />} />
+
         </Routes>
       </BrowserRouter>
     </>
