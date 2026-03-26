@@ -2,7 +2,7 @@ import axios from "axios";
 import { store } from "../redux/store";
 
 const BASE_URL = "http://localhost:8000";
-const PUBLIC_ROUTES = ["/user/register", "/user/login", "/admin/login", "/user/user-master-plan", "public/user-master-plan"];
+const PUBLIC_ROUTES = ["/user/register", "/user/login", "/admin/login", "/user/user-master-plan", "public/get-rec-plan"];
 
 const api = axios.create({ baseURL: BASE_URL });
 
@@ -140,6 +140,6 @@ export const getDashboardStats = async () => {
 
 // Public APIs
 export const getRecMasterPlan = async () => {
-  const res = await api.get("public/user-master-plan");
+  const res = await api.get("public/get-rec-plan");
   return res?.data;
 };
