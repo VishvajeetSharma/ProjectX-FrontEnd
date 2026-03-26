@@ -55,6 +55,10 @@ const App = () => {
           <Route path='/admin/create-master-course' element={<AuthGuard allowedRoles={['admin']}><CreateMasterCourse /></AuthGuard>} />
           <Route path='/admin/master-course' element={<AuthGuard allowedRoles={['admin']}><MasterCourse /></AuthGuard>} />
 
+
+
+          
+
         </Routes>
       </BrowserRouter>
     </>

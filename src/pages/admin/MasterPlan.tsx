@@ -1,26 +1,33 @@
 import { useEffect, useState } from "react";
 import DashboardLayout from "../../layout/DashboardLayout";
-import MasterPlanCard from "./MasterPlanCard";
-import { deleteMasterPlan, getMasterPlan, updateMasterPlan } from "../../services";
+import MasterPlanCard from "../../components/admin/MasterPlanCard";
+import {
+  deleteMasterPlan,
+  getMasterPlan,
+  updateMasterPlan,
+} from "../../services";
 import { showALert, confirmDeletion } from "../../utils";
 import { useNavigate } from "react-router-dom";
 
 const MasterPlan = () => {
   const navigate = useNavigate();
-  const [masterPlan, setMasterPlan] = useState([])
+  const [masterPlan, setMasterPlan] = useState<any[]>([]);
+
   const fetchData = async () => {
-    const res = await getMasterPlan()
-    setMasterPlan(res?.result || [])
-  }
+    const res = await getMasterPlan();
+    setMasterPlan(res?.result || []);
+  };
+
   useEffect(() => {
-    fetchData()
-  }, [])
-  const handleEditPlan = (id: any) => {
+    fetchData();
+  }, []);
+
+  const handleEditPlan = (id: number) => {
     navigate(`/admin/create-master-plan?id=${id}`);
   };
 
-  const handleDeletePlan = async (id: any) => {
-    const confirmed = await confirmDeletion('master plan');
+  const handleDeletePlan = async (id: number) => {
+    const confirmed = await confirmDeletion("master plan");
     if (!confirmed) return;
 
     const res = await deleteMasterPlan(id);
@@ -32,22 +39,34 @@ const MasterPlan = () => {
     }
   };
 
-  const handleTogglePlanStatus = async (id: any, currentStatus: any) => {
-    const newStatus = currentStatus === 1 ? 0 : 1;
+  // ✅ FIXED TOGGLE LOGIC
+  const handleTogglePlanStatus = async (id: number) => {
+    const plan = masterPlan.find((p) => p.id === id);
+    if (!plan) return;
+
+    const newStatus = plan.status === 1 ? 0 : 1;
+
     try {
       const res = await updateMasterPlan(id, { status: newStatus });
+
       if (res.success) {
-        setMasterPlan((prev: any) => 
-          prev.map((p: any) => (p.id === id ? { ...p, status: newStatus } : p))
+        setMasterPlan((prev) =>
+          prev.map((p) =>
+            p.id === id ? { ...p, status: newStatus } : p
+          )
         );
-        showALert("Status Updated", `Plan is now ${newStatus === 1 ? 'Active' : 'Inactive'}`, "success");
+
+        showALert(
+          "Status Updated",
+          `Plan is now ${newStatus === 1 ? "Active" : "Inactive"}`,
+          "success"
+        );
       }
     } catch (err) {
       console.error("Failed to toggle status:", err);
       showALert("Error", "Failed to update status", "error");
     }
   };
-
 
   return (
     <DashboardLayout>
@@ -60,21 +79,22 @@ const MasterPlan = () => {
 
             {/* Cards */}
             <div className="row g-4">
-              {masterPlan.map((sub: any) => (
-                <MasterPlanCard
-                  key={sub.id}
-                  {...sub}
-                  onEdit={(id) => handleEditPlan(id)}
-                  onDelete={(id) => handleDeletePlan(id)}
-                  onToggleStatus={(id, status) => handleTogglePlanStatus(id, status)}
-                />
+              {masterPlan.map((plan: any, index: number) => (
+                <div key={plan.id} className="col-12 col-sm-6 col-lg-4 col-xl-3">
+                  <MasterPlanCard
+                    {...plan}
+                    index={index} // ✅ IMPORTANT
+                    onEdit={handleEditPlan}
+                    onDelete={handleDeletePlan}
+                    onToggleStatus={handleTogglePlanStatus} // ✅ FIXED
+                  />
+                </div>
               ))}
             </div>
-
           </div>
         </div>
       </div>
-    </DashboardLayout>
+    </DashboardLayout >
   );
 };
 
