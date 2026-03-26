@@ -73,7 +73,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 3.5rem;
   font-weight: 800;
   line-height: 1.1;
-  background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+  background: linear-gradient(135deg, rgb(18, 18, 18) 0%, #6a6d71 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -565,7 +565,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .form-label-premium {
-  color: var(--text-primary);
+  color: var(--text-secondary);
   font-weight: 600;
   font-size: 0.85rem;
   margin-bottom: 8px;

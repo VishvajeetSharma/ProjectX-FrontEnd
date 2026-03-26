@@ -71,7 +71,7 @@ const RegistrationForm = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* Name */}
         <div className="mb-3">
-          <label className="form-label">Name *</label>
+          <label className="form-label-premium text-light">Name *</label>
           <input
             type="text"
             {...register("name")}
@@ -85,7 +85,7 @@ const RegistrationForm = () => {
 
         {/* Email */}
         <div className="mb-3">
-          <label className="form-label">Email *</label>
+          <label className="form-label-premium text-light">Email *</label>
           <input
             type="email"
             {...register("email")}
@@ -99,7 +99,7 @@ const RegistrationForm = () => {
 
         {/* Mobile */}
         <div className="mb-3">
-          <label className="form-label">Mobile number *</label>
+          <label className="form-label-premium text-light">Mobile number *</label>
           <input
             type="text"
             {...register("mobile")}
@@ -113,7 +113,7 @@ const RegistrationForm = () => {
 
         {/* Password */}
         <div className="mb-3">
-          <label className="form-label">Password *</label>
+          <label className="form-label-premium text-light">Password *</label>
           <input
             type="password"
             {...register("password")}

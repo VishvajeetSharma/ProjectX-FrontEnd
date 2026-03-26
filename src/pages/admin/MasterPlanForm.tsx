@@ -138,7 +138,7 @@ const MasterPlanForm = () => {
               <div className="row">
                 <div className="col-lg-4 mb-4">
                   {/* Name */}
-                  <label className="form-label-premium">Master Plan Name *</label>
+                  <label className="form-label-premium text-light">Master Plan Name *</label>
                   <input
                     type="text"
                     {...register("name")}
@@ -152,7 +152,7 @@ const MasterPlanForm = () => {
 
                 <div className="col-lg-4 mb-4">
                   {/* Credit */}
-                  <label className="form-label-premium">Credit Allocation *</label>
+                  <label className="form-label-premium text-light">Credit Allocation *</label>
                   <input
                     type="text"
                     {...register("credit")}
@@ -166,7 +166,7 @@ const MasterPlanForm = () => {
 
                 <div className="col-lg-4 mb-4">
                   {/* Price */}
-                  <label className="form-label-premium">Plan Price (INR) *</label>
+                  <label className="form-label-premium text-light">Plan Price (INR) *</label>
                   <input
                     type="text"
                     {...register("price")}
@@ -182,7 +182,7 @@ const MasterPlanForm = () => {
               <div className="row">
                 <div className="col-lg-4 mb-4">
                   {/* Offer */}
-                  <label className="form-label-premium">Discount Offer (%) *</label>
+                  <label className="form-label-premium text-light">Discount Offer (%) *</label>
                   <input
                     type="text"
                     {...register("offer")}
@@ -196,7 +196,7 @@ const MasterPlanForm = () => {
 
                 <div className="col-lg-4 mb-4">
                   {/* Duration */}
-                  <label className="form-label-premium">Validity Duration (Days) *</label>
+                  <label className="form-label-premium text-light">Validity Duration (Days) *</label>
                   <input
                     type="text"
                     {...register("duration")}
@@ -210,7 +210,7 @@ const MasterPlanForm = () => {
 
                 <div className="col-lg-4 mb-4">
                   {/* Is Recommended */}
-                  <label className="form-label-premium">Is Recommended? *</label>
+                  <label className="form-label-premium text-light">Is Recommended? *</label>
                   <select
                     {...register("is_rec")}
                     className="form-control-premium w-100"
@@ -227,7 +227,7 @@ const MasterPlanForm = () => {
               <div className="row">
                 <div className="col-lg-4 mb-4">
                   {/* Status */}
-                  <label className="form-label-premium">Active Status *</label>
+                  <label className="form-label-premium text-light">Active Status *</label>
                   <select
                     {...register("status")}
                     className="form-control-premium w-100"
@@ -244,7 +244,7 @@ const MasterPlanForm = () => {
               <div className="row align-items-end">
                 {/* Description (Textarea) */}
                 <div className="col-lg-8 mb-4">
-                  <label className="form-label-premium">Plan Description *</label>
+                  <label className="form-label-premium text-light">Plan Description *</label>
                   <textarea
                     {...register("desc")}
                     className="form-control-premium w-100"

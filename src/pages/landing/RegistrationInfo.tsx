@@ -1,7 +1,7 @@
 
 const RegistrationInfo = () => {
   return (
-    <div className="text-white p-4">
+    <div className="text-dark p-4">
 
       <h1 className="fw-bold fs-2 mb-4">
         Register now and start your journey with our expert instructors

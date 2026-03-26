@@ -81,7 +81,7 @@ const AdminLogin = () => {
               <form onSubmit={handleSubmit(onSubmit)}>
                 {/* Email */}
                 <div className="mb-3">
-                  <label className="form-label">Email *</label>
+                  <label className="form-label-premium text-dark">Email *</label>
                   <input
                     type="email"
                     {...register("email")}
@@ -95,7 +95,7 @@ const AdminLogin = () => {
 
                 {/* Password */}
                 <div className="mb-3">
-                  <label className="form-label">Password *</label>
+                  <label className="form-label-premium text-dark">Password *</label>
                   <input
                     type="password"
                     {...register("password")}
