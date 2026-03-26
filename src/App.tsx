@@ -17,7 +17,7 @@ import CreateMasterPlan from './pages/admin/CreateMasterPlan';
 import MasterPlan from './pages/admin/MasterPlan';
 import Users from './pages/admin/Users';
 import AuthGuard from './hoc/AuthGuard';
-import PurchaseCredit from './pages/user/PurchaseCredit';
+import PurchaseCredit from './pages/user/PurchasePlan';
 import UserPlans from './pages/user/UserPlans';
 import PurchaseCourse from './pages/user/PurchaseCourse';
 import UserCourse from './pages/user/UserCourse';

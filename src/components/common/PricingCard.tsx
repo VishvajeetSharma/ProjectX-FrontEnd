@@ -8,7 +8,7 @@ export interface CoursePlan {
   price: number;
   offer: string;
   duration: string;
-  is_rec: string;
+  is_rec: number;
 }
 
 // Helpers
@@ -49,7 +49,7 @@ const PricingCard: React.FC<Props> = ({ plan, index }) => {
     ? Math.round(plan.price / parseFloat(plan.credit))
     : 0;
 
-  const isRec = plan.is_rec === "1";
+  const isRec = plan.is_rec === 1;
 
   return (
     <div className={`pricing-card card-accent-${index % 3} h-100`}>

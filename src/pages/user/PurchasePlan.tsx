@@ -1,10 +1,9 @@
 import DashboardLayout from "../../layout/DashboardLayout"
- 
-import { useEffect, useState } from "react";  
-import UserMasterPlanCard from "./UserMasterPlanCard";
+import { useEffect, useState } from "react";
 import { getUserMasterPlan } from "../../services";
+import PricingCard from "../../components/common/PricingCard";
 
-const PurchaseCredit = () => { 
+const PurchaseCredit = () => {
   const [masterPlan, setMasterPlan] = useState([])
   const fetchData = async () => {
     const res = await getUserMasterPlan()
@@ -13,10 +12,6 @@ const PurchaseCredit = () => {
   useEffect(() => {
     fetchData()
   }, [])
- 
-
- 
-
 
   return (
     <DashboardLayout>
@@ -24,17 +19,18 @@ const PurchaseCredit = () => {
         <div className="row">
           <div className="col-12 mx-auto">
             <div className="d-flex text-dark justify-content-between align-items-center mb-4">
-              <h2 className="fw-bold m-0">Purchase Credit</h2>
+              <h2 className="fw-bold m-0">Purchase Plan</h2>
             </div>
 
             {/* Cards */}
             <div className="row g-4">
-              {masterPlan.map((sub: any) => (
-                <UserMasterPlanCard
-                  key={sub.id}
-                  {...sub}
-                 
-                />
+              {masterPlan.map((plan: any, index: any) => (
+                <div
+                  key={index}
+                  className="col-12 col-sm-6 col-lg-4 col-xl-3"
+                >
+                  <PricingCard plan={plan} index={index} />
+                </div>
               ))}
             </div>
 
