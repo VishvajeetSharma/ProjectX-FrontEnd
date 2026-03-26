@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
-import CourseCard from "../../components/admin/CourseCard";
-import { getMasterCourse, deleteMasterCourse, updateMasterCourse } from "../../services";
 import DashboardLayout from "../../layout/DashboardLayout";
+import MasterCourseCard from "../../components/admin/MasterCourseCard";
+import { getMasterCourse, deleteMasterCourse } from "../../services";
+import { useNavigate } from "react-router-dom";
+import { confirmAction, showALert } from "../../utils/index";
 
 const MasterCourseList = () => {
-  const [courses, setCourses] = useState<any[]>([]);
+  const navigate = useNavigate();
+  const [masterCourses, setMasterCourses] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // FETCH COURSES
+  const handleEditCourse = (id: any) => {
+    navigate(`/admin/create-master-course?id=${id}`);
+  };
+
   useEffect(() => {
     fetchCourses();
   }, []);
@@ -16,91 +22,76 @@ const MasterCourseList = () => {
   const fetchCourses = async () => {
     try {
       setLoading(true);
-      const res = await getMasterCourse();
-      setCourses(res?.result || []);
+      const data = await getMasterCourse();
+      setMasterCourses(data?.result || []);
       setError(null);
     } catch (err) {
-      console.error(err);
+      console.error("Failed to fetch courses:", err);
       setError("Failed to load courses");
-      setCourses([]);
+      setMasterCourses([]);
     } finally {
       setLoading(false);
     }
   };
 
-  // EDIT
-  const handleEdit = (id: number) => {
-    alert(`Edit course with id: ${id}`);
-    // or navigate(`/edit-course?id=${id}`)
-  };
-
-  // DELETE
-  const handleDelete = async (id: number) => {
-    if (!window.confirm("Are you sure you want to delete this course?")) return;
-
+  const handleDeleteCourse = async (id: any) => {
+    const confirmed = await confirmAction("You want to delete this master course?");
+    if (!confirmed) return;
     try {
       await deleteMasterCourse(id);
-      setCourses((prev) => prev.filter((c) => c.id !== id));
+      fetchCourses()
+      showALert("Deleted", "Master course removed successfully", "success");
     } catch (err) {
-      console.error(err);
-      alert("Failed to delete course");
+      console.error("Failed to delete master course:", err);
+      showALert("Error", "Unable to delete course, please try again", "error");
     }
   };
 
-  // TOGGLE STATUS
-  const handleToggleStatus = async (id: number) => {
-    const course = courses.find((c) => c.id === id);
-    if (!course) return;
-
-    const newStatus = course.status === 1 ? 0 : 1;
-
-    try {
-      const formData = new FormData();
-      formData.append("status", newStatus.toString());
-
-      const res = await updateMasterCourse(id, formData);
-
-      if (res.success) {
-        setCourses((prev) =>
-          prev.map((c) =>
-            c.id === id ? { ...c, status: newStatus } : c
-          )
-        );
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Failed to update status");
-    }
-  };
+const handleToggleCourseStatus = async () => {
+  showALert();
+}
 
   return (
     <DashboardLayout>
-      <div
-        style={{
-          display: "grid",
-          gap: "24px",
-          gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-          padding: "24px",
-        }}
-      >
-        {loading && <p>Loading courses...</p>}
-        {error && <p style={{ color: "red" }}>{error}</p>}
+      <div className="container-fluid py-3 px-4 overflow-hidden my-bg-dark">
+        <div className="row">
+          <div className="col-12 mx-auto">
+            <div className="d-flex justify-content-between align-items-center mb-4">
+              <h2 className="fw-bold m-0">Master Course</h2>
+            </div>
 
-        {!loading && courses.length === 0 && <p>No courses found</p>}
+            {loading && <p className="text-white">Loading courses...</p>}
+            {error && <p className="text-danger">{error}</p>}
 
-        {courses.map((course, index) => (
-          <CourseCard
-            key={course.id}
-            {...course}
-            index={index}
-            onEdit={handleEdit}
-            onDelete={handleDelete}
-            onToggleStatus={handleToggleStatus}
-          />
-        ))}
+            {/* Cards */}
+            <div className="row g-4">
+              {Array.isArray(masterCourses) && masterCourses.length > 0 ? (
+                masterCourses.map((course) => (
+                  <div
+                    key={course.id}
+                    className="col-12 col-sm-6 col-lg-4 col-xl-3"
+                  >
+                    <MasterCourseCard
+                      {...course}
+                      onEdit={handleEditCourse}
+                      onDelete={handleDeleteCourse}
+                      onToggleStatus={handleToggleCourseStatus}
+                    />
+                  </div>
+                ))
+              ) : (
+                !loading && (
+                  <div className="col-12">
+                    <p className="text-white">No courses available</p>
+                  </div>
+                )
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </DashboardLayout>
   );
-}
+};
 
-export default MasterCourseList
+export default MasterCourseList;

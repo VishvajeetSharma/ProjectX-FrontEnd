@@ -6,10 +6,10 @@ import {
   getMasterPlan,
   updateMasterPlan,
 } from "../../services";
-import { showALert, confirmDeletion } from "../../utils";
+import { showALert, confirmAction } from "../../utils/index";
 import { useNavigate } from "react-router-dom";
 
-const MasterPlan = () => {
+const MasterPlanList = () => {
   const navigate = useNavigate();
   const [masterPlan, setMasterPlan] = useState<any[]>([]);
 
@@ -26,47 +26,53 @@ const MasterPlan = () => {
     navigate(`/admin/create-master-plan?id=${id}`);
   };
 
-  const handleDeletePlan = async (id: number) => {
-    const confirmed = await confirmDeletion("master plan");
-    if (!confirmed) return;
-
+const handleDeletePlan = async (id: number) => {
+  const confirmed = await confirmAction("You want to delete this master plan?");
+  if (!confirmed) return;
+  try {
     const res = await deleteMasterPlan(id);
     if (res?.success) {
       showALert("Delete Plan", res.message, "success");
       fetchData();
     } else {
-      showALert("Delete Plan", res.message, "error");
+      showALert("Delete Plan", res.message || "Failed to delete plan", "error");
     }
-  };
+  } catch (err) {
+    console.error("Failed to delete plan:", err);
+    showALert("Delete Plan", "An error occurred while deleting the plan", "error");
+  }
+};
 
-  // ✅ FIXED TOGGLE LOGIC
-  const handleTogglePlanStatus = async (id: number) => {
-    const plan = masterPlan.find((p) => p.id === id);
-    if (!plan) return;
 
-    const newStatus = plan.status === 1 ? 0 : 1;
+const handleTogglePlanStatus = async (id: number) => {
+  const plan = masterPlan.find((p) => p.id === id);
+  if (!plan) return;
 
-    try {
-      const res = await updateMasterPlan(id, { status: newStatus });
+  const newStatus = plan.status === 1 ? 0 : 1;
 
-      if (res.success) {
-        setMasterPlan((prev) =>
-          prev.map((p) =>
-            p.id === id ? { ...p, status: newStatus } : p
-          )
-        );
-
-        showALert(
-          "Status Updated",
-          `Plan is now ${newStatus === 1 ? "Active" : "Inactive"}`,
-          "success"
-        );
-      }
-    } catch (err) {
-      console.error("Failed to toggle status:", err);
-      showALert("Error", "Failed to update status", "error");
+  const confirmed = await confirmAction(
+    newStatus === 1
+      ? "You want to activate this plan?"
+      : "You want to deactivate this plan?"
+  );
+  if (!confirmed) return;
+  try {
+    const res = await updateMasterPlan(id, { status: newStatus });
+    if (res.success) {
+      fetchData(); 
+      showALert(
+        "Status Updated",
+        `Plan is now ${newStatus === 1 ? "Active" : "Inactive"}`,
+        "success"
+      );
+    } else {
+      showALert("Error", res.message || "Failed to update status", "error");
     }
-  };
+  } catch (err) {
+    console.error("Failed to toggle status:", err);
+    showALert("Error", "Failed to update status", "error");
+  }
+};
 
   return (
     <DashboardLayout>
@@ -83,10 +89,10 @@ const MasterPlan = () => {
                 <div key={plan.id} className="col-12 col-sm-6 col-lg-4 col-xl-3">
                   <MasterPlanCard
                     {...plan}
-                    index={index} // ✅ IMPORTANT
+                    index={index} 
                     onEdit={handleEditPlan}
                     onDelete={handleDeletePlan}
-                    onToggleStatus={handleTogglePlanStatus} // ✅ FIXED
+                    onToggleStatus={handleTogglePlanStatus}
                   />
                 </div>
               ))}
@@ -98,4 +104,4 @@ const MasterPlan = () => {
   );
 };
 
-export default MasterPlan;
+export default MasterPlanList;

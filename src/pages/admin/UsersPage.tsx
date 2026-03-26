@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import UserCard from "../../components/admin/UserCard";
 import { deleteUser, getAllUsers } from "../../services";
-import { confirmDeletion, showALert } from "../../utils";
+import { confirmAction, showALert } from "../../utils/index";
 import DashboardLayout from "../../layout/DashboardLayout";
 
 const UsersPage = () => {
@@ -33,16 +33,19 @@ const UsersPage = () => {
   };
 
   const handleDelete = async (id: number) => {
-    const confirmed = await confirmDeletion("User");
+    const confirmed = await confirmAction("Are you sure you want to delete this user?");
     if (!confirmed) return;
-
-    const res = await deleteUser(id);
-
-    if (res?.success) {
-      showALert("Delete User", res.message, "success");
-      fetchUsers(); // refresh list
-    } else {
-      showALert("Delete User", res.message, "error");
+    try {
+      const res = await deleteUser(id);
+      if (res?.success) {
+        showALert("Delete User", res.message, "success");
+        fetchUsers();
+      } else {
+        showALert("Delete User", res.message || "Failed to delete user", "error");
+      }
+    } catch (err) {
+      console.error("Failed to delete user:", err);
+      showALert("Delete User", "An error occurred while deleting the user", "error");
     }
   };
 
@@ -64,7 +67,7 @@ const UsersPage = () => {
             {error && <p style={{ color: "red" }}>{error}</p>}
 
             {!loading && users.length === 0 && <p>No users found</p>}
-            
+
             {/* Cards */}
             <div className="row g-4">
               {users.map((user, index) => (
