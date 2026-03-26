@@ -17,13 +17,10 @@ import CreateMasterPlan from './pages/admin/CreateMasterPlan';
 import MasterPlan from './pages/admin/MasterPlan';
 import Users from './pages/admin/Users';
 import AuthGuard from './hoc/AuthGuard';
-import UpdatePasswordForm from './components/UpdatePassword';
-import ResetPasswordForm from './components/ResetPassword';
 import PurchaseCredit from './pages/user/PurchaseCredit';
 import UserPlans from './pages/user/UserPlans';
 import PurchaseCourse from './pages/user/PurchaseCourse';
 import UserCourse from './pages/user/UserCourse';
-import PricingSection from './components/PricingCrad';
 import Pricing from './pages/landing/Princing';
 const App = () => {
   return (
@@ -57,11 +54,6 @@ const App = () => {
           <Route path='/admin/master-plan' element={<AuthGuard allowedRoles={['admin']}><MasterPlan /></AuthGuard>} />
           <Route path='/admin/create-master-course' element={<AuthGuard allowedRoles={['admin']}><CreateMasterCourse /></AuthGuard>} />
           <Route path='/admin/master-course' element={<AuthGuard allowedRoles={['admin']}><MasterCourse /></AuthGuard>} />
-
-
-          <Route path='/update-password' element={<UpdatePasswordForm />} />
-          <Route path='/reset-password' element={<ResetPasswordForm />} />
-          <Route path='/card' element={<PricingSection />} />
 
         </Routes>
       </BrowserRouter>

@@ -1,5 +1,5 @@
 import React from "react";
-import PricingCard, { type CoursePlan } from "./PricingCard";
+import PricingCard, { type CoursePlan } from "../../components/common/PricingCard";
 
 // Plans Data
 const plans: CoursePlan[] = [

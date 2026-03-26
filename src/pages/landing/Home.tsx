@@ -1,7 +1,6 @@
 import Counter from "./Counter"
 import Feedback from "./Feedback"
 import HeroSection from "./HeroSection"
-// import TrendingCourses from "./TrendingCourses"
 import Navbar from "./Navbar"
 import Footer from "./Footer"
 
@@ -16,7 +15,6 @@ const Home = () => {
         <HeroSection />
         <Counter />
         <PricingSection />
-        {/* <TrendingCourses /> */}
         <Feedback />
       </div>
       <Footer />
