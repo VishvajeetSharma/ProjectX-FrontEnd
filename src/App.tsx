@@ -15,13 +15,14 @@ import CreateMasterCourse from './pages/admin/CreateMasterCourse';
 import MasterCourse from './pages/admin/MasterCourse';
 import CreateMasterPlan from './pages/admin/CreateMasterPlan';
 import MasterPlan from './pages/admin/MasterPlan';
-import Users from './pages/admin/Users';
 import AuthGuard from './hoc/AuthGuard';
 import PurchaseCredit from './pages/user/PurchasePlan';
 import UserPlans from './pages/user/UserPlans';
 import PurchaseCourse from './pages/user/PurchaseCourse';
 import UserCourse from './pages/user/UserCourse';
 import Pricing from './pages/landing/Princing';
+import UsersPage from './pages/admin/UsersPage';
+import CourseList from './pages/admin/MasterCourseList';
 const App = () => {
   return (
     <>
@@ -49,7 +50,7 @@ const App = () => {
 
           {/* Admin Routes */}
           <Route path="/admin-dashboard" element={<AuthGuard allowedRoles={['admin']}><AdminDashboard /></AuthGuard>} />
-          <Route path="/admin/users" element={<AuthGuard allowedRoles={['admin']}><Users /></AuthGuard>} />
+          <Route path="/admin/users" element={<AuthGuard allowedRoles={['admin']}><UsersPage /></AuthGuard>} />
           <Route path='/admin/create-master-plan' element={<AuthGuard allowedRoles={['admin']}><CreateMasterPlan /></AuthGuard>} />
           <Route path='/admin/master-plan' element={<AuthGuard allowedRoles={['admin']}><MasterPlan /></AuthGuard>} />
           <Route path='/admin/create-master-course' element={<AuthGuard allowedRoles={['admin']}><CreateMasterCourse /></AuthGuard>} />
@@ -57,7 +58,8 @@ const App = () => {
 
 
 
-          
+          <Route path='/test' element={<UsersPage />} />
+          <Route path='/testt' element={<CourseList />} />
 
         </Routes>
       </BrowserRouter>

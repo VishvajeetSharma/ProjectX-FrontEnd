@@ -12,7 +12,6 @@ import "../../styles/pricingCard.css";
 interface Props {
   id: number;
   name: string;
-  desc: string;
   credit: string;
   price: number;
   offer: string;
@@ -27,10 +26,6 @@ interface Props {
   index: number;
 }
 
-// helpers
-const trimDesc = (text: string, max = 100) =>
-  text.length > max ? text.slice(0, max).trimEnd() + "..." : text;
-
 const calcTotalPrice = (price: number, offer: string) => {
   const discount = parseFloat(offer) || 0;
   return Math.round(price - (price * discount) / 100);
@@ -40,7 +35,6 @@ const MasterPlanCard: React.FC<Props> = (props) => {
   const {
     id,
     name,
-    desc,
     credit,
     price,
     offer,

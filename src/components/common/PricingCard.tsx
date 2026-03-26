@@ -3,17 +3,12 @@ import "../../styles/pricingCard.css";
 
 export interface CoursePlan {
   name: string;
-  desc: string;
   credit: string;
   price: number;
   offer: string;
   duration: string;
   is_rec: number;
 }
-
-// Helpers
-const trimDesc = (text: string, max = 100): string =>
-  text.length > max ? text.slice(0, max).trimEnd() + "..." : text;
 
 const calcTotalPrice = (price: number, offer: string): number => {
   const discount = parseFloat(offer) || 0;
