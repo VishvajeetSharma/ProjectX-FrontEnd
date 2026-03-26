@@ -1,12 +1,12 @@
 import Counter from "./Counter"
 import Feedback from "./Feedback"
 import HeroSection from "./HeroSection"
-import MostPopularCourse from "./MostPopularCourse"
-import TrendingCourses from "./TrendingCourses"
+// import TrendingCourses from "./TrendingCourses"
 import Navbar from "./Navbar"
 import Footer from "./Footer"
 
 import "../../styles/style.css"
+import PricingSection from "./PricingSection"
 
 const Home = () => {
   return (
@@ -15,8 +15,8 @@ const Home = () => {
       <div className="row">
         <HeroSection />
         <Counter />
-        <MostPopularCourse />
-        <TrendingCourses />
+        <PricingSection />
+        {/* <TrendingCourses /> */}
         <Feedback />
       </div>
       <Footer />

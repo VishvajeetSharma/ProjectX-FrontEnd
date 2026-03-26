@@ -1,0 +1,118 @@
+import React from "react";
+import "../../styles/pricingCard.css";
+
+export interface CoursePlan {
+  name: string;
+  desc: string;
+  credit: string;
+  price: number;
+  offer: string;
+  duration: string;
+  is_rec: string;
+}
+
+// Helpers
+const trimDesc = (text: string, max = 100): string =>
+  text.length > max ? text.slice(0, max).trimEnd() + "..." : text;
+
+const calcTotalPrice = (price: number, offer: string): number => {
+  const discount = parseFloat(offer) || 0;
+  return Math.round(price - (price * discount) / 100);
+};
+
+// Check Icon
+const CheckIcon: React.FC = () => (
+  <svg
+    className="feature-check"
+    viewBox="0 0 20 20"
+    fill="none"
+  >
+    <path
+      d="M5 10.5L8.5 14L15 7"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+interface Props {
+  plan: CoursePlan;
+  index: number;
+}
+
+const PricingCard: React.FC<Props> = ({ plan, index }) => {
+  const totalPrice = calcTotalPrice(plan.price, plan.offer);
+
+  const pricePerCredit = parseFloat(plan.credit)
+    ? Math.round(plan.price / parseFloat(plan.credit))
+    : 0;
+
+  const isRec = plan.is_rec === "1";
+
+  return (
+    <div className={`pricing-card card-accent-${index % 3} h-100`}>
+      <div className="card-pattern" />
+
+      {isRec && <span className="featured-badge">Recommended</span>}
+
+      <div className="card-top">
+        <p className="card-plan-name">{plan.name}</p>
+        <p className="card-description">{trimDesc(plan.desc)}</p>
+
+        <p className="card-starts-at">Original Price</p>
+        <div className="card-price-row">
+          <span className="card-price">
+            ₹{plan.price.toLocaleString("en-IN")}
+          </span>
+        </div>
+
+        <div className="card-total-row">
+          <span>Total after {plan.offer}% off</span>
+          <span>
+            ₹{totalPrice.toLocaleString("en-IN")}
+          </span>
+        </div>
+
+        <button className="card-cta-btn filled w-100">
+          Purchase Plan
+        </button>
+      </div>
+
+      <hr className="card-divider" />
+
+      <p className="card-features-label">Plan Details</p>
+
+      <ul className="card-features-list">
+        <li>
+          <CheckIcon />
+          <span>
+            <strong>{plan.credit}</strong> Credits
+          </span>
+        </li>
+
+        <li>
+          <CheckIcon />
+          <span>₹{pricePerCredit} per credit</span>
+        </li>
+
+        <li>
+          <CheckIcon />
+          <span>
+            <strong>{plan.offer}%</strong> discount
+          </span>
+        </li>
+
+        <li>
+          <CheckIcon />
+          <span>
+            Valid for <strong>{plan.duration}</strong> days
+          </span>
+        </li>
+      </ul>
+    </div>
+  );
+};
+
+export default PricingCard;

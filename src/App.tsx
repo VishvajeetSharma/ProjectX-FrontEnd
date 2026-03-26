@@ -24,6 +24,7 @@ import UserPlans from './pages/user/UserPlans';
 import PurchaseCourse from './pages/user/PurchaseCourse';
 import UserCourse from './pages/user/UserCourse';
 import PricingSection from './components/PricingCrad';
+import Pricing from './pages/landing/Princing';
 const App = () => {
   return (
     <>
@@ -37,7 +38,9 @@ const App = () => {
           <Route path="/courses" element={<Courses />} />
           <Route path="/news-and-blogs" element={<NewsBlogs />} />
           <Route path="/faq" element={<Faq />} />
-          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/contact" element={<ContactUs />} /> 
+          <Route path="/pricing" element={<Pricing />} /> 
+
 
           {/* user Routes */}
           <Route path="/user-dashboard" element={<AuthGuard allowedRoles={['user']}><UserDashboard /></AuthGuard>} />
