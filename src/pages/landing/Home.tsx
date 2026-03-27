@@ -1,5 +1,4 @@
 import Counter from "../../components/landing/Counter"
-import Feedback from "./Feedback"
 import HeroSection from "../../components/landing/HeroSection"
 import Navbar from "../../components/landing/Navbar"
 import Footer from "../../components/landing/Footer"
@@ -15,7 +14,6 @@ const Home = () => {
         <HeroSection />
         <Counter />
         <PricingSection />
-        <Feedback />
       </div>
       <Footer />
     </>

@@ -2,9 +2,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { clearAuth } from '../redux/slices/authSlice';
 import { useNavigate, NavLink } from 'react-router-dom';
 import type { RootState } from '../redux/store';
-import { FiHome, FiUsers, FiLogOut } from 'react-icons/fi';
-import { FaBook, FaLayerGroup } from "react-icons/fa";
+import { FiUsers, FiLogOut, FiShoppingCart, FiLayers } from 'react-icons/fi';
 import { MdDashboard } from "react-icons/md";
+import { FaBook } from "react-icons/fa";
+import { RiAddCircleLine } from "react-icons/ri";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -24,18 +25,18 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
   const menuItems =
     roleType === 'user'
       ? [
-        { label: 'Dashboard', icon: FiHome, path: '/user-dashboard' },
-        { label: 'Purchase Plan', icon: FiHome, path: '/user-purchase-credit' },
-        { label: 'Plans', icon: FiHome, path: '/user-plans' },
-        { label: 'View Course', icon: FiHome, path: '/user-purchase-course' },
+        { label: 'Dashboard', icon: MdDashboard, path: '/user-dashboard' },
+        { label: 'Purchase Plan', icon: FiShoppingCart, path: '/user-purchase-credit' },
+        { label: 'View Plans', icon: FiLayers, path: '/user-plans' },
+        { label: 'View Course', icon: FaBook, path: '/user-purchase-course' },
       ]
       : [
-        { label: "Dashboard", icon: MdDashboard, path: "/admin-dashboard" },
-        { label: 'Manage Users', icon: FiUsers, path: '/admin/users' },
-        { label: "Create Master Plan", icon: FaLayerGroup, path: "/admin/create-master-plan" },
-        { label: "Master Plan", icon: FaLayerGroup, path: "/admin/master-plan" },
-        { label: "Create Master Course", icon: FaBook, path: "/admin/create-master-course" },
-        { label: "Master Course", icon: FaBook, path: "/admin/master-course" },
+          { label: "Dashboard", icon: MdDashboard, path: "/admin-dashboard" },
+          { label: "Manage Users", icon: FiUsers, path: "/admin/users" },
+          { label: "Create Master Plan", icon: RiAddCircleLine, path: "/admin/create-master-plan" },
+          { label: "Master Plan", icon: FiLayers, path: "/admin/master-plan" },
+          { label: "Create Master Course", icon: RiAddCircleLine, path: "/admin/create-master-course" },
+          { label: "Master Course", icon: FaBook, path: "/admin/master-course" },
       ];
 
   return (

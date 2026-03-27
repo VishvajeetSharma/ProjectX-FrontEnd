@@ -7,13 +7,11 @@ import UserDashboard from './pages/user/UserDashboard';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminLogin from './pages/landing/AdminLogin';
 import AboutUs from './pages/landing/AboutUs';
-import Courses from './pages/landing/Courses';
 import NewsBlogs from './pages/landing/NewsBlogs';
 import Faq from './pages/landing/Faq';
 import ContactUs from './pages/landing/ContactUs';
 import CreateMasterCourse from './pages/admin/CreateMasterCourse';
 import MasterCourse from './pages/admin/MasterCourseList';
-import CreateMasterPlan from './pages/admin/CreateMasterPlan';
 import MasterPlan from './pages/admin/MasterPlanList';
 import AuthGuard from './hoc/AuthGuard';
 import PurchaseCredit from './pages/user/PurchasePlan';
@@ -23,6 +21,7 @@ import UserCourse from './pages/user/UserCourse';
 import Pricing from './pages/landing/Princing';
 import UsersPage from './pages/admin/UsersPage';
 import CourseList from './pages/admin/MasterCourseList';
+import CreateMasterPlan from './pages/admin/CreateMasterPlan';
 const App = () => {
   return (
     <>
@@ -33,7 +32,6 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/about" element={<AboutUs />} />
-          <Route path="/courses" element={<Courses />} />
           <Route path="/news-and-blogs" element={<NewsBlogs />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/contact" element={<ContactUs />} /> 
