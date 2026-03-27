@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import PricingCard from "../../components/common/PricingCard";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { getUserMasterPlan } from "../../services";
+import { getPublicMasterPlan } from "../../services";
 
 const Pricing: React.FC = () => {
   const [masterPlan, setMasterPlan] = useState([])
   const fetchData = async () => {
-    const res = await getUserMasterPlan()
+    const res = await getPublicMasterPlan()
     setMasterPlan(res?.result || [])
   }
   useEffect(() => {

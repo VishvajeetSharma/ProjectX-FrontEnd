@@ -58,11 +58,6 @@ export const getMasterPlan = async () => {
   return res?.data;
 };
 
-export const getUserMasterPlan = async () => {
-  const res = await api.get("/user/user-master-plan");
-  return res?.data;
-};
-
 
 
 export const deleteMasterPlan = async (id: any) => {
@@ -143,6 +138,13 @@ export const getRecMasterPlan = async () => {
   return res?.data;
 };
 
+export const getPublicMasterPlan = async () => {
+  const res = await api.get("/public/get-master-plan");
+  return res?.data;
+};
+
+
+// users
 export const userpurchasePlan = async (plan_id:any) => {
   const res = await api.post("/user/user-purchase-plan",{plan_id});
   return res?.data;

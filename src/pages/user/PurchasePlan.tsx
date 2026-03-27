@@ -1,12 +1,12 @@
 import DashboardLayout from "../../layout/DashboardLayout"
 import { useEffect, useState } from "react";
-import { getUserMasterPlan } from "../../services";
+import { getPublicMasterPlan } from "../../services";
 import PricingCard from "../../components/common/PricingCard";
 
 const PurchaseCredit = () => {
   const [masterPlan, setMasterPlan] = useState([])
   const fetchData = async () => {
-    const res = await getUserMasterPlan()
+    const res = await getPublicMasterPlan()
     setMasterPlan(res?.result || [])
   }
   useEffect(() => {
