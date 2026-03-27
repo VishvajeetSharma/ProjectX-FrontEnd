@@ -13,6 +13,11 @@ const PurchaseCredit = () => {
     fetchData()
   }, [])
 
+
+  const purchasePlan = async (id: any) => {
+    console.log(`Plan Id: ${id}`)
+  }
+
   return (
     <DashboardLayout>
       <div className="container-fluid py-3 px-4 overflow-hidden my-bg-dark">
@@ -29,7 +34,7 @@ const PurchaseCredit = () => {
                   key={index}
                   className="col-12 col-sm-6 col-lg-4 col-xl-3"
                 >
-                  <PricingCard plan={plan} index={index} />
+                  <PricingCard plan={plan} index={index} onPurchasePlan={purchasePlan}/>
                 </div>
               ))}
             </div>

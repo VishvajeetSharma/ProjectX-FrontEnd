@@ -2,6 +2,7 @@ import React from "react";
 import "../../styles/pricingCard.css";
 
 export interface CoursePlan {
+  id: number;
   name: string;
   credit: string;
   price: number;
@@ -35,9 +36,10 @@ const CheckIcon: React.FC = () => (
 interface Props {
   plan: CoursePlan;
   index: number;
+  onPurchasePlan: (id: number) => void;
 }
 
-const PricingCard: React.FC<Props> = ({ plan, index }) => {
+const PricingCard: React.FC<Props> = ({ plan, index, onPurchasePlan }) => {
   const totalPrice = calcTotalPrice(plan.price, plan.offer);
 
   const pricePerCredit = parseFloat(plan.credit)
@@ -66,7 +68,7 @@ const PricingCard: React.FC<Props> = ({ plan, index }) => {
             <span>Total after {plan.offer}% off ₹{totalPrice.toLocaleString("en-IN")}</span>
           </div>
         </div>
-        <button className="card-cta-btn filled w-100">
+        <button className="card-cta-btn filled w-100" onClick={() => onPurchasePlan(plan.id)}>
           Purchase Plan
         </button>
       </div>
