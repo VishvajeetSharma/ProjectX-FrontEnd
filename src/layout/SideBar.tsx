@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { clearAuth } from '../redux/slices/authSlice';
 import { useNavigate, NavLink } from 'react-router-dom';
 import type { RootState } from '../redux/store';
-import { FiUsers, FiLogOut, FiShoppingCart, FiLayers } from 'react-icons/fi';
+import { FiUsers, FiLogOut, FiShoppingCart, FiLayers, FiEdit, FiRefreshCcw } from 'react-icons/fi';
 import { MdDashboard } from "react-icons/md";
 import { FaBook } from "react-icons/fa";
 import { RiAddCircleLine } from "react-icons/ri";
@@ -29,14 +29,18 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
         { label: 'Purchase Plan', icon: FiShoppingCart, path: '/user-purchase-credit' },
         { label: 'View Plans', icon: FiLayers, path: '/user-plans' },
         { label: 'View Course', icon: FaBook, path: '/user-purchase-course' },
+        { label: "Update Password", icon: FiEdit, path: "/user/update-password" },
+        { label: "Reset Password", icon: FiRefreshCcw, path: "/user/reset-password" },
       ]
       : [
-          { label: "Dashboard", icon: MdDashboard, path: "/admin-dashboard" },
-          { label: "Manage Users", icon: FiUsers, path: "/admin/users" },
-          { label: "Create Master Plan", icon: RiAddCircleLine, path: "/admin/create-master-plan" },
-          { label: "Master Plan", icon: FiLayers, path: "/admin/master-plan" },
-          { label: "Create Master Course", icon: RiAddCircleLine, path: "/admin/create-master-course" },
-          { label: "Master Course", icon: FaBook, path: "/admin/master-course" },
+        { label: "Dashboard", icon: MdDashboard, path: "/admin-dashboard" },
+        { label: "Manage Users", icon: FiUsers, path: "/admin/users" },
+        { label: "Create Master Plan", icon: RiAddCircleLine, path: "/admin/create-master-plan" },
+        { label: "Master Plan", icon: FiLayers, path: "/admin/master-plan" },
+        { label: "Create Master Course", icon: RiAddCircleLine, path: "/admin/create-master-course" },
+        { label: "Master Course", icon: FaBook, path: "/admin/master-course" },
+        { label: "Update Password", icon: FiEdit, path: "/admin/update-password" },
+        { label: "Reset Password", icon: FiRefreshCcw, path: "/admin/reset-password" },
       ];
 
   return (
