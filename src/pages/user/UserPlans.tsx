@@ -6,7 +6,7 @@ import PurchedPlanCard from "../../components/user/PurchasedPlanCard";
 const UserPlans = () => {
   const [masterPlan, setMasterPlan] = useState([])
   const fetchData = async () => {
-    const res = await getUserMasterPlan()
+    const res = await getUserMasterPlan();
     setMasterPlan(res?.result || [])
   }
   useEffect(() => {

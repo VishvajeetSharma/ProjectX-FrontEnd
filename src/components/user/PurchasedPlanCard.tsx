@@ -66,9 +66,6 @@ const PurchasedPlanCard: React.FC<Props> = ({ plan, index }) => {
             <span>Total after {plan.offer}% off ₹{totalPrice.toLocaleString("en-IN")}</span>
           </div>
         </div>
-        <button className="card-cta-btn filled w-100">
-          Deactivate Plan
-        </button>
       </div>
 
       <ul className="card-features-list">
