@@ -1,27 +1,13 @@
 import React from "react";
 import "../../styles/pricingCard.css";
 
-export interface CoursePlan {
-  name: string;
-  credit: string;
-  price: number;
-  offer: string;
-  duration: string;
-  is_rec: number;
-}
-
-const calcTotalPrice = (price: number, offer: string): number => {
-  const discount = parseFloat(offer) || 0;
-  return Math.round(price - (price * discount) / 100);
+const calcTotalPrice = (price: number, offer: number): number => {
+  return Math.round(price - (price * offer) / 100);
 };
 
 // Check Icon
 const CheckIcon: React.FC = () => (
-  <svg
-    className="feature-check"
-    viewBox="0 0 20 20"
-    fill="none"
-  >
+  <svg className="feature-check" viewBox="0 0 20 20" fill="none">
     <path
       d="M5 10.5L8.5 14L15 7"
       stroke="currentColor"
@@ -32,19 +18,14 @@ const CheckIcon: React.FC = () => (
   </svg>
 );
 
-interface Props {
-  plan: CoursePlan;
-  index: number;
-}
+const PurchasedPlanCard = ({ plan, index }: any) => {
+  const totalPrice = calcTotalPrice(plan?.mp_price || 0, plan?.mp_offer || 0);
 
-const PurchasedPlanCard: React.FC<Props> = ({ plan, index }) => {
-  const totalPrice = calcTotalPrice(plan.price, plan.offer);
-
-  const pricePerCredit = parseFloat(plan.credit)
-    ? Math.round(plan.price / parseFloat(plan.credit))
+  const pricePerCredit = plan?.mp_credit
+    ? Math.round(plan.mp_price / plan.mp_credit)
     : 0;
 
-  const isRec = plan.is_rec === 1;
+  const isRec = plan?.mp_is_rec === 1;
 
   return (
     <div className={`pricing-card card-accent-${index % 3} h-100`}>
@@ -53,18 +34,19 @@ const PurchasedPlanCard: React.FC<Props> = ({ plan, index }) => {
       {isRec && <span className="featured-badge">Recommended</span>}
 
       <div className="card-top">
+        <div className="card-price-row">
+          <p className="card-price">
+            ₹{plan?.mp_price?.toLocaleString("en-IN")}
+          </p>
+        </div>
 
-        <div className="card-top">
-          <div className="card-price-row">
-            <p className="card-price">
-              ₹{plan.price.toLocaleString("en-IN")}
-            </p>
-          </div>
-          <p className="card-plan-name">{plan.name}</p>
+        <p className="card-plan-name">{plan?.mp_name}</p>
 
-          <div className="card-total-row">
-            <span>Total after {plan.offer}% off ₹{totalPrice.toLocaleString("en-IN")}</span>
-          </div>
+        <div className="card-total-row">
+          <span>
+            Total after {plan?.mp_offer}% off ₹
+            {totalPrice.toLocaleString("en-IN")}
+          </span>
         </div>
       </div>
 
@@ -72,7 +54,7 @@ const PurchasedPlanCard: React.FC<Props> = ({ plan, index }) => {
         <li>
           <CheckIcon />
           <span>
-            <strong>{plan.credit}</strong> Credits
+            <strong>{plan?.mp_credit}</strong> Credits
           </span>
         </li>
 
@@ -84,7 +66,7 @@ const PurchasedPlanCard: React.FC<Props> = ({ plan, index }) => {
         <li>
           <CheckIcon />
           <span>
-            Valid for <strong>{plan.duration}</strong> days
+            Valid for <strong>{plan?.mp_duration}</strong> days
           </span>
         </li>
       </ul>

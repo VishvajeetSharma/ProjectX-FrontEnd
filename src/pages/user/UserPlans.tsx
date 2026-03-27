@@ -1,17 +1,18 @@
 import DashboardLayout from "../../layout/DashboardLayout"
 import { useEffect, useState } from "react";
-import { getUserMasterPlan } from "../../services";
+import { getUsersPlan } from "../../services";
 import PurchedPlanCard from "../../components/user/PurchasedPlanCard";
 
 const UserPlans = () => {
-  const [masterPlan, setMasterPlan] = useState([])
+  const [usersPlan, setusersPlan] = useState([])
   const fetchData = async () => {
-    const res = await getUserMasterPlan();
-    setMasterPlan(res?.result || [])
+    const res = await getUsersPlan();
+    setusersPlan(res?.result || [])
   }
   useEffect(() => {
     fetchData()
   }, [])
+  
   return (
     <DashboardLayout>
       <div className="container-fluid py-3 px-4 overflow-hidden my-bg-dark">
@@ -23,7 +24,7 @@ const UserPlans = () => {
 
             {/* Cards */}
             <div className="row g-4">
-              {masterPlan.map((plan: any, index: any) => (
+              {usersPlan.map((plan: any, index: any) => (
                 <div
                   key={index}
                   className="col-12 col-sm-6 col-lg-4 col-xl-3"
