@@ -7,7 +7,8 @@ import {
 import { FaAlignLeft } from "react-icons/fa";
 
 import "../../styles/courseCard.css";
-import { getFile } from "../../services";
+import { getFile, getUsersViewCourse } from "../../services";
+import { showALert } from "../../utils";
 
 interface Props {
   id: number;
@@ -60,11 +61,16 @@ const PurchaseCourseCard: React.FC<Props> = ({
   const openContentInNewTab = async (contentPath: string) => {
     if (!contentPath) return;
     try {
-      const blob = await getFile(contentPath);
-      const url = URL.createObjectURL(blob);
-      const newWin = window.open(url, "_blank", "noopener,noreferrer");
-      if (newWin) newWin.focus();
-      setTimeout(() => URL.revokeObjectURL(url), 10000);
+      const res = await getUsersViewCourse()
+      if (res.success) {
+        const blob = await getFile(contentPath);
+        const url = URL.createObjectURL(blob);
+        const newWin = window.open(url, "_blank", "noopener,noreferrer");
+        if (newWin) newWin.focus();
+        setTimeout(() => URL.revokeObjectURL(url), 10000);
+      } else {
+        showALert("View Course", res?.message, "error")
+      }
     } catch (err) {
       console.error("Error opening content file:", err);
     }
@@ -112,9 +118,6 @@ const PurchaseCourseCard: React.FC<Props> = ({
           </div>
         )}
       </div>
-      <button className="card-cta-btn filled w-100">
-        Purchase Plan
-      </button>
     </div>
   );
 };

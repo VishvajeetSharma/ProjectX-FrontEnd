@@ -150,6 +150,11 @@ export const userpurchasePlan = async (plan_id:any) => {
 
 
 export const getUsersPlan = async () => {
-  const res = await api.get("user/user-purchased-plan");
+  const res = await api.get("/user/user-purchased-plan");
   return res?.data;
-};
+};  
+
+export const getUsersViewCourse = async () => {
+  const res = await api.get("/user/user-view-course");
+  return res?.data;
+}; 
