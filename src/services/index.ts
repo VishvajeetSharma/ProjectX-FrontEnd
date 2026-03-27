@@ -160,3 +160,14 @@ export const getUsersViewCourse = async () => {
   const res = await api.get("/user/user-view-course");
   return res?.data;
 }; 
+
+
+export const getUserState = async () => {
+  try {
+    const res = await api.get("/user/user-state");
+    return res?.data;
+  } catch (error) {
+    console.error("Failed to fetch user state", error);
+    return null; 
+  }
+};
