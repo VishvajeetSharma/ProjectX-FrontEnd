@@ -27,15 +27,11 @@ const AdminDashboard = () => {
     fetchStats();
   }, []);
 
-  if (loading) return <DashboardLayout><div className="p-4 text-white">Loading Dashboard...</div></DashboardLayout>;
+  if (loading) return <DashboardLayout><div className="p-4">Loading Dashboard...</div></DashboardLayout>;
 
   return (
     <DashboardLayout>
       <div className="container-fluid py-4 px-4 dashboard-v2">
-        <div className="d-flex justify-content-between align-items-center mb-4">
-          {/* <h2 className="fw-bold text-white mb-0">Admin Dashboard</h2> */}
-          {/* <div className="text-white opacity-50 small">Last updated: {new Date().toLocaleTimeString()}</div> */}
-        </div>
 
         {/* KPI Cards */}
         <div className="row g-4 mb-5">
@@ -73,12 +69,12 @@ const AdminDashboard = () => {
           <div className="col-lg-8">
             <div className="form-section-card h-100 p-4">
               <div className="d-flex justify-content-between align-items-center mb-4">
-                <h5 className="text-white m-0">Growth & Adoption Trends</h5>
+                <h5 className="m-0">Growth & Adoption Trends</h5>
                 <div className="d-flex gap-3">
-                  <span className="d-flex align-items-center gap-1 text-white small opacity-75">
+                  <span className="d-flex align-items-center gap-1 small opacity-75">
                     <span className="dot" style={{ background: '#8884d8' }}></span> Users
                   </span>
-                  <span className="d-flex align-items-center gap-1 text-white small opacity-75">
+                  <span className="d-flex align-items-center gap-1 small opacity-75">
                     <span className="dot" style={{ background: '#82ca9d' }}></span> Courses
                   </span>
                 </div>
@@ -113,9 +109,9 @@ const AdminDashboard = () => {
 
           <div className="col-lg-4">
             <div className="form-section-card h-100 p-4">
-              <h5 className="text-white mb-4">Activity Insights</h5>
+              <h5 className="mb-4">Activity Insights</h5>
               <div className="stats-summary-item mb-4 glass-card">
-                <div className="d-flex justify-content-between text-white mb-2">
+                <div className="d-flex justify-content-between  mb-2">
                   <span className="opacity-75">User Activation Rate</span>
                   <span className="fw-bold">{stats?.users.total ? Math.round((stats.users.active / stats.users.total) * 100) : 0}%</span>
                 </div>
@@ -129,7 +125,7 @@ const AdminDashboard = () => {
               </div>
 
               <div className="stats-summary-item mb-4 glass-card">
-                <div className="d-flex justify-content-between text-white mb-2">
+                <div className="d-flex justify-content-between  mb-2">
                   <span className="opacity-75">Course Availability</span>
                   <span className="fw-bold">{stats?.courses.total ? Math.round((stats.courses.active / stats.courses.total) * 100) : 0}%</span>
                 </div>
@@ -143,10 +139,10 @@ const AdminDashboard = () => {
               </div>
 
               <div className="activity-placeholder p-4 text-center glass-card mt-auto">
-                <div className="text-white opacity-25 mb-2">
+                <div className=" opacity-25 mb-2">
                   <FiActivity size={40} />
                 </div>
-                <p className="text-white opacity-50 small mb-0">More insights coming soon...</p>
+                <p className=" opacity-50 small mb-0">More insights coming soon...</p>
               </div>
             </div>
           </div>

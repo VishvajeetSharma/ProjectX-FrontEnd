@@ -28,7 +28,7 @@
 /* ===== Card ===== */
 .pricing-card {
   background: var(--bg-card);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   padding: 55px 32px 55px 32px;
   width: 100%;
   border: 1px solid var(--border-card);

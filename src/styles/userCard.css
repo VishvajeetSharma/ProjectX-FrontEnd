@@ -1,7 +1,7 @@
 /* CARD SIZE INCREASE */
 .user-card {
   background: var(--bg-card);
-  border-radius: 18px;
+  border-radius: var(--radius-md);
   padding: 80px 28px 30px; /* ⬅️ more spacing */
   border: 1px solid var(--border-card);
   box-shadow: var(--shadow-sm);
