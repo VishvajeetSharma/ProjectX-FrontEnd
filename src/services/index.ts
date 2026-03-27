@@ -140,6 +140,11 @@ export const getDashboardStats = async () => {
 
 // Public APIs
 export const getRecMasterPlan = async () => {
-  const res = await api.get("public/get-rec-plan");
+  const res = await api.get("/public/get-rec-plan");
+  return res?.data;
+};
+
+export const userpurchasePlan = async (plan_id:any) => {
+  const res = await api.post("/user/user-purchase-plan",{plan_id});
   return res?.data;
 };

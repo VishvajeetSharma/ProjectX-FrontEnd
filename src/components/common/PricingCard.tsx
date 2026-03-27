@@ -1,5 +1,7 @@
 import React from "react";
 import "../../styles/pricingCard.css";
+import { userpurchasePlan } from "../../services";
+import { showALert } from "../../utils";
 
 export interface CoursePlan {
   id: number;
@@ -33,13 +35,9 @@ const CheckIcon: React.FC = () => (
   </svg>
 );
 
-interface Props {
-  plan: CoursePlan;
-  index: number;
-  onPurchasePlan: (id: number) => void;
-}
 
-const PricingCard: React.FC<Props> = ({ plan, index, onPurchasePlan }) => {
+
+const PricingCard: any = ({ plan, index, onPurchasePlan }: any) => {
   const totalPrice = calcTotalPrice(plan.price, plan.offer);
 
   const pricePerCredit = parseFloat(plan.credit)
@@ -48,6 +46,15 @@ const PricingCard: React.FC<Props> = ({ plan, index, onPurchasePlan }) => {
 
   const isRec = plan.is_rec === 1;
 
+  const purachasePlan = async (plan: any) => {
+    const res = await userpurchasePlan(plan);
+    if (res.success) {
+      showALert("Plan", res.message, "success")
+    } else {
+      showALert("Plan", res.message, "error")
+    }
+
+  }
   return (
     <div className={`pricing-card card-accent-${index % 3} h-100`}>
       <div className="card-pattern" />
@@ -68,7 +75,7 @@ const PricingCard: React.FC<Props> = ({ plan, index, onPurchasePlan }) => {
             <span>Total after {plan.offer}% off ₹{totalPrice.toLocaleString("en-IN")}</span>
           </div>
         </div>
-        <button className="card-cta-btn filled w-100" onClick={() => onPurchasePlan(plan.id)}>
+        <button className="card-cta-btn filled w-100" onClick={() => purachasePlan(plan.id)}>
           Purchase Plan
         </button>
       </div>
