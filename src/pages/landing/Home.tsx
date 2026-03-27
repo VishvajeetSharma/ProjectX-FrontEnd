@@ -1,11 +1,11 @@
-import Counter from "./Counter"
+import Counter from "../../components/landing/Counter"
 import Feedback from "./Feedback"
-import HeroSection from "./HeroSection"
-import Navbar from "./Navbar"
-import Footer from "./Footer"
+import HeroSection from "../../components/landing/HeroSection"
+import Navbar from "../../components/landing/Navbar"
+import Footer from "../../components/landing/Footer"
 
 import "../../styles/style.css"
-import PricingSection from "./PricingSection"
+import PricingSection from "../../components/landing/PricingSection"
 
 const Home = () => {
   return (

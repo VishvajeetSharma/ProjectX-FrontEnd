@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import PricingCard from "../../components/common/PricingCard";
+import PricingCard from "../common/PricingCard";
 import { getRecMasterPlan } from "../../services";
 
 const PricingSection: React.FC = () => {

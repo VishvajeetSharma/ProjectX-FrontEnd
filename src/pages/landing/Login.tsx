@@ -6,8 +6,8 @@ import { showALert } from "../../utils";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setAuth } from "../../redux/slices/authSlice";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "../../components/landing/Navbar";
+import Footer from "../../components/landing/Footer";
 
 //  Validation Schema
 const schema = yup.object().shape({

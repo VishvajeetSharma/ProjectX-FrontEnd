@@ -1,8 +1,8 @@
 
-import RegistrationForm from "./RegistrationForm";
-import RegistrationInfo from "./RegistrationInfo";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import RegistrationForm from "../../components/landing/RegistrationForm";
+import RegistrationInfo from "../../components/landing/RegistrationInfo";
+import Navbar from "../../components/landing/Navbar";
+import Footer from "../../components/landing/Footer";
 
 
 

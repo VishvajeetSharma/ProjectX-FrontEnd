@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PricingCard from "../../components/common/PricingCard";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "../../components/landing/Navbar";
+import Footer from "../../components/landing/Footer";
 import { getPublicMasterPlan } from "../../services";
 
 const Pricing: React.FC = () => {
