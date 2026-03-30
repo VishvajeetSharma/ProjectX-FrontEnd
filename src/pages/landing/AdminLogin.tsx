@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { adminLoginService } from "../../services";
 import { showALert } from "../../utils";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setAuth } from "../../redux/slices/authSlice";
 import Navbar from "../../components/landing/Navbar";
@@ -114,6 +114,9 @@ const AdminLogin = () => {
                   Login
                 </button>
               </form>
+              <div className="text-end mt-4 gap-4 flex-wrap">
+                <NavLink to="/admin-reset-password">Forget password</NavLink>
+              </div>
             </div>
 
             {/* RIGHT SIDE IMAGE */}

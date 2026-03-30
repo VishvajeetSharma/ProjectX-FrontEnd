@@ -26,36 +26,41 @@ const ResetPasswordForm = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
   };
 
   return (
-    <div className="form-section-card">
-      <form onSubmit={handleSubmit(handleFormSubmit)}>
-        <div className="row">
-          <div className="col-lg-4 mx-auto mb-4">
-            {/* Email Input */}
-            <div className="mb-4">
-              <label className="form-label-premium">Email *</label>
-              <input
-                type="email"
-                {...register("email")}
-                className="form-control-premium w-100"
-                placeholder="Enter email"
-              />
-              {errors.email && (
-                <small className="text-danger mt-1 d-block">
-                  {errors.email.message}
-                </small>
-              )}
-            </div>
+    <div className="row mt-5">
+      <div className="col-lg-4 mx-auto">
+        <div className="form-section-card py-5">
+          <p className="access-title fs-3 text-center">
+                Reset Password
+              </p>
+          <form onSubmit={handleSubmit(handleFormSubmit)}>
+                {/* Email Input */}
+                <div className="mb-4">
+                  <label className="form-label-premium">Email *</label>
+                  <input
+                    type="email"
+                    {...register("email")}
+                    className="form-control-premium w-100"
+                    placeholder="Enter email"
+                  />
+                  {errors.email && (
+                    <small className="text-danger mt-1 d-block">
+                      {errors.email.message}
+                    </small>
+                  )}
+                </div>
 
-            {/* Button */}
-            <div className="d-flex justify-content-end gap-2">
-              <button type="submit" className="btn btn-submit">
-                Send OTP
-              </button>
-            </div>
-          </div>
+                {/* Button */}
+                <div className="d-flex justify-content-end gap-2">
+                  <button type="submit" className="btn btn-submit">
+                    Send OTP
+                  </button>
+                </div>
+              
+          </form>
         </div>
-      </form>
+      </div>
     </div>
+
   );
 };
 
