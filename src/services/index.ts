@@ -171,3 +171,13 @@ export const getUserState = async () => {
     return null; 
   }
 };
+
+export const resetPassword = async (data: any) => {
+  try {
+    const res = await api.post("/user/forget-password", data);
+    return res?.data;
+  } catch (error) {
+    console.error(error);
+    return null; 
+  }
+};

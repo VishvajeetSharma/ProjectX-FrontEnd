@@ -26,6 +26,8 @@ import AdminUpdatePassword from './pages/admin/AdminUpdatePassword';
 import AdminResetPassword from './pages/admin/AdminResetPassword';
 import UserUpdatePassword from './pages/user/UserUpdatePassword';
 import UserResetPassword from './pages/user/UserResetPassword';
+import ResetPassword from './pages/user/UserResetPassword';
+import ForgetPassword from './pages/landing/ForgetPassword';
 const App = () => {
   return (
     <>
@@ -40,6 +42,8 @@ const App = () => {
           <Route path="/faq" element={<Faq />} />
           <Route path="/contact" element={<ContactUs />} /> 
           <Route path="/pricing" element={<Pricing />} /> 
+          <Route path="/forget-password" element={<ForgetPassword />} /> 
+
 
 
           {/* user Routes */}

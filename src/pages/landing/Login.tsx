@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { userLoginService } from "../../services";
 import { showALert } from "../../utils";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setAuth } from "../../redux/slices/authSlice";
 import Navbar from "../../components/landing/Navbar";
@@ -22,11 +22,7 @@ const schema = yup.object().shape({
     .string()
     .required("Password is required")
     .min(6, "Minimum 6 characters")
-    .max(15, "Maximum 15 characters")
-    .matches(
-      /^(?=.*[A-Za-z])(?=.*\d)/,
-      "Must contain letters & numbers"
-    ),
+    .max(15, "Maximum 15 characters"),
 });
 
 
@@ -112,6 +108,11 @@ const Login = () => {
                   Login
                 </button>
               </form>
+              <div className="text-end mt-4 gap-4 flex-wrap">
+                <NavLink to="/forget-password" >Forget password</NavLink>
+              </div>
+
+
               {/* USERS + RATING */}
               <div className="d-flex align-items-center mt-4 gap-4 flex-wrap">
 
@@ -131,6 +132,7 @@ const Login = () => {
                   <span className="stars ms-2">★★★★★</span>
                 </div>
               </div>
+
             </div>
 
             {/* RIGHT SIDE IMAGE */}
