@@ -19,7 +19,10 @@ const schema = yup.object().shape({
       "Password must be 8+ chars, include uppercase, lowercase, number & special character"
     )
     .notOneOf([yup.ref("oldPassword")], "New password must be different"),
-  confirmPassword: yup.string().
+  confirmPassword: yup
+    .string()
+    .required("Confirm password is required")
+    .oneOf([yup.ref("newPassword")], "Passwords must match"),
 });
 
 const UpdatePasswordForm = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
@@ -78,7 +81,7 @@ const UpdatePasswordForm = ({ onSubmit }: { onSubmit: (data: any) => void }) => 
             placeholder="Enter new password"
           />
           <small className="text-danger mt-1 d-block">
-            {errors.newPassword?.message}
+            {errors.confirmPassword?.message}
           </small>
         </div>
       </div>

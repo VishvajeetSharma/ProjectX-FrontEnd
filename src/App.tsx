@@ -23,11 +23,10 @@ import UsersPage from './pages/admin/UsersPage';
 import CourseList from './pages/admin/MasterCourseList';
 import CreateMasterPlan from './pages/admin/CreateMasterPlan';
 import AdminUpdatePassword from './pages/admin/AdminUpdatePassword';
-import AdminResetPassword from './pages/admin/AdminResetPassword';
 import UserUpdatePassword from './pages/user/UserUpdatePassword';
-import UserResetPassword from './pages/user/UserResetPassword';
-import ResetPassword from './pages/user/UserResetPassword';
 import ForgetPassword from './pages/landing/ForgetPassword';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
   return (
     <>
@@ -53,7 +52,6 @@ const App = () => {
           <Route path="/user-purchase-course" element={<AuthGuard allowedRoles={['user']}><PurchaseCourse /></AuthGuard>} />
           <Route path="/user-course" element={<AuthGuard allowedRoles={['user']}><UserCourse /></AuthGuard>} />
           <Route path='/user/update-password' element={<AuthGuard allowedRoles={['user']}><UserUpdatePassword /></AuthGuard>} />
-          <Route path='/user/reset-password' element={<AuthGuard allowedRoles={['user']}><UserResetPassword /></AuthGuard>} />
 
 
           {/* Admin Routes */}
@@ -64,7 +62,6 @@ const App = () => {
           <Route path='/admin/create-master-course' element={<AuthGuard allowedRoles={['admin']}><CreateMasterCourse /></AuthGuard>} />
           <Route path='/admin/master-course' element={<AuthGuard allowedRoles={['admin']}><MasterCourse /></AuthGuard>} />
           <Route path='/admin/update-password' element={<AuthGuard allowedRoles={['admin']}><AdminUpdatePassword /></AuthGuard>} />
-          <Route path='/admin/reset-password' element={<AuthGuard allowedRoles={['admin']}><AdminResetPassword /></AuthGuard>} />
 
 
 
@@ -74,6 +71,7 @@ const App = () => {
 
         </Routes>
       </BrowserRouter>
+      <ToastContainer />
     </>
   )
 }

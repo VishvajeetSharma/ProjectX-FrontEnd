@@ -48,6 +48,16 @@ export const adminLoginService = async (data: any) => {
   return res?.data;
 };
 
+export const userUpdatePasswordService = async (data: any) => {
+  const res = await api.put("/user/update-password", data);
+  return res?.data;
+};
+
+export const adminUpdatePasswordService = async (data: any) => {
+  const res = await api.put("/admin/update-password", data);
+  return res?.data;
+};
+
 export const createMasterPlan = async (data: any) => {
   const res = await api.post("/admin/create-master-plan", data);
   return res?.data;
