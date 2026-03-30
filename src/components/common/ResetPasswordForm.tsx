@@ -1,89 +1,37 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useState } from "react";
 
 // Validation schema
 const schema = yup.object().shape({
-  type: yup.string().required("Please select a type"),
-
-  email: yup.string().when("type", {
-    is: "email",
-    then: (schema) =>
-      schema
-        .required("Email is required")
-        .email("Invalid email format"),
-    otherwise: (schema) => schema.notRequired(),
-  }),
-
-  mobile: yup.string().when("type", {
-    is: "mobile",
-    then: (schema) =>
-      schema
-        .required("Mobile is required")
-        .matches(/^[6-9]\d{9}$/, "Invalid mobile number"),
-    otherwise: (schema) => schema.notRequired(),
-  }),
+  email: yup.string().required("Email is required").email("Invalid email format"),
 });
 
 const ResetPasswordForm = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
-  const [type, setType] = useState<string | null>(null);
-
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-    setValue,
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      type: "",
+      email: "",
     },
   });
 
   const handleFormSubmit = (data: any) => {
     onSubmit(data); // Pass data to parent
     reset();
-    setType(null);
   };
 
   return (
-
-
     <div className="form-section-card">
       <form onSubmit={handleSubmit(handleFormSubmit)}>
         <div className="row">
-          {/* Select Type */}
-          <div className="col-lg-4 mb-4">
-            <label className="form-label-premium">Select Type *</label>
-            <select
-              {...register("type")}
-              className="form-control-premium w-100"
-              onChange={(e) => {
-                const value = e.target.value;
-                setType(value || null);
-                setValue("type", value);
-
-                // reset other field when switching
-                setValue("email", "");
-                setValue("mobile", "");
-              }}
-            >
-              <option value="">-- Select --</option>
-              <option value="email">Email</option>
-              <option value="mobile">Mobile</option>
-            </select>
-            {errors.type && (
-              <small className="text-danger mt-1 d-block">
-                {errors.type.message}
-              </small>
-            )}
-          </div>
-
-          {/* Email Input */}
-          {type === "email" && (
-            <div className="col-lg-4 mb-4">
+          <div className="col-lg-4 mx-auto mb-4">
+            {/* Email Input */}
+            <div className="mb-4">
               <label className="form-label-premium">Email *</label>
               <input
                 type="email"
@@ -97,49 +45,17 @@ const ResetPasswordForm = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
                 </small>
               )}
             </div>
-          )}
 
-          {/* Mobile Input */}
-          {type === "mobile" && (
-            <div className="col-lg-4 mb-4">
-              <label className="form-label-premium">Mobile *</label>
-              <input
-                type="text"
-                {...register("mobile")}
-                className="form-control-premium w-100"
-                placeholder="Enter mobile number"
-              />
-              {errors.mobile && (
-                <small className="text-danger mt-1 d-block">
-                  {errors.mobile.message}
-                </small>
-              )}
+            {/* Button */}
+            <div className="d-flex justify-content-end gap-2">
+              <button type="submit" className="btn btn-submit">
+                Send OTP
+              </button>
             </div>
-          )}
-        </div>
-
-        {/* Buttons */}
-        <div className="row align-items-end">
-          <div className="col-lg-12 mb-4 d-flex justify-content-end gap-2">
-            <button
-              type="button"
-              className="btn btn-cancel"
-              onClick={() => {
-                reset();
-                setType(null);
-              }}
-            >
-              Cancel
-            </button>
-
-            <button type="submit" className="btn btn-submit">
-              Reset Password
-            </button>
           </div>
         </div>
       </form>
     </div>
-
   );
 };
 

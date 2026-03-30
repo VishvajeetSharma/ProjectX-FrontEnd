@@ -13,7 +13,7 @@ const UserUpdatePassword = () => {
     <DashboardLayout>
       <div className="container-fluid py-3 px-4 overflow-hidden">
         <div className="row">
-          <div className="col-12 mx-auto">
+          <div className="col-lg-12 mx-auto">
             <h2 className="fw-bold">Update Password</h2>
             <UpdatePasswordForm onSubmit={handleFormData} />
           </div>

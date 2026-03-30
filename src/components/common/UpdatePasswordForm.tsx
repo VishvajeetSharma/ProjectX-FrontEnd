@@ -36,51 +36,56 @@ const UpdatePasswordForm = ({ onSubmit }: { onSubmit: (data: any) => void }) => 
   };
 
   return (
-    <div className="form-section-card">
-      <form onSubmit={handleSubmit(handleFormSubmit)}>
-        <div className="row">
-          {/* Old Password */}
-          <div className="col-lg-4 mb-4">
-            <label className="form-label-premium">Old Password *</label>
-            <input
-              type="password"
-              {...register("oldPassword")}
-              className="form-control-premium w-100"
-              placeholder="Enter old password"
-            />
-            <small className="text-danger mt-1 d-block">
-              {errors.oldPassword?.message}
-            </small>
-          </div>
-
-          {/* New Password */}
-          <div className="col-lg-4 mb-4">
-            <label className="form-label-premium">New Password *</label>
-            <input
-              type="password"
-              {...register("newPassword")}
-              className="form-control-premium w-100"
-              placeholder="Enter new password"
-            />
-            <small className="text-danger mt-1 d-block">
-              {errors.newPassword?.message}
-            </small>
-          </div>
+<div className="form-section-card">
+  <form onSubmit={handleSubmit(handleFormSubmit)}>
+    <div className="row">
+      {/* Passwords Column */}
+      <div className="col-lg-4 mx-auto mb-4">
+        {/* Old Password */}
+        <div className="mb-4">
+          <label className="form-label-premium">Old Password *</label>
+          <input
+            type="password"
+            {...register("oldPassword")}
+            className="form-control-premium w-100"
+            placeholder="Enter old password"
+          />
+          <small className="text-danger mt-1 d-block">
+            {errors.oldPassword?.message}
+          </small>
         </div>
 
-        {/* Buttons */}
-        <div className="row">
-          <div className="col-12 d-flex justify-content-end gap-2">
-            <button type="button" className="btn btn-cancel" onClick={() => reset()}>
-              Cancel
-            </button>
-            <button type="submit" className="btn btn-submit">
-              Update Password
-            </button>
-          </div>
+        {/* New Password */}
+        <div className="mb-4">
+          <label className="form-label-premium">New Password *</label>
+          <input
+            type="password"
+            {...register("newPassword")}
+            className="form-control-premium w-100"
+            placeholder="Enter new password"
+          />
+          <small className="text-danger mt-1 d-block">
+            {errors.newPassword?.message}
+          </small>
         </div>
-      </form>
+      </div>
+
+     
     </div>
+
+    {/* Buttons */}
+    <div className="row">
+      <div className="col-10 d-flex justify-content-end gap-2">
+        <button type="button" className="btn btn-cancel" onClick={() => reset()}>
+          Cancel
+        </button>
+        <button type="submit" className="btn btn-submit">
+          Update Password
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
   );
 };
 
