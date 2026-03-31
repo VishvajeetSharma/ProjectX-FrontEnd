@@ -21,7 +21,7 @@ const ForgetPassword = () => {
 
   return (
 
-    <div className="container-fluid py-3 px-4 overflow-hidden">
+    <div className=" container-fluid py-3 px-4 overflow-hidden">
       
           <ResetPasswordForm onSubmit={handleFormData} />
        

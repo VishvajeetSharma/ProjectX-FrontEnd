@@ -27,7 +27,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
       ? [
         { label: 'Dashboard', icon: MdDashboard, path: '/user-dashboard' },
         { label: 'Purchase Plan', icon: FiShoppingCart, path: '/user-purchase-credit' },
-        { label: 'View Plans', icon: FiLayers, path: '/user-plans' },
+        { label: 'Your Plans', icon: FiLayers, path: '/user-plans' },
         { label: 'View Course', icon: FaBook, path: '/user-purchase-course' },
         { label: "Update Password", icon: FiEdit, path: "/user/update-password" },
       ]

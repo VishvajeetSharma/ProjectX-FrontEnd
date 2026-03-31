@@ -26,7 +26,7 @@ const ResetPasswordForm = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
   };
 
   return (
-    <div className="row mt-5">
+    <div className="row mt-5 mx-auto">
       <div className="col-lg-4 mx-auto">
         <div className="form-section-card py-5">
           <p className="access-title fs-3 text-center">
