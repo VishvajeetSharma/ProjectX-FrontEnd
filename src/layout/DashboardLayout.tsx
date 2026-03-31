@@ -1,8 +1,9 @@
 
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "../styles/DashboardLayout.css"
 import Sidebar from "./SideBar";
+import { UserContext } from "../context/user/UserContext";
 
 
 // ------------------------------------------------------------
@@ -15,7 +16,7 @@ interface DashboardLayoutProps {
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
-
+  const {user}=useContext(UserContext)
   useEffect(() => {
     const checkScreenSize = () => {
       const mobile = window.innerWidth < 768;
@@ -88,12 +89,13 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                 ☰
               </button>
               <img
-                src=""
+                src={`http://localhost:8000/file/${user?.profile}`}
                 alt="User"
                 className="rounded-circle"
                 width="40"
                 height="40"
               />
+              {/* {user?.profile} */}
             </div>
             {/* Scrollable Content */}
             <div className="desktop-content-main">

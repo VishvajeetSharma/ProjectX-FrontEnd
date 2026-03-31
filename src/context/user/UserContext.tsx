@@ -1,29 +1,11 @@
-import { createContext, useState } from "react";
-import type { ReactNode } from "react"; // type-only import
+import { createContext, useState } from "react"; 
+export const UserContext = createContext(undefined); 
 
-// ---- Types ----
-export interface User {
-  name: string;
-}
-
-export interface UserContextType {
-  user: User | null;
-  setUser: (user: User | null) => void;
-}
-
-// ---- Context ----
-export const UserContext = createContext<UserContextType | undefined>(undefined);
-
-// ---- Provider ----
-interface Props {
-  children: ReactNode;
-}
-
-export const UserProvider = ({ children }: Props) => {
-  const [user, setUser] = useState<User | null>(null);
+export const UserProvider = ({ children }: any) => {
+  const [user, setUser] = useState(null);
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser }as any}>
       {children}
     </UserContext.Provider>
   );

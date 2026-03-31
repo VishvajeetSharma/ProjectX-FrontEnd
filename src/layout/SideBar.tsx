@@ -30,6 +30,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
         { label: 'Your Plans', icon: FiLayers, path: '/user-plans' },
         { label: 'View Course', icon: FaBook, path: '/user-purchase-course' },
         { label: "Update Password", icon: FiEdit, path: "/user/update-password" },
+        { label: "Update Profile", icon: FiEdit, path: "/user/update-profile" },
       ]
       : [
         { label: "Dashboard", icon: MdDashboard, path: "/admin-dashboard" },

@@ -28,6 +28,7 @@ import UserUpdatePassword from './pages/user/UserUpdatePassword';
 import ForgetPassword from './pages/landing/ForgetPassword';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import UpdateProfile from './pages/user/UpdateProfile';
 const App = () => {
   return (
     <>
@@ -54,6 +55,7 @@ const App = () => {
           <Route path="/user-purchase-course" element={<AuthGuard allowedRoles={['user']}><PurchaseCourse /></AuthGuard>} />
           <Route path="/user-course" element={<AuthGuard allowedRoles={['user']}><UserCourse /></AuthGuard>} />
           <Route path='/user/update-password' element={<AuthGuard allowedRoles={['user']}><UserUpdatePassword /></AuthGuard>} />
+          <Route path='/user/update-profile' element={<AuthGuard allowedRoles={['user']}><UpdateProfile /></AuthGuard>} />
 
 
           {/* Admin Routes */ }

@@ -8,6 +8,8 @@ import { useDispatch } from "react-redux";
 import { setAuth } from "../../redux/slices/authSlice";
 import Navbar from "../../components/landing/Navbar";
 import Footer from "../../components/landing/Footer";
+import { useContext } from "react";
+import { UserContext } from "../../context/user/UserContext";
 
 //  Validation Schema
 const schema = yup.object().shape({
@@ -30,6 +32,7 @@ const schema = yup.object().shape({
 const Login = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const {setUser}: any = useContext(UserContext)
   const {
     register,
     handleSubmit,
@@ -45,6 +48,7 @@ const Login = () => {
       if (res.success) {
         showALert("User Login", res?.message, "success")
         dispatch(setAuth({ token: res?.result?.token, userType: "user" }));
+        setUser(res?.result)
         navigate('/user-dashboard');
         reset()
       } else {

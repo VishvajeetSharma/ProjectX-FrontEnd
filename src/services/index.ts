@@ -2,7 +2,13 @@ import axios from "axios";
 import { store } from "../redux/store";
 
 const BASE_URL = "http://localhost:8000";
-const PUBLIC_ROUTES = ["/user/register", "/user/login", "/admin/login", "/user/user-master-plan", "public/get-rec-plan"];
+const PUBLIC_ROUTES = [
+  "/user/register",
+  "/user/login",
+  "/admin/login",
+  "/user/user-master-plan",
+  "public/get-rec-plan",
+];
 
 const api = axios.create({ baseURL: BASE_URL });
 
@@ -10,14 +16,18 @@ api.interceptors.request.use(
   (config) => {
     if (!config?.url) return config;
 
-    const url = config.url.startsWith("http") ? new URL(config.url).pathname : config.url;
+    const url = config.url.startsWith("http")
+      ? new URL(config.url).pathname
+      : config.url;
 
     const isPublic = PUBLIC_ROUTES.some((route) => url.includes(route));
 
     if (!isPublic) {
       const tokenFromStore = store.getState().auth.token;
       const tokenFromStorage = localStorage.getItem("token");
-      const token = tokenFromStore || (tokenFromStorage ? JSON.parse(tokenFromStorage) : null);
+      const token =
+        tokenFromStore ||
+        (tokenFromStorage ? JSON.parse(tokenFromStorage) : null);
 
       if (token) {
         const headers = {
@@ -30,7 +40,7 @@ api.interceptors.request.use(
 
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
 
 export const userRegisterService = async (data: any) => {
@@ -77,8 +87,6 @@ export const getMasterPlan = async () => {
   const res = await api.get("/admin/get-master-plan");
   return res?.data;
 };
-
-
 
 export const deleteMasterPlan = async (id: any) => {
   const res = await api.delete(`/admin/delete-master-plan/${id}`);
@@ -135,7 +143,6 @@ export const getFile = async (fileName: string) => {
   return res?.data;
 };
 
-
 export const getAllUsers = async () => {
   const res = await api.get("/admin/get-all-users");
   return res?.data;
@@ -151,7 +158,6 @@ export const getDashboardStats = async () => {
   return res?.data;
 };
 
-
 // Public APIs
 export const getRecMasterPlan = async () => {
   const res = await api.get("/public/get-rec-plan");
@@ -163,24 +169,21 @@ export const getPublicMasterPlan = async () => {
   return res?.data;
 };
 
-
 // users
-export const userpurchasePlan = async (plan_id:any) => {
-  const res = await api.post("/user/user-purchase-plan",{plan_id});
+export const userpurchasePlan = async (plan_id: any) => {
+  const res = await api.post("/user/user-purchase-plan", { plan_id });
   return res?.data;
 };
-
 
 export const getUsersPlan = async () => {
   const res = await api.get("/user/user-purchased-plan");
   return res?.data;
-};  
+};
 
 export const getUsersViewCourse = async () => {
   const res = await api.get("/user/user-view-course");
   return res?.data;
-}; 
-
+};
 
 export const getUserState = async () => {
   try {
@@ -188,7 +191,7 @@ export const getUserState = async () => {
     return res?.data;
   } catch (error) {
     console.error("Failed to fetch user state", error);
-    return null; 
+    return null;
   }
 };
 
@@ -198,6 +201,20 @@ export const resetPassword = async (data: any) => {
     return res?.data;
   } catch (error) {
     console.error(error);
-    return null; 
+    return null;
+  }
+};
+
+export const userUpdateProfile = async (data: any) => {
+  try {
+    const res = await api.put("/user/update-profile", data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return res?.data;
+  } catch (error) {
+    console.error(error);
+    return null;
   }
 };
