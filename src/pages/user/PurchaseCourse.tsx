@@ -34,7 +34,7 @@ const PurchaseCourse = () => {
         <div className="row">
           <div className="col-12 mx-auto">
             <div className="d-flex justify-content-between align-items-center mb-4">
-              <h2 className="fw-bold m-0">Purchase Course</h2>
+              <h2 className="fw-bold m-0">View Course</h2>
             </div>
 
             {loading && <p className="text-white">Loading courses...</p>}

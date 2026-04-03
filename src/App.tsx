@@ -17,7 +17,6 @@ import AuthGuard from './hoc/AuthGuard';
 import PurchaseCredit from './pages/user/PurchasePlan';
 import UserPlans from './pages/user/UserPlans';
 import PurchaseCourse from './pages/user/PurchaseCourse';
-import UserCourse from './pages/user/UserCourse';
 import Pricing from './pages/landing/Princing';
 import UsersPage from './pages/admin/UsersPage';
 import CourseList from './pages/admin/MasterCourseList';
@@ -53,7 +52,6 @@ const App = () => {
           <Route path="/user-purchase-credit" element={<AuthGuard allowedRoles={['user']}><PurchaseCredit /></AuthGuard>} />
           <Route path="/user-plans" element={<AuthGuard allowedRoles={['user']}><UserPlans /></AuthGuard>} />
           <Route path="/user-purchase-course" element={<AuthGuard allowedRoles={['user']}><PurchaseCourse /></AuthGuard>} />
-          <Route path="/user-course" element={<AuthGuard allowedRoles={['user']}><UserCourse /></AuthGuard>} />
           <Route path='/user/update-password' element={<AuthGuard allowedRoles={['user']}><UserUpdatePassword /></AuthGuard>} />
           <Route path='/user/update-profile' element={<AuthGuard allowedRoles={['user']}><UpdateProfile /></AuthGuard>} />
 

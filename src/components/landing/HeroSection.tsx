@@ -70,7 +70,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Floating Icons Loop - Static for now as per image */}
-                <div className="floating-icon" style={{top: '10%', right: '10%'}}><img src="https://upload.wikimedia.org/wikipedia/commons/a/cf/Angular_full_color_logo.svg" width="25" alt="angular" /></div>
+                {/* <div className="floating-icon" style={{top: '10%', right: '10%'}}><img src="https://upload.wikimedia.org/wikipedia/commons/a/cf/Angular_full_color_logo.svg" width="25" alt="angular" /></div> */}
                 <div className="floating-icon" style={{top: '30%', left: '0%'}}><img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" width="25" alt="react" /></div>
                 <div className="floating-icon" style={{bottom: '20%', right: '0%'}}><img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" width="15" alt="figma" /></div>
               </div>

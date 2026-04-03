@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import "../../styles/pricingCard.css";
 import { userpurchasePlan } from "../../services";
 import { showALert } from "../../utils";
@@ -46,6 +47,8 @@ const PricingCard: any = ({ plan, index, onPurchasePlan }: any) => {
 
   const isRec = plan.is_rec === 1;
 
+  const navigate = useNavigate();
+
   const purachasePlan = async (plan: any) => {
     const res = await userpurchasePlan(plan);
     if (res.success) {
@@ -75,7 +78,7 @@ const PricingCard: any = ({ plan, index, onPurchasePlan }: any) => {
             <span>Total after {plan.offer}% off ₹{totalPrice.toLocaleString("en-IN")}</span>
           </div>
         </div>
-        <button className="card-cta-btn filled w-100" onClick={() => purachasePlan(plan.id)}>
+        <button className="card-cta-btn filled w-100" onClick={() => navigate('/user-purchase-credit')}>
           Purchase Plan
         </button>
       </div>
