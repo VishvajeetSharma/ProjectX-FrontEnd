@@ -22,7 +22,7 @@ const PurchasedPlanCard = ({ plan, index }: any) => {
   const totalPrice = calcTotalPrice(plan?.mp_price || 0, plan?.mp_offer || 0);
 
   const pricePerCredit = plan?.mp_credit
-    ? Math.round(plan.mp_price / plan.mp_credit)
+    ? (totalPrice / plan.mp_credit)
     : 0;
 
   const isRec = plan?.mp_is_rec === 1;

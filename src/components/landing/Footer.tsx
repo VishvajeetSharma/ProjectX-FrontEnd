@@ -100,7 +100,7 @@ const Footer = () => {
           {/* Left */}
           <div className="col-12 col-md-4 mb-2 mb-md-0">
             <p className="mb-0 text-light">
-              © {new Date().getFullYear()} Eduport. All rights reserved.
+              © {new Date().getFullYear()} CourseCraft. All rights reserved.
             </p>
           </div>
 

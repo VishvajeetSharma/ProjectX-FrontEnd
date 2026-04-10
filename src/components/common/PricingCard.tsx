@@ -42,7 +42,7 @@ const PricingCard: any = ({ plan, index, onPurchasePlan }: any) => {
   const totalPrice = calcTotalPrice(plan.price, plan.offer);
 
   const pricePerCredit = parseFloat(plan.credit)
-    ? Math.round(plan.price / parseFloat(plan.credit))
+    ? (totalPrice / parseFloat(plan.credit))
     : 0;
 
   const isRec = plan.is_rec === 1;
@@ -78,7 +78,7 @@ const PricingCard: any = ({ plan, index, onPurchasePlan }: any) => {
             <span>Total after {plan.offer}% off ₹{totalPrice.toLocaleString("en-IN")}</span>
           </div>
         </div>
-        <button className="card-cta-btn filled w-100" onClick={() => navigate('/user-purchase-credit')}>
+        <button className="card-cta-btn filled w-100" onClick={() => purachasePlan(plan.id)}>
           Purchase Plan
         </button>
       </div>
